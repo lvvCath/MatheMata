@@ -63,7 +63,7 @@ public class CloudGeneratorScript : MonoBehaviour
     // Initial Spawn Clouds 
     void Prewarm() 
     {
-        for (int i = 0; i < 2; i++) 
+        for (int i = 0; i < 7; i++) 
         {
             Vector3 spawnPos = startPos + Vector3.right * (i * 2);
             SpawnCloud(spawnPos);
