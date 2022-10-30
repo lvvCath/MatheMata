@@ -7,4 +7,5 @@ public class PracticeQuestionAnswer
     public int CorrectAnswer;
     public string Category;
     public GameObject[] Background;
+    public GameObject Hint;
 }

@@ -12,11 +12,15 @@ public class EasyQuizManager : MonoBehaviour
     public TMP_Text QuestionNoTxt, QuestionTxt, CategoryTxt;
 
     public GameObject CorrectOverlay, WrongOverlay;
-    public GameObject QuizPanelUI, QuizPanel, ResultPanel;
+    public GameObject QuizPanelUI, QuizPanel, HintPanel, ResultPanel;
+
+    public AudioClip correctSFX, wrongSFX;
+    private AudioSource audioSource;
 
     private void Start()
     {
         generateQuestion();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void GameOver()
@@ -29,6 +33,7 @@ public class EasyQuizManager : MonoBehaviour
     public void correct()
     {
         CorrectOverlay.SetActive(true);
+        audioSource.PlayOneShot(correctSFX);
         StartCoroutine(hideUI(CorrectOverlay, 2.0f, "correct"));
 
     }
@@ -36,6 +41,7 @@ public class EasyQuizManager : MonoBehaviour
     public void wrong()
     {
         WrongOverlay.SetActive(true);
+        audioSource.PlayOneShot(wrongSFX);
         StartCoroutine(hideUI(WrongOverlay, 2.0f, "wrong"));
     }
 
@@ -107,6 +113,12 @@ public class EasyQuizManager : MonoBehaviour
             generateQuestion();
         }
 
+    }
+
+    public void Hint(bool isActive)
+    {
+        HintPanel.SetActive(isActive);
+        QnA[currentQuestion].Hint.SetActive(isActive);
     }
 
 
