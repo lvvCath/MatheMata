@@ -11,7 +11,9 @@ public class OverlayPanel : MonoBehaviour
     {
         background.alpha = 0;
         background.LeanAlpha(1, 0.5f);
-        
+
+        box.transform.localScale = new Vector3(0f, 0f, 0f);
+
         LeanTween.scale(box, new Vector3(1f, 1f, 1f), 1f).setDelay(.5f).setEase(LeanTweenType.easeOutElastic);
     }
 

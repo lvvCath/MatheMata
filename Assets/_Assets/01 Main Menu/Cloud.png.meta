@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18b2cb4c5df4e9841aaf007bf218fcbd
+guid: d43bce52af480d442af907e08dcb7c13
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_Ground_0
+      name: Cloud_0
       rect:
         serializedVersion: 2
-        x: 461
-        y: 981
-        width: 2390
-        height: 276
+        x: 0
+        y: 173
+        width: 410
+        height: 231
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2436da4e3ea30da48ac372523f282ce2
-      internalID: 860793498
+      spriteID: 86e99b3c7d946f648bca896240077ab3
+      internalID: -1609493845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BG_Ground_2
+      name: Cloud_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3132
-        height: 338
+        width: 409
+        height: 144
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1521445ec7db2643b6a1b417d2205d6
-      internalID: 1200704341
+      spriteID: 5ee10214e85f8024699ec49d489d383d
+      internalID: 1324432501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BG_Ground_1
+      name: Cloud_2
       rect:
         serializedVersion: 2
-        x: 178
-        y: 421
-        width: 2954
-        height: 340
+        x: 449
+        y: 174
+        width: 578
+        height: 87
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f1dd2b1b3504454482e25ebd7187295
-      internalID: -2044085444
+      spriteID: 1c960f220214a224e94ddf3bc611dac4
+      internalID: -2137574073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloud_3
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 173
+        width: 373
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df9e090770dc114f99e47bef56a9b6d
+      internalID: 71279374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloud_4
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 0
+        width: 346
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb70b63e4eed3f4e98caf6b56fefd92
+      internalID: 24589592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cloud_5
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 0
+        width: 567
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfc265275f2a8e409d09b4bf3ad0460
+      internalID: -756541094
       vertices: []
       indices: 
       edges: []
@@ -190,9 +253,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BG_Ground_2: 1200704341
-      BG_Ground_1: -2044085444
-      BG_Ground_0: 860793498
+      Cloud_5: -756541094
+      Cloud_1: 1324432501
+      Cloud_4: 24589592
+      Cloud_2: -2137574073
+      Cloud_3: 71279374
+      Cloud_0: -1609493845
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

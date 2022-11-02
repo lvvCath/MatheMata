@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18b2cb4c5df4e9841aaf007bf218fcbd
+guid: 47d6396c4082c5a45b6edd44c0f47a7e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -115,70 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: BG_Ground_0
-      rect:
-        serializedVersion: 2
-        x: 461
-        y: 981
-        width: 2390
-        height: 276
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2436da4e3ea30da48ac372523f282ce2
-      internalID: 860793498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG_Ground_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3132
-        height: 338
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1521445ec7db2643b6a1b417d2205d6
-      internalID: 1200704341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG_Ground_1
-      rect:
-        serializedVersion: 2
-        x: 178
-        y: 421
-        width: 2954
-        height: 340
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f1dd2b1b3504454482e25ebd7187295
-      internalID: -2044085444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -189,10 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      BG_Ground_2: 1200704341
-      BG_Ground_1: -2044085444
-      BG_Ground_0: 860793498
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

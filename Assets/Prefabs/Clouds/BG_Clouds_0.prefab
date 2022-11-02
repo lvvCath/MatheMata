@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2863692046610345890}
   - component: {fileID: 6637265148948857817}
   - component: {fileID: 1660511629}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: BG_Clouds_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762479267702995957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.91, y: 12.07, z: 0}
+  m_LocalPosition: {x: 6.91, y: 12.07, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71,10 +71,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 820812781
+  m_SortingLayerID: -1913161365
   m_SortingLayer: 1
-  m_SortingOrder: 10
-  m_Sprite: {fileID: -1901283738, guid: e0ff5770202624e47912abe208e182f4, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1609493845, guid: d43bce52af480d442af907e08dcb7c13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

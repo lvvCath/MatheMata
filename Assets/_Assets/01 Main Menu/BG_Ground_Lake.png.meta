@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1d0e4185705a01f43a253c2ce6f2e219
+guid: ec5f00af60847ac4198e17327429920f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -115,112 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: BG_Mountain_0
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 1820
-        width: 2466
-        height: 494
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc58442247fd9b64ea5ab615b2d714b0
-      internalID: 676724810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG_Mountain_1
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 1216
-        width: 1815
-        height: 445
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af38d29925656a74a9c4d4c9ee0ba000
-      internalID: -1235500452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG_Mountain_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 541
-        width: 2598
-        height: 442
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61a2f8beda754394f837d1cadfcf0118
-      internalID: 244475077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG_Mountain_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1265
-        height: 286
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2fb1b59f8ee7dab4cb3acf72f0dd3280
-      internalID: -2065354047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BG_Mountain_4
-      rect:
-        serializedVersion: 2
-        x: 1362
-        y: 0
-        width: 1236
-        height: 314
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d1ba3dd55fcd72468d3b6593391669b
-      internalID: -1388288411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -231,12 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      BG_Mountain_2: 244475077
-      BG_Mountain_4: -1388288411
-      BG_Mountain_1: -1235500452
-      BG_Mountain_3: -2065354047
-      BG_Mountain_0: 676724810
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
