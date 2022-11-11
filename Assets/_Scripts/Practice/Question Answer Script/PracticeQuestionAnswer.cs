@@ -8,4 +8,9 @@ public class PracticeQuestionAnswer
     public string Category;
     public GameObject[] Background;
     public GameObject Hint;
+
+    // AVERAGE Capacity Answer
+    public GameObject[] AVE_CapacitySlots;
+    public GameObject[] AVE_CapacityAnswer;
+
 }

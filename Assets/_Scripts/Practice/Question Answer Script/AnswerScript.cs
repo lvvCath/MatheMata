@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnswerScript : MonoBehaviour
 {
     public bool isCorrect = false;
-    public EasyQuizManager quizManager;
+    public PracticeQuizManager quizManager;
     public void Answer() 
     {
         if (isCorrect) 

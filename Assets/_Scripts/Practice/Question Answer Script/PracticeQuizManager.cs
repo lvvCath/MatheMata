@@ -4,18 +4,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class EasyQuizManager : MonoBehaviour
+public class PracticeQuizManager : MonoBehaviour
 {
+    [Header("Questions")]
     public List<PracticeQuestionAnswer> QnA;
+
+    [Header("Buttons Choices")]
     public GameObject[] options;
-    public int currentQuestion, currentQuestionNo;
-    public TMP_Text QuestionNoTxt, QuestionTxt, CategoryTxt;
 
-    public GameObject CorrectOverlay, WrongOverlay;
-    public GameObject QuizPanelUI, QuizPanel, HintPanel, ResultPanel;
+    [Header("Variable Track")]
+    public string difficulty;
+    public int currentQuestion;
+    public int currentQuestionNo;
 
-    public AudioClip correctSFX, wrongSFX;
+    [Header("Texts")]
+    public TMP_Text QuestionNoTxt;
+    public TMP_Text QuestionTxt;
+    public TMP_Text CategoryTxt;
+
+    [Header("PopUp Overlay Panel")]
+    public GameObject WrongOverlay;
+    public GameObject CorrectOverlay;
+
+    [Header("Quiz UI Panel")]
+    public GameObject QuizPanelUI;
+    public GameObject QuizPanelBG;
+    public GameObject HintPanel;
+    public GameObject ResultPanel;
+
+    [Header("Audio SFX")]
+    public AudioClip correctSFX;
+    public AudioClip wrongSFX;
+
     private AudioSource audioSource;
+
+    private bool AVE_Capacity_isCorrect = false;
 
     private void Start()
     {
@@ -26,7 +49,7 @@ public class EasyQuizManager : MonoBehaviour
     public void GameOver()
     {
         QuizPanelUI.SetActive(false);
-        QuizPanel.SetActive(false);
+        QuizPanelBG.SetActive(false);
         ResultPanel.SetActive(true);
     }
 
@@ -54,11 +77,51 @@ public class EasyQuizManager : MonoBehaviour
 
             SetActiveOptionBtn(false);
 
-            if (QnA[currentQuestion].CorrectAnswer == i + 1) 
+            // Condition for multiple choice type of question
+            if (
+               (difficulty == "easy" || // applicable for all easy questions
+               (difficulty == "average" && QnA[currentQuestion].Category != "Capacity")) && // Not applied in average capacity questions
+                QnA[currentQuestion].CorrectAnswer == i + 1) // checks if answer and button matches > matched button is set to True
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
+
         }
+    }
+
+    public void AveCapacitySubmit()
+    {
+        AVE_Capacity_isCorrect = AveCapacityAnswer();
+        options[3].GetComponent<AnswerScript>().isCorrect = AVE_Capacity_isCorrect;
+        Debug.Log("AveCapacitySubmit() >>>>>" + AVE_Capacity_isCorrect);
+    }
+
+    bool AveCapacityAnswer()
+    {
+        bool check = false;
+
+        for (int i = 0; i < QnA[currentQuestion].AVE_CapacitySlots.Length; i++)
+        {
+            Debug.Log("OBJ X POS >>>" + QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x);
+            Debug.Log("SLOT X POS >>>" + QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x);
+
+
+            Debug.Log("MATH rounded >>>" + Mathf.Round(QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x));
+            Debug.Log("MATH rounded >>>" + Mathf.Round(QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x));
+
+
+            if (Mathf.Round(QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x) == Mathf.Round(QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x))
+            {
+                check = true;
+                Debug.Log(check);
+            }
+            else
+            {
+                check = false;
+                Debug.Log(check);
+            }
+        }
+        return check;
     }
 
     void generateQuestion()

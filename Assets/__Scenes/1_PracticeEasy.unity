@@ -634,12 +634,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580913461}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 684.85254, y: -16.999939}
-  m_SizeDelta: {x: 101.4, y: 101.4}
+  m_AnchoredPosition: {x: 686, y: -17.16}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &30938391
 MonoBehaviour:
@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6117647}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4630,7 +4630,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1836526449}
   - {fileID: 742847313}
   - {fileID: 1508036430}
   - {fileID: 30938390}
@@ -4639,7 +4638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 122}
+  m_AnchoredPosition: {x: -20, y: 122}
   m_SizeDelta: {x: 1526.605, y: 779.83997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &581122848
@@ -6689,12 +6688,12 @@ RectTransform:
   m_Children:
   - {fileID: 991144596}
   m_Father: {fileID: 580913461}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 888.70996, y: 475.91995}
-  m_SizeDelta: {x: 1247.12, y: 326.15}
+  m_AnchoredPosition: {x: 901, y: 463}
+  m_SizeDelta: {x: 1269, y: 358.1455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742847314
 MonoBehaviour:
@@ -6716,8 +6715,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 07b8108d09345a74da7488d8df6c3900, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8668,8 +8667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 51, y: -0.0000097752}
-  m_SizeDelta: {x: 879.56, y: 239.87}
+  m_AnchoredPosition: {x: 42.37, y: -0.0000097752}
+  m_SizeDelta: {x: 915.94, y: 239.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991144598
 MonoBehaviour:
@@ -8982,7 +8981,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 961080983
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1013969846
 RectTransform:
@@ -11643,7 +11642,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 580913461}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13732,82 +13731,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829288630}
   m_CullTransparentMesh: 1
---- !u!1 &1836526448
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1836526449}
-  - component: {fileID: 1836526451}
-  - component: {fileID: 1836526450}
-  m_Layer: 5
-  m_Name: Dialogue Box (back)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1836526449
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836526448}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 580913461}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 895.88, y: 475.1001}
-  m_SizeDelta: {x: 1261.45, y: 356.33}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1836526450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836526448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5176471, g: 0.3254902, b: 0.15686275, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1836526451
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836526448}
-  m_CullTransparentMesh: 1
 --- !u!1 &1841322825
 GameObject:
   m_ObjectHideFlags: 0
@@ -14639,6 +14562,8 @@ MonoBehaviour:
     Background:
     - {fileID: 2009014003}
     Hint: {fileID: 1939397035}
+    AVE_CapacitySlots: []
+    AVE_CapacityAnswer: []
   - Question: 'The cabinet is ___ pillows long. '
     Answers:
     - 4 pillows
@@ -14649,6 +14574,8 @@ MonoBehaviour:
     Background:
     - {fileID: 1579275905}
     Hint: {fileID: 801324363}
+    AVE_CapacitySlots: []
+    AVE_CapacityAnswer: []
   - Question: Glass holds ____ water than the Pot
     Answers:
     - more
@@ -14660,6 +14587,8 @@ MonoBehaviour:
     - {fileID: 291139253}
     - {fileID: 844777292}
     Hint: {fileID: 932336730}
+    AVE_CapacitySlots: []
+    AVE_CapacityAnswer: []
   - Question: Which of the following is the lightest fruit.
     Answers:
     - Pineapple
@@ -14671,6 +14600,8 @@ MonoBehaviour:
     - {fileID: 291139253}
     - {fileID: 803125613}
     Hint: {fileID: 303401937}
+    AVE_CapacitySlots: []
+    AVE_CapacityAnswer: []
   - Question: 'The couch is ___ picture frame long. '
     Answers:
     - 2
@@ -14682,6 +14613,8 @@ MonoBehaviour:
     - {fileID: 43923444}
     - {fileID: 1645716745}
     Hint: {fileID: 1170455454}
+    AVE_CapacitySlots: []
+    AVE_CapacityAnswer: []
   - Question: 'The sofa can hold ___ children than the armchair '
     Answers:
     - less
@@ -14693,19 +14626,22 @@ MonoBehaviour:
     - {fileID: 43923444}
     - {fileID: 128589315}
     Hint: {fileID: 2062030272}
+    AVE_CapacitySlots: []
+    AVE_CapacityAnswer: []
   options:
   - {fileID: 1898008044}
   - {fileID: 664309993}
   - {fileID: 1323889143}
+  difficulty: easy
   currentQuestion: 0
   currentQuestionNo: 0
   QuestionNoTxt: {fileID: 835411319}
   QuestionTxt: {fileID: 436154669}
   CategoryTxt: {fileID: 588053054}
-  CorrectOverlay: {fileID: 2113457741}
   WrongOverlay: {fileID: 367657387}
+  CorrectOverlay: {fileID: 2113457741}
   QuizPanelUI: {fileID: 624318305}
-  QuizPanel: {fileID: 1505691771}
+  QuizPanelBG: {fileID: 1505691771}
   HintPanel: {fileID: 1013969841}
   ResultPanel: {fileID: 651946262}
   correctSFX: {fileID: 8300000, guid: 9b9d18f64170b454b97ba0f93a51abca, type: 3}
@@ -15564,7 +15500,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2002392592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89493f4bc1c5f6e4ba829e82d2998475, type: 3}
+  m_Script: {fileID: 11500000, guid: 22219f369a20f874b8a51b44b109f720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2002392594
