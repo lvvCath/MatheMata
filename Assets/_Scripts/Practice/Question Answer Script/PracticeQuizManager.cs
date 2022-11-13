@@ -32,6 +32,9 @@ public class PracticeQuizManager : MonoBehaviour
     public GameObject HintPanel;
     public GameObject ResultPanel;
 
+    [Header("Hard Mass Scale")]
+    public GameObject scale;
+
     [Header("Audio SFX")]
     public AudioClip correctSFX;
     public AudioClip wrongSFX;
@@ -80,6 +83,7 @@ public class PracticeQuizManager : MonoBehaviour
             // Condition for multiple choice type of question
             if (
                (difficulty == "easy" || // applicable for all easy questions
+               (difficulty == "hard" && QnA[currentQuestion].Category != "Mass") ||
                (difficulty == "average" && QnA[currentQuestion].Category != "Capacity")) && // Not applied in average capacity questions
                 QnA[currentQuestion].CorrectAnswer == i + 1) // checks if answer and button matches > matched button is set to True
             {
@@ -87,6 +91,12 @@ public class PracticeQuizManager : MonoBehaviour
             }
 
         }
+    }
+
+    public void HardMassSubmit()
+    {
+        options[3].GetComponent<AnswerScript>().isCorrect = scale.GetComponent<ScaleTrigger>().IsEqual();
+        Debug.Log("AveCapacitySubmit() >>>>>" + scale.GetComponent<ScaleTrigger>().IsEqual());
     }
 
     public void AveCapacitySubmit()
