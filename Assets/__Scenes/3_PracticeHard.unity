@@ -3796,7 +3796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: average
+  m_text: hard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 976d44a9feec0654c912e93009bc111a, type: 2}
   m_sharedMaterial: {fileID: 5913676748193804989, guid: 976d44a9feec0654c912e93009bc111a, type: 2}
@@ -3823,7 +3823,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.25
+  m_fontSize: 39.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4248,7 +4248,7 @@ MonoBehaviour:
     Hint: {fileID: 1867286506}
     AVE_CapacitySlots: []
     AVE_CapacityAnswer: []
-  - Question: 'If a cup can contain 4 fishball, how many fishballs are there in 4
+  - Question: 'If a cup can contain 4 fishball, how many fishballs are there in 2
       cups. '
     Answers:
     - Girl
