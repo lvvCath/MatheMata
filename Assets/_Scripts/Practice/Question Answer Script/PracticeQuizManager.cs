@@ -96,14 +96,12 @@ public class PracticeQuizManager : MonoBehaviour
     public void HardMassSubmit()
     {
         options[3].GetComponent<AnswerScript>().isCorrect = scale.GetComponent<ScaleTrigger>().IsEqual();
-        Debug.Log("AveCapacitySubmit() >>>>>" + scale.GetComponent<ScaleTrigger>().IsEqual());
     }
 
     public void AveCapacitySubmit()
     {
         AVE_Capacity_isCorrect = AveCapacityAnswer();
         options[3].GetComponent<AnswerScript>().isCorrect = AVE_Capacity_isCorrect;
-        Debug.Log("AveCapacitySubmit() >>>>>" + AVE_Capacity_isCorrect);
     }
 
     bool AveCapacityAnswer()
@@ -112,23 +110,13 @@ public class PracticeQuizManager : MonoBehaviour
 
         for (int i = 0; i < QnA[currentQuestion].AVE_CapacitySlots.Length; i++)
         {
-            Debug.Log("OBJ X POS >>>" + QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x);
-            Debug.Log("SLOT X POS >>>" + QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x);
-
-
-            Debug.Log("MATH rounded >>>" + Mathf.Round(QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x));
-            Debug.Log("MATH rounded >>>" + Mathf.Round(QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x));
-
-
             if (Mathf.Round(QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x) == Mathf.Round(QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x))
             {
                 check = true;
-                Debug.Log(check);
             }
             else
             {
                 check = false;
-                Debug.Log(check);
             }
         }
         return check;

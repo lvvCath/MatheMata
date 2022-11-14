@@ -11,26 +11,22 @@ public class MenuGameManager : MonoBehaviour
     public void PracticeEasyGame() 
     {
         scene = 0;
-        Debug.Log("EASY PRACTICE SELECTED");
         StartCoroutine(DelaySceneLoad());
     }
     public void PracticeAveGame()
     {
         scene = 1;
-        Debug.Log("AVERAGE PRACTICE SELECTED");
         StartCoroutine(DelaySceneLoad());
     }
     public void PracticeHardGame()
     {
         scene = 2;
-        Debug.Log("HARD PRACTICE SELECTED");
         StartCoroutine(DelaySceneLoad());
     }
 
     public void ChallangeGame()
     {
         scene = 3;
-        Debug.Log("CHALLANGE SELECTED");
         StartCoroutine(DelaySceneLoad());
     }
 
@@ -40,7 +36,6 @@ public class MenuGameManager : MonoBehaviour
     }
 
     public void QuitGame() {
-        Debug.Log("QUIT SELECTED");
         Application.Quit();
     }
 

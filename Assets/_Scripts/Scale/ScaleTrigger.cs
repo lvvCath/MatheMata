@@ -28,14 +28,12 @@ public class ScaleTrigger : MonoBehaviour
         {
             scaleRight_totalMass = 0;
             scaleLeft_mass = LeftScale.GetComponent<LeftScale>().GetWatermelonMass();
-            Debug.Log("WatermelonMass>>>" + scaleLeft_mass);
         }
 
         if (Q5.activeSelf)
         {
             scaleRight_totalMass = 0;
             scaleLeft_mass = LeftScale.GetComponent<LeftScale>().GetPineappleMass();
-            Debug.Log("PineappleMass>>>" + scaleLeft_mass);
         }
 
         scale();
@@ -60,9 +58,6 @@ public class ScaleTrigger : MonoBehaviour
         scaleRight_totalMass += objMass;
 
         scale();
-
-        Debug.Log("WEIGHT ADDED + " + objMass);
-        Debug.Log("Total Mass>>> " + scaleRight_totalMass);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -73,9 +68,6 @@ public class ScaleTrigger : MonoBehaviour
         scaleRight_totalMass -= objMass;
 
         scale();
-
-        Debug.Log("WEIGHT REDUCED - " + objMass);
-        Debug.Log("Total Mass>>> " + scaleRight_totalMass);
     }
 
     void scale()
@@ -86,13 +78,13 @@ public class ScaleTrigger : MonoBehaviour
             LeanTween.rotateZ(scaleBar, 0, rotateTime);
         }
 
-        if (scaleLeft_mass < scaleRight_totalMass) // -15
+        if (scaleLeft_mass < scaleRight_totalMass) // -10
         {
             isEqual = false;
             LeanTween.rotateZ(scaleBar, -10, rotateTime);
         }
 
-        if (scaleLeft_mass > scaleRight_totalMass) // 15
+        if (scaleLeft_mass > scaleRight_totalMass) // 10
         {
             isEqual = false;
             LeanTween.rotateZ(scaleBar, 10, rotateTime);

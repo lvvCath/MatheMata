@@ -7,7 +7,6 @@ public class PracticeGameManager : MonoBehaviour
 {
     public void Home()
     {
-        Debug.Log("HOME SELECTED");
         StartCoroutine(DelaySceneLoad());
     }
 

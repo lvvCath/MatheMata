@@ -7,7 +7,6 @@ public class ChallangeGameManager : MonoBehaviour
 {
     public void Back()
     {
-        Debug.Log("BACK SELECTED");
         StartCoroutine(DelaySceneLoad());
     }
     IEnumerator DelaySceneLoad()
