@@ -30,21 +30,18 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         initialPosition = gameObject.transform.position;
-        Debug.Log("OBJ initial position: " + initialPosition);
+        //Debug.Log("OBJ initial position: " + initialPosition);
 
-        Debug.Log("Begin Drag");
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("ON Drag");
         rectTrans.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End Drag");
         canvasGroup.blocksRaycasts = true;
 
         if ((gameObject.transform.position == object1Slot.transform.position) || 

@@ -110,13 +110,15 @@ public class PracticeQuizManager : MonoBehaviour
 
         for (int i = 0; i < QnA[currentQuestion].AVE_CapacitySlots.Length; i++)
         {
-            if (Mathf.Round(QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x) == Mathf.Round(QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x))
+            if (Mathf.Round(QnA[currentQuestion].AVE_CapacitySlots[i].transform.position.x) 
+            == Mathf.Round(QnA[currentQuestion].AVE_CapacityAnswer[i].transform.position.x))
             {
                 check = true;
             }
             else
             {
                 check = false;
+                break;
             }
         }
         return check;
