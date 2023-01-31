@@ -45,12 +45,12 @@ public class LengthQuizManager : MonoBehaviour
 
     private void GenerateQuestion() 
     {
-        if (currentQuestionNo < 9)
+        if (currentQuestionNo < 10)
         {
-            currentQuestionNo += 1;
             quizTopUI.QuestionNo.text = "Question " + (currentQuestionNo+1).ToString();
             EasyQuestion();
             SetAnswers();
+            currentQuestionNo += 1;
 
         }
         else
