@@ -23,6 +23,17 @@ public class ChallangeGameManager : MonoBehaviour
 
     public void Easy()
     {
-        SceneManager.LoadScene("New Scene");
+        // use if else condition to check the category selected
+        // SceneManager.LoadScene("New Scene");
+    }
+
+    public void Average()
+    {
+        // SceneManager.LoadScene("New Scene");
+    }
+
+    public void Hard()
+    {
+        // SceneManager.LoadScene("New Scene");
     }
 }

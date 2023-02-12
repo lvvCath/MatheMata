@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using TMPro;
 
 public class LengthQuizManager : MonoBehaviour
@@ -20,7 +21,10 @@ public class LengthQuizManager : MonoBehaviour
     public QuizTopUI quizTopUI;
 
     public int currentQuestionNo;
+    public float timeLimit;
     private int score;
+    private float timer;
+    private bool stopTimer;
 
     private List<int> shortRecord = new List<int>();
     private int correctEasyAns;
@@ -36,30 +40,130 @@ public class LengthQuizManager : MonoBehaviour
 
     private AudioSource audioSource;
 
-    private void Start()
+     private void Start()
     {
+        stopTimer = false;
+        quizTopUI.TimerSlider.maxValue = timeLimit;
+        quizTopUI.TimerSlider.value = timeLimit;
+
         DurstenfeldShuffle(LongObjects);
         GenerateQuestion();
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update() 
+    {
+        if(stopTimer == false)
+        {
+            timer -= Time.deltaTime;
+            // Text Timer
+            int minutes = Mathf.FloorToInt(timer / 60);
+            int seconds = Mathf.FloorToInt(timer % 60);
+            quizTopUI.Timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+            // Slider Timer
+            quizTopUI.TimerSlider.value = timer;
+
+            if (timer <= 0)
+            {
+                GenerateQuestion();
+            }
+
+        }
+
+        
+
+    }
+    
+    // Shuffle Algorithm
+    private void DurstenfeldShuffle<T>(T[] gameObjectArr) 
+    {
+        int last_index = gameObjectArr.Length - 1;
+        while (last_index > 0)
+        {
+            int rand_index = Random.Range(0, last_index+1); //modify in documentation "+1"
+            T temp = gameObjectArr[last_index];
+            gameObjectArr[last_index] = gameObjectArr[rand_index];
+            gameObjectArr[rand_index] = temp;
+            last_index -= 1;
+        }
+    }
+    
+
     private void GenerateQuestion() 
     {
         if (currentQuestionNo < 10)
         {
+            stopTimer = false;
+            timer = timeLimit;
+
             quizTopUI.QuestionNo.text = "Question " + (currentQuestionNo+1).ToString();
+
+            // insert here if else condition to generate question based on selected lvl of difficulty
             EasyQuestion();
             SetAnswers();
+
             currentQuestionNo += 1;
 
         }
         else
         {
+            // TO DO game result panel
+            stopTimer = true;
+            quizTopUI.Timer.text = "00:00";
             Debug.Log("GAME OVER");
         }
 
     }
 
+    public void SetAnswers()
+    {
+        int[] easyAnswersArr = { correctEasyAns+1, correctEasyAns, correctEasyAns-1 };
+        DurstenfeldShuffle(easyAnswersArr);
+        
+        for (int i = 0; i < Options.Length; i++)
+        {
+            Options[i].GetComponent<LengthAnswerScript>().isCorrect = false;
+            Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = easyAnswersArr[i].ToString() + " " + shortEasyObjName;
+
+            // Condition for multiple choice type of question
+            if (easyAnswersArr[i] == correctEasyAns) // checks if answer and button matches > matched button is set to True
+            {
+                Options[i].GetComponent<LengthAnswerScript>().isCorrect = true;
+            } 
+
+        }
+    }
+
+    IEnumerator nextQuestion(GameObject guiParentCanvas, float secondsToWait, string answer)
+    {
+        yield return new WaitForSeconds(secondsToWait);
+        guiParentCanvas.GetComponent<OverlayPanel>().CloseOverlay();
+
+        GenerateQuestion();
+
+    }
+
+    public void correct()
+    {
+        score += 1;
+        stopTimer = true;
+
+        quizTopUI.Score.text = (score).ToString() + " / " + LongObjects.Length.ToString();
+        CorrectOverlay.SetActive(true);
+        audioSource.PlayOneShot(correctSFX);
+        StartCoroutine(nextQuestion(CorrectOverlay, 2.0f, "correct"));
+    }
+
+    public void wrong()
+    {
+        stopTimer = true;
+
+        WrongOverlay.SetActive(true);
+        audioSource.PlayOneShot(wrongSFX);
+        StartCoroutine(nextQuestion(WrongOverlay, 2.0f, "wrong"));
+    }
+
+// Length Easy Difficulty
     private void EasyQuestion()
     {
         if (ShortContainer.transform.childCount > 0)
@@ -104,76 +208,5 @@ public class LengthQuizManager : MonoBehaviour
 
         ShortContainer.GetComponent<LetCGridLayout>().SetCells();
     }
-
-    public void SetAnswers()
-    {
-        int[] easyAnswersArr = { correctEasyAns, correctEasyAns+1, correctEasyAns-1};
-        
-        for (int i = 0; i < Options.Length; i++)
-        {
-            Options[i].GetComponent<LengthAnswerScript>().isCorrect = false;
-            Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = easyAnswersArr[i].ToString() + " " + shortEasyObjName;
-
-            // Condition for multiple choice type of question
-            if (easyAnswersArr[i] == correctEasyAns) // checks if answer and button matches > matched button is set to True
-            {
-                Options[i].GetComponent<LengthAnswerScript>().isCorrect = true;
-            } 
-
-        }
-    }
-
-    // public void Answer()
-    // {
-    //     if (currentQuestionNo < 9)
-    //     {
-    //         currentQuestionNo += 1;
-    //         GenerateQuestion();
-
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("GAME OVER");
-    //     }
-    // }
-
-    IEnumerator nextQuestion(GameObject guiParentCanvas, float secondsToWait, string answer)
-    {
-        yield return new WaitForSeconds(secondsToWait);
-        guiParentCanvas.GetComponent<OverlayPanel>().CloseOverlay();
-
-        GenerateQuestion();
-
-    }
-
-    private void DurstenfeldShuffle(GameObject[] gameObjectArr) 
-    {
-        int last_index = gameObjectArr.Length - 1;
-        while (last_index > 0)
-        {
-            int rand_index = Random.Range(0, last_index);
-            GameObject temp = gameObjectArr[last_index];
-            gameObjectArr[last_index] = gameObjectArr[rand_index];
-            gameObjectArr[rand_index] = temp;
-            last_index -= 1;
-        }
-    }
-
-    public void correct()
-    {
-        score += 1;
-        quizTopUI.Score.text = (score).ToString() + " / " + LongObjects.Length.ToString();
-        CorrectOverlay.SetActive(true);
-        audioSource.PlayOneShot(correctSFX);
-        StartCoroutine(nextQuestion(CorrectOverlay, 2.0f, "correct"));
-    }
-
-    public void wrong()
-    {
-        WrongOverlay.SetActive(true);
-        audioSource.PlayOneShot(wrongSFX);
-        StartCoroutine(nextQuestion(WrongOverlay, 2.0f, "wrong"));
-    }
-
 
 }

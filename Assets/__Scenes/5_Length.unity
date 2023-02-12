@@ -1581,15 +1581,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3661786586186019915, guid: 397bd29ce5252534fa8ad44a7654f421, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3661786586186019915, guid: 397bd29ce5252534fa8ad44a7654f421, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3661786586186019915, guid: 397bd29ce5252534fa8ad44a7654f421, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3661786586186019915, guid: 397bd29ce5252534fa8ad44a7654f421, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1678,15 +1678,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8778396886530282112, guid: 80c1cfc2b91891240a810586c2ff06f0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8778396886530282112, guid: 80c1cfc2b91891240a810586c2ff06f0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8778396886530282112, guid: 80c1cfc2b91891240a810586c2ff06f0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8778396886530282112, guid: 80c1cfc2b91891240a810586c2ff06f0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1945,6 +1945,7 @@ MonoBehaviour:
   QuestionNo: {fileID: 2080492203}
   Score: {fileID: 2062231310}
   Timer: {fileID: 1881042235}
+  TimerSlider: {fileID: 1848390546}
 --- !u!1 &460693379 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6793213161805459034, guid: d729d9f3e8fac8e42affc54dbc96e005, type: 3}
@@ -5764,6 +5765,7 @@ MonoBehaviour:
   LongContainer: {fileID: 770638429}
   quizTopUI: {fileID: 457399230}
   currentQuestionNo: 0
+  timeLimit: 30
   WrongOverlay: {fileID: 1692645432}
   CorrectOverlay: {fileID: 787967724}
   correctSFX: {fileID: 8300000, guid: 9b9d18f64170b454b97ba0f93a51abca, type: 3}
@@ -7186,7 +7188,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7453,7 +7455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2:00
+  m_text: 00:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fc1d4a2859dc8f4db0772a9c2f7e7bf, type: 2}
   m_sharedMaterial: {fileID: 320448257673340548, guid: 4fc1d4a2859dc8f4db0772a9c2f7e7bf, type: 2}
@@ -7480,7 +7482,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.85
+  m_fontSize: 38.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7565,8 +7567,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 501.12, y: -0.0125103}
-  m_SizeDelta: {x: 1001.83, y: 0.024979}
+  m_AnchoredPosition: {x: 12.370117, y: -0.0125103}
+  m_SizeDelta: {x: 24.33, y: 0.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968947178
 MonoBehaviour:
