@@ -12,10 +12,7 @@ public class QuizTopUI : MonoBehaviour
     public TMP_Text Score;
     public TMP_Text Timer;
     public Slider TimerSlider;
-
-    
-
-    
+    public TMP_Text Question;
     
 
 }

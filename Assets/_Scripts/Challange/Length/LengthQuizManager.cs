@@ -42,6 +42,14 @@ public class LengthQuizManager : MonoBehaviour
 
      private void Start()
     {
+        // Set Here the current Text for Question, Category, Difficulty. use condition
+
+        // if Easy
+        quizTopUI.Category.text = "Length";
+        quizTopUI.Difiiculty.text = "Easy";
+        quizTopUI.Question.text = "How many shorter objects required to equal the length of the longer object?"; 
+
+
         stopTimer = false;
         quizTopUI.TimerSlider.maxValue = timeLimit;
         quizTopUI.TimerSlider.value = timeLimit;
