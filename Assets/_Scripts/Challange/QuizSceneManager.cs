@@ -1,22 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChallangeGameManager : MonoBehaviour
+public class QuizSceneManager : MonoBehaviour
 {
-    public void Back()
-    {
-        StartCoroutine(DelaySceneLoad());
-    }
-    IEnumerator DelaySceneLoad()
-    {
-        yield return new WaitForSeconds(0.2f); // Wait 1 seconds
-        SceneManager.LoadScene("4_Challange");
-
-    }
-    
-    public void Home()
+    public void toMainMenu()
     {
         SceneManager.LoadScene("0_MainMenu");
     }
@@ -29,11 +17,13 @@ public class ChallangeGameManager : MonoBehaviour
 
     public void Average()
     {
+        // use if else condition to check the category selected
         // SceneManager.LoadScene("New Scene");
     }
 
     public void Hard()
     {
+        // use if else condition to check the category selected
         // SceneManager.LoadScene("New Scene");
     }
 }

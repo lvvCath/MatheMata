@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/__Scenes/3_PracticeHard.unity
     guid: 58e1988cb1f6c8a419f6bb06df57c685
   - enabled: 1
-    path: Assets/__Scenes/4_Challange.unity
+    path: Assets/__Scenes/4_Challenge.unity
     guid: 5d6d3bd1fb48396458c4210a19ce0b6f
   - enabled: 1
     path: Assets/__Scenes/5_Length.unity

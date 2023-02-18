@@ -34,6 +34,8 @@ public class LengthQuizManager : MonoBehaviour
     public GameObject WrongOverlay;
     public GameObject CorrectOverlay;
 
+    public GameObject ResultPanel;
+
     [Header("Audio SFX")]
     public AudioClip correctSFX;
     public AudioClip wrongSFX;
@@ -48,6 +50,7 @@ public class LengthQuizManager : MonoBehaviour
         quizTopUI.Category.text = "Length";
         quizTopUI.Difiiculty.text = "Easy";
         quizTopUI.Question.text = "How many shorter objects required to equal the length of the longer object?"; 
+        ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Easy");
 
 
         stopTimer = false;
@@ -118,6 +121,12 @@ public class LengthQuizManager : MonoBehaviour
             // TO DO game result panel
             stopTimer = true;
             quizTopUI.Timer.text = "00:00";
+
+            // Display Result Panel
+            ResultPanel.SetActive(true);
+            ResultPanel.GetComponent<QuizResultAnim>().setScore(score.ToString(), LongObjects.Length.ToString());
+
+            
             Debug.Log("GAME OVER");
         }
 

@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 395375323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb644de4f8d92f44f9d3dd63ec90189b, type: 3}
+  m_Script: {fileID: 11500000, guid: c4d00437aac71bf478d09271eaa11adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &395375325
@@ -5183,8 +5183,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 395375324}
-        m_TargetAssemblyTypeName: ChallangeGameManager, Assembly-CSharp
-        m_MethodName: Home
+        m_TargetAssemblyTypeName: QuizSceneManager, Assembly-CSharp
+        m_MethodName: toMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
