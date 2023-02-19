@@ -52,7 +52,7 @@ public class LengthQuizManager : MonoBehaviour
         quizTopUI.Question.text = "How many shorter objects required to equal the length of the longer object?"; 
         ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Easy");
 
-
+        // Timer
         stopTimer = false;
         quizTopUI.TimerSlider.maxValue = timeLimit;
         quizTopUI.TimerSlider.value = timeLimit;
@@ -104,6 +104,7 @@ public class LengthQuizManager : MonoBehaviour
     {
         if (currentQuestionNo < 10)
         {
+            // Timer
             stopTimer = false;
             timer = timeLimit;
 
@@ -118,7 +119,7 @@ public class LengthQuizManager : MonoBehaviour
         }
         else
         {
-            // TO DO game result panel
+            // Timer
             stopTimer = true;
             quizTopUI.Timer.text = "00:00";
 
@@ -163,7 +164,7 @@ public class LengthQuizManager : MonoBehaviour
     public void correct()
     {
         score += 1;
-        stopTimer = true;
+        stopTimer = true; // Timer
 
         quizTopUI.Score.text = (score).ToString() + " / " + LongObjects.Length.ToString();
         CorrectOverlay.SetActive(true);
@@ -173,7 +174,7 @@ public class LengthQuizManager : MonoBehaviour
 
     public void wrong()
     {
-        stopTimer = true;
+        stopTimer = true; // Timer
 
         WrongOverlay.SetActive(true);
         audioSource.PlayOneShot(wrongSFX);

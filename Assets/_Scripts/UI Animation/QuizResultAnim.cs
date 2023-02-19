@@ -61,7 +61,7 @@ public class QuizResultAnim : MonoBehaviour
         }
 
         // Try Again! - if score is less than 60% of the total darken 2nd star
-        if ( System.Convert.ToInt32(Score.text) < ( (60 * System.Convert.ToInt32(Total.text)) / 100 ) )
+        if ( System.Convert.ToInt32(Score.text) < ( (70 * System.Convert.ToInt32(Total.text)) / 100 ) )
         {
             Header.text = "Try Again!";
             HeaderShadow.text = "Try Again!";
