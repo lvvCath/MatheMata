@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using TMPro;
 
 public class LengthQuizManager : MonoBehaviour
 {
+    [Header("Game Objects")]
+    public string CATEGORY;
+    public string DIFFICULTY;
+
     [Header("Game Objects")]
     public GameObject[] LongObjects;
     public GameObject[] ShortObjects;
@@ -27,8 +32,13 @@ public class LengthQuizManager : MonoBehaviour
     private bool stopTimer;
 
     private List<int> shortRecord = new List<int>();
+
+    // Easy
     private int correctEasyAns;
     private string shortEasyObjName;
+
+    // Average
+    private GameObject missingShortObj;
 
     [Header("PopUp Overlay Panel")]
     public GameObject WrongOverlay;
@@ -46,12 +56,8 @@ public class LengthQuizManager : MonoBehaviour
     {
         // Set Here the current Text for Question, Category, Difficulty. use condition
 
-        // if Easy
         quizTopUI.Category.text = "Length";
-        quizTopUI.Difiiculty.text = "Easy";
-        quizTopUI.Question.text = "How many shorter objects required to equal the length of the longer object?"; 
-        ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Easy");
-
+        
         // Timer
         stopTimer = false;
         quizTopUI.TimerSlider.maxValue = timeLimit;
@@ -60,6 +66,22 @@ public class LengthQuizManager : MonoBehaviour
         DurstenfeldShuffle(LongObjects);
         GenerateQuestion();
         audioSource = GetComponent<AudioSource>();
+
+        
+        if (DIFFICULTY == "Easy") {
+            quizTopUI.Difiiculty.text = "Easy";
+            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Easy"); 
+        }
+
+        if (DIFFICULTY == "Average") {
+            quizTopUI.Difiiculty.text = "Average";
+            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Average"); 
+        }
+
+        if (DIFFICULTY == "Hard") {
+            quizTopUI.Difiiculty.text = "Hard";
+            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Hard"); 
+        }
     }
 
     private void Update() 
@@ -78,11 +100,8 @@ public class LengthQuizManager : MonoBehaviour
             {
                 GenerateQuestion();
             }
-
         }
-
         
-
     }
     
     // Shuffle Algorithm
@@ -114,6 +133,18 @@ public class LengthQuizManager : MonoBehaviour
             EasyQuestion();
             SetAnswers();
 
+            if (DIFFICULTY == "Easy") {
+                quizTopUI.Question.text = "How many <color=#ffcb2b>" + shortEasyObjName + "</color> required to equal the length of the <color=#ffcb2b>" + LongObjects[currentQuestionNo].name + "</color>?"; 
+            }
+
+            if (DIFFICULTY == "Average") {
+                quizTopUI.Question.text = "How many <color=#ffcb2b>missing</color> " + shortEasyObjName + " required to equal the length of the " + LongObjects[currentQuestionNo].name + "?"; 
+            }
+
+            if (DIFFICULTY == "Hard") {
+                quizTopUI.Question.text = "Question"; 
+            }
+
             currentQuestionNo += 1;
 
         }
@@ -126,7 +157,6 @@ public class LengthQuizManager : MonoBehaviour
             // Display Result Panel
             ResultPanel.SetActive(true);
             ResultPanel.GetComponent<QuizResultAnim>().setScore(score.ToString(), LongObjects.Length.ToString());
-
             
             Debug.Log("GAME OVER");
         }
@@ -181,7 +211,7 @@ public class LengthQuizManager : MonoBehaviour
         StartCoroutine(nextQuestion(WrongOverlay, 2.0f, "wrong"));
     }
 
-// Length Easy Difficulty
+// Length Easy and Average Difficulty
     private void EasyQuestion()
     {
         if (ShortContainer.transform.childCount > 0)
@@ -195,7 +225,6 @@ public class LengthQuizManager : MonoBehaviour
         {
             LongObjects[currentQuestionNo-1].SetActive(false);
         }
-
 
         // Set Width of Parent Container using the long object width.
         float child_width = LongObjects[currentQuestionNo].GetComponent<RectTransform>().rect.width;
@@ -211,7 +240,7 @@ public class LengthQuizManager : MonoBehaviour
         while (flag)
         {
             currShortObject = Random.Range(0, ShortObjects.Length);
-            if (shortRecord.Contains(currShortObject) == false)
+            if (shortRecord.Contains(currShortObject) == false) // checks if short object was already used in question.
             {
                 shortRecord.Add(currShortObject);
                 flag = false;
@@ -221,9 +250,25 @@ public class LengthQuizManager : MonoBehaviour
         int shortEstimate = LongObjects[currentQuestionNo].GetComponent<LongObjectClass>().ShortEstimate[currShortObject];
         correctEasyAns = shortEstimate;
         shortEasyObjName = ShortObjects[currShortObject].name;
+
+        // Creates grid columns based on the number of the short objects
         ShortContainer.GetComponent<LetCGridLayout>().col = shortEstimate;
+        // Creates cell prefab containing the short object GameObject -- cell prefabs is inserted in the columns
         ShortContainer.GetComponent<LetCGridLayout>().cellPrefab = ShortObjects[currShortObject];
 
+        // Average Level
+        if (DIFFICULTY == "Average") {
+            int noMissing = Random.Range(1, shortEstimate-2);
+            ShortContainer.GetComponent<LetCGridLayout>().noMissing = noMissing; 
+            Color c = new Color32(0, 0, 0, 255); 
+            // Creates cell prefab containing the short object GameObject -- cell prefabs is inserted in the columns
+            missingShortObj = GameObject.Instantiate(ShortObjects[currShortObject]);
+            missingShortObj.GetComponent<Image>().color = c;
+            ShortContainer.GetComponent<LetCGridLayout>().cellPrefab2 = missingShortObj;
+            correctEasyAns = noMissing;
+        }
+
+        // Setup the grid cells
         ShortContainer.GetComponent<LetCGridLayout>().SetCells();
     }
 
