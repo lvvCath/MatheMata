@@ -7,24 +7,37 @@ using TMPro;
 
 public class LengthQuizManager : MonoBehaviour
 {
-    [Header("Game Objects")]
+    [Header("Quiz Info")]
     public string CATEGORY;
     public string DIFFICULTY;
 
     [Header("Game Objects")]
     public GameObject[] LongObjects;
     public GameObject[] ShortObjects;
+    public GameObject[] ShortObjectsOption;
 
-    [Header("Quiz Options")]
+    [Header("Easy & Average Quiz Options")]
     public GameObject[] Options;
 
-    [Header("Game Object Container")]
+    [Header("Hard Quiz Options")]
+    public GameObject[] HardOptions;
+
+    [Header("Main Question Container")]
+    public GameObject EasyAverageContainer;
+    public GameObject HardContainer;
+
+    [Header("Easy & Ave Game Object Container")]
     public GameObject ParentContainer;
     public GameObject ShortContainer;
     public GameObject LongContainer;
 
+    [Header("Hard Game Object Container")]
+    public GameObject HardShortObjContainer;
+
+    [Header("Quiz Top Panel")]
     public QuizTopUI quizTopUI;
 
+    [Header("Quiz Values")]
     public int currentQuestionNo;
     public float timeLimit;
     private int score;
@@ -34,11 +47,8 @@ public class LengthQuizManager : MonoBehaviour
     private List<int> shortRecord = new List<int>();
 
     // Easy
-    private int correctEasyAns;
+    private int correctAns;
     private string shortEasyObjName;
-
-    // Average
-    private GameObject missingShortObj;
 
     [Header("PopUp Overlay Panel")]
     public GameObject WrongOverlay;
@@ -63,25 +73,31 @@ public class LengthQuizManager : MonoBehaviour
         quizTopUI.TimerSlider.maxValue = timeLimit;
         quizTopUI.TimerSlider.value = timeLimit;
 
-        DurstenfeldShuffle(LongObjects);
-        GenerateQuestion();
-        audioSource = GetComponent<AudioSource>();
-
-        
         if (DIFFICULTY == "Easy") {
             quizTopUI.Difiiculty.text = "Easy";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Easy"); 
+            EasyAverageContainer.SetActive(true);
+            timeLimit = 90;
         }
 
         if (DIFFICULTY == "Average") {
             quizTopUI.Difiiculty.text = "Average";
-            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Average"); 
+            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Average");
+            EasyAverageContainer.SetActive(true);
+            timeLimit = 60;
         }
 
         if (DIFFICULTY == "Hard") {
             quizTopUI.Difiiculty.text = "Hard";
-            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Hard"); 
+            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Length", "Hard");
+            DurstenfeldShuffle(ShortObjectsOption);
+            HardContainer.SetActive(true);
+            timeLimit = 30;
         }
+        
+        DurstenfeldShuffle(LongObjects);
+        GenerateQuestion();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() 
@@ -129,24 +145,18 @@ public class LengthQuizManager : MonoBehaviour
 
             quizTopUI.QuestionNo.text = "Question " + (currentQuestionNo+1).ToString();
 
-            // insert here if else condition to generate question based on selected lvl of difficulty
-            EasyQuestion();
-            SetAnswers();
-
-            if (DIFFICULTY == "Easy") {
-                quizTopUI.Question.text = "How many <color=#ffcb2b>" + shortEasyObjName + "</color> required to equal the length of the <color=#ffcb2b>" + LongObjects[currentQuestionNo].name + "</color>?"; 
+            if (DIFFICULTY == "Easy" || DIFFICULTY == "Average") 
+            {
+                EasyAverageQuestion();
+                SetAnswers();
             }
-
-            if (DIFFICULTY == "Average") {
-                quizTopUI.Question.text = "How many <color=#ffcb2b>missing</color> " + shortEasyObjName + " required to equal the length of the " + LongObjects[currentQuestionNo].name + "?"; 
-            }
-
-            if (DIFFICULTY == "Hard") {
-                quizTopUI.Question.text = "Question"; 
+            if (DIFFICULTY == "Hard")  
+            {
+                HardQuestion();
+                SetHardAnswers();
             }
 
             currentQuestionNo += 1;
-
         }
         else
         {
@@ -165,7 +175,7 @@ public class LengthQuizManager : MonoBehaviour
 
     public void SetAnswers()
     {
-        int[] easyAnswersArr = { correctEasyAns+1, correctEasyAns, correctEasyAns-1 };
+        int[] easyAnswersArr = { correctAns+1, correctAns, correctAns-1 };
         DurstenfeldShuffle(easyAnswersArr);
         
         for (int i = 0; i < Options.Length; i++)
@@ -174,11 +184,51 @@ public class LengthQuizManager : MonoBehaviour
             Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = easyAnswersArr[i].ToString() + " " + shortEasyObjName;
 
             // Condition for multiple choice type of question
-            if (easyAnswersArr[i] == correctEasyAns) // checks if answer and button matches > matched button is set to True
+            if (easyAnswersArr[i] == correctAns) // checks if answer and button matches > matched button is set to True
             {
                 Options[i].GetComponent<LengthAnswerScript>().isCorrect = true;
             } 
+        }
+    }
 
+    public void SetHardAnswers()
+    {
+        int rand_opt = Random.Range(0, 2);
+        
+        for (int i = 0; i < HardOptions.Length; i++)
+        {
+            GameObject OptionObjContainer = HardOptions[i].transform.GetChild(0).gameObject;
+            if (currentQuestionNo > 0) {
+                Object.Destroy(OptionObjContainer.transform.GetChild(0).gameObject);
+            }
+
+            GameObject GameObj;
+
+            if (rand_opt == 0) 
+            {
+                GameObj = GameObject.Instantiate(LongObjects[currentQuestionNo]);
+                rand_opt = 1;
+            }
+            else
+            {
+                GameObj = GameObject.Instantiate(ShortObjectsOption[currentQuestionNo]);
+                rand_opt = 0;
+            }
+
+            GameObj.SetActive(true);
+            Instantiate(GameObj, OptionObjContainer.transform);
+
+            // Condition for multiple choice type of question
+            if (GameObj.GetComponent<ObjectInfo>().ObjectName == LongObjects[currentQuestionNo].GetComponent<ObjectInfo>().ObjectName) // checks if answer and button matches > matched button is set to True
+            {
+                HardOptions[i].GetComponent<LengthAnswerScript>().isCorrect = true;
+            } 
+            else 
+            {
+                HardOptions[i].GetComponent<LengthAnswerScript>().isCorrect = false;
+            }
+
+            StartCoroutine(DieGameObject(GameObj));
         }
     }
 
@@ -212,7 +262,7 @@ public class LengthQuizManager : MonoBehaviour
     }
 
 // Length Easy and Average Difficulty
-    private void EasyQuestion()
+    private void EasyAverageQuestion()
     {
         if (ShortContainer.transform.childCount > 0)
         {
@@ -248,7 +298,7 @@ public class LengthQuizManager : MonoBehaviour
         }
 
         int shortEstimate = LongObjects[currentQuestionNo].GetComponent<LongObjectClass>().ShortEstimate[currShortObject];
-        correctEasyAns = shortEstimate;
+        correctAns = shortEstimate;
         shortEasyObjName = ShortObjects[currShortObject].name;
 
         // Creates grid columns based on the number of the short objects
@@ -256,20 +306,78 @@ public class LengthQuizManager : MonoBehaviour
         // Creates cell prefab containing the short object GameObject -- cell prefabs is inserted in the columns
         ShortContainer.GetComponent<LetCGridLayout>().cellPrefab = ShortObjects[currShortObject];
 
+        if (DIFFICULTY == "Easy") {
+            quizTopUI.Question.text = "How many <color=#ffcb2b>" + shortEasyObjName + "</color> required to equal the length of the <color=#ffcb2b>" + LongObjects[currentQuestionNo].name + "</color>?"; 
+        }
         // Average Level
         if (DIFFICULTY == "Average") {
-            int noMissing = Random.Range(1, shortEstimate-2);
+            int noMissing = Random.Range(2, shortEstimate-1);
             ShortContainer.GetComponent<LetCGridLayout>().noMissing = noMissing; 
             Color c = new Color32(0, 0, 0, 255); 
             // Creates cell prefab containing the short object GameObject -- cell prefabs is inserted in the columns
+            GameObject missingShortObj;
             missingShortObj = GameObject.Instantiate(ShortObjects[currShortObject]);
             missingShortObj.GetComponent<Image>().color = c;
             ShortContainer.GetComponent<LetCGridLayout>().cellPrefab2 = missingShortObj;
-            correctEasyAns = noMissing;
+            correctAns = noMissing;
+
+            quizTopUI.Question.text = "How many <color=#ffcb2b>missing</color> " + shortEasyObjName + " required to equal the length of the " + LongObjects[currentQuestionNo].name + "?"; 
+
+            // Destroy initialized missingShortObj after assigneing a copy to LetCGridLayout
+            StartCoroutine(DieGameObject(missingShortObj));
         }
 
         // Setup the grid cells
         ShortContainer.GetComponent<LetCGridLayout>().SetCells();
     }
 
+    
+    private void HardQuestion() 
+    {
+        if (HardShortObjContainer.transform.childCount > 0)
+        {
+            for (var i = HardShortObjContainer.transform.childCount - 1; i >= 0; i--)
+            {
+                Object.Destroy(HardShortObjContainer.transform.GetChild(i).gameObject);
+            }
+        }
+
+        // Short Object
+        int currShortObject = Random.Range(0, ShortObjects.Length);
+        bool flag = true;
+        while (flag)
+        {
+            currShortObject = Random.Range(0, ShortObjects.Length);
+            if (shortRecord.Contains(currShortObject) == false) // checks if short object was already used in question.
+            {
+                shortRecord.Add(currShortObject);
+                flag = false;
+            }
+        }
+
+        int shortEstimate = LongObjects[currentQuestionNo].GetComponent<LongObjectClass>().ShortEstimate[currShortObject];
+        shortEasyObjName = ShortObjects[currShortObject].name;
+
+        // Creates grid columns based on the number of the short objects
+        HardShortObjContainer.GetComponent<LetCGridLayout>().col = shortEstimate;
+        // Creates cell prefab containing the short object GameObject -- cell prefabs is inserted in the columns
+        HardShortObjContainer.GetComponent<LetCGridLayout>().cellPrefab = ShortObjects[currShortObject];
+
+        HardShortObjContainer.GetComponent<LetCGridLayout>().SetCells();
+
+        if (DIFFICULTY == "Hard") {
+            quizTopUI.Question.text = "Question"; 
+            // Which of the following objects has the length of NO OBJECT NAME?
+            quizTopUI.Question.text = "Which of the following objects has the length of <color=#ffcb2b>" + shortEstimate + " " + shortEasyObjName + "</color>?"; 
+        }
+
+    }
+
+    IEnumerator DieGameObject(GameObject gameobject){
+     yield return new WaitForSeconds(0.1f); //waits 3 seconds
+     Object.Destroy(gameobject);
+    }
+
 }
+
+

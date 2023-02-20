@@ -10,6 +10,8 @@ public class LetCGridLayout : MonoBehaviour
     public int col;
     public int row;
 
+    private GameObject cell;
+
     public float spacing;
 
     public LetCPadding padding;
@@ -57,11 +59,13 @@ public class LetCGridLayout : MonoBehaviour
         {
             for (int j = 0; j < col; j++)
             {
-                GameObject cell = Instantiate(cellPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-
                 if (j >= (col - noMissing))
                 {
                     cell = Instantiate(cellPrefab2, Vector3.zero, Quaternion.identity) as GameObject;
+                }
+                else
+                {
+                    cell = Instantiate(cellPrefab, Vector3.zero, Quaternion.identity) as GameObject;
                 }
                 
                 cell.transform.SetParent(transform, false);

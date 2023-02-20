@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1107074926413197320}
   - component: {fileID: 7414570548039066678}
   - component: {fileID: 8808383814278139094}
+  - component: {fileID: -2290454843885862847}
   - component: {fileID: -8957786805425716667}
   m_Layer: 5
   m_Name: Sandwich
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 3
   m_AspectRatio: 3.56746
+--- !u!114 &-2290454843885862847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450154894035534944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Sandwich
 --- !u!114 &-8957786805425716667
 MonoBehaviour:
   m_ObjectHideFlags: 0

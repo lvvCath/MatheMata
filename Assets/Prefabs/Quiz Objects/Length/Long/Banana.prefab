@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2926669728826194731}
   - component: {fileID: 8830930847868996294}
   - component: {fileID: 2010952670840204601}
+  - component: {fileID: 3425135728362725851}
   - component: {fileID: 8938501846168916996}
   m_Layer: 5
   m_Name: Banana
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 3
   m_AspectRatio: 2.3195877
+--- !u!114 &3425135728362725851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793213161805459034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Banana
 --- !u!114 &8938501846168916996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,4 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b51653090fdc88429112f5ecf31f096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShortEstimate: 06000000060000000800000004000000070000000400000005000000050000000400000004000000
+  ShortEstimate: 06000000060000000800000004000000070000000400000005000000080000000400000004000000

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 124844397969739487}
   - component: {fileID: 124844397969739486}
   - component: {fileID: 124844397969739485}
+  - component: {fileID: -8468336843799020313}
   m_Layer: 5
   m_Name: Paper Clips
   m_TagString: Untagged
@@ -36,9 +37,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175.5, y: 0}
-  m_SizeDelta: {x: 351, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 351, y: 116}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &124844397969739487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -69,7 +70,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 03e3e49f4a877bd4ca767cb4ff9d4b69, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -91,3 +92,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 3.025862
+--- !u!114 &-8468336843799020313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124844397969739483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Paper Clips
