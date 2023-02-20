@@ -68,11 +68,6 @@ public class LengthQuizManager : MonoBehaviour
 
         quizTopUI.Category.text = QuizData.CATEGORY;
         
-        // Timer
-        stopTimer = false;
-        quizTopUI.TimerSlider.maxValue = timeLimit;
-        quizTopUI.TimerSlider.value = timeLimit;
-
         DIFFICULTY = QuizData.DIFFICULTY;
 
         if (DIFFICULTY == "Easy") {
@@ -96,6 +91,11 @@ public class LengthQuizManager : MonoBehaviour
             HardContainer.SetActive(true);
             timeLimit = 30;
         }
+
+        // Timer
+        stopTimer = false;
+        quizTopUI.TimerSlider.maxValue = timeLimit;
+        quizTopUI.TimerSlider.value = timeLimit;
         
         DurstenfeldShuffle(LongObjects);
         GenerateQuestion();
