@@ -1584,7 +1584,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 450}
+  m_SizeDelta: {x: 1700, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1376394523
 CanvasRenderer:
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   - {fileID: 1440683486}
   quizTopUI: {fileID: 410515527}
   currentQuestionNo: 0
-  timeLimit: 5
+  timeLimit: 30
   WrongOverlay: {fileID: 535943676}
   CorrectOverlay: {fileID: 481729442}
   ResultPanel: {fileID: 1173034993}
