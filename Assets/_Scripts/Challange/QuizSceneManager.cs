@@ -29,10 +29,10 @@ public class QuizSceneManager : MonoBehaviour
         {
             SceneManager.LoadScene("5_Length");
         }
-        // if (QuizData.CATEGORY == "Mass") 
-        // {
-            
-        // }
+        if (QuizData.CATEGORY == "Mass") 
+        {
+            SceneManager.LoadScene("6_Mass");
+        }
         // if (QuizData.CATEGORY == "Capacity") 
         // {
             
@@ -47,10 +47,10 @@ public class QuizSceneManager : MonoBehaviour
         {
             SceneManager.LoadScene("5_Length");
         }
-        // if (QuizData.CATEGORY == "Mass") 
-        // {
-            
-        // }
+        if (QuizData.CATEGORY == "Mass") 
+        {
+            SceneManager.LoadScene("6_Mass");
+        }
         // if (QuizData.CATEGORY == "Capacity") 
         // {
             
@@ -65,10 +65,10 @@ public class QuizSceneManager : MonoBehaviour
         {
             SceneManager.LoadScene("5_Length");
         }
-        // if (QuizData.CATEGORY == "Mass") 
-        // {
-            
-        // }
+        if (QuizData.CATEGORY == "Mass") 
+        {
+            SceneManager.LoadScene("6_Mass");
+        }
         // if (QuizData.CATEGORY == "Capacity") 
         // {
             
