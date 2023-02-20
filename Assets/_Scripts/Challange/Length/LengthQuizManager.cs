@@ -66,12 +66,14 @@ public class LengthQuizManager : MonoBehaviour
     {
         // Set Here the current Text for Question, Category, Difficulty. use condition
 
-        quizTopUI.Category.text = "Length";
+        quizTopUI.Category.text = QuizData.CATEGORY;
         
         // Timer
         stopTimer = false;
         quizTopUI.TimerSlider.maxValue = timeLimit;
         quizTopUI.TimerSlider.value = timeLimit;
+
+        DIFFICULTY = QuizData.DIFFICULTY;
 
         if (DIFFICULTY == "Easy") {
             quizTopUI.Difiiculty.text = "Easy";
