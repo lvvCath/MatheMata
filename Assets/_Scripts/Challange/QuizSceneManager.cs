@@ -9,21 +9,71 @@ public class QuizSceneManager : MonoBehaviour
         SceneManager.LoadScene("0_MainMenu");
     }
 
+    public void setLengthCategory() {
+        QuizData.CATEGORY = "Length";
+    }
+
+    public void setMassCategory() {
+        QuizData.CATEGORY = "Mass";
+    }
+
+    public void setCapacityCategory() {
+        QuizData.CATEGORY = "Capacity";
+    }
+
     public void Easy()
     {
-        // use if else condition to check the category selected
-        // SceneManager.LoadScene("New Scene");
+        QuizData.DIFFICULTY = "Easy";
+
+        if (QuizData.CATEGORY == "Length") 
+        {
+            SceneManager.LoadScene("5_Length");
+        }
+        // if (QuizData.CATEGORY == "Mass") 
+        // {
+            
+        // }
+        // if (QuizData.CATEGORY == "Capacity") 
+        // {
+            
+        // }
     }
 
     public void Average()
     {
-        // use if else condition to check the category selected
-        // SceneManager.LoadScene("New Scene");
+        QuizData.DIFFICULTY = "Average";
+
+        if (QuizData.CATEGORY == "Length") 
+        {
+            SceneManager.LoadScene("5_Length");
+        }
+        // if (QuizData.CATEGORY == "Mass") 
+        // {
+            
+        // }
+        // if (QuizData.CATEGORY == "Capacity") 
+        // {
+            
+        // }
     }
 
     public void Hard()
     {
-        // use if else condition to check the category selected
-        // SceneManager.LoadScene("New Scene");
+        QuizData.DIFFICULTY = "Hard";
+
+        if (QuizData.CATEGORY == "Length") 
+        {
+            SceneManager.LoadScene("5_Length");
+        }
+        // if (QuizData.CATEGORY == "Mass") 
+        // {
+            
+        // }
+        // if (QuizData.CATEGORY == "Capacity") 
+        // {
+            
+        // }
     }
+
+
 }

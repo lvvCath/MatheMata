@@ -10,7 +10,23 @@ public class ResultManager : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        if (QuizData.DIFFICULTY == "Hard") 
+        {
+            Home();
+        }
+
+        if (QuizData.DIFFICULTY == "Average") 
+        {
+            QuizData.DIFFICULTY = "Hard";
+            Retry();
+        }
+
+        if (QuizData.DIFFICULTY == "Easy") 
+        {
+            QuizData.DIFFICULTY = "Average";
+            Retry();
+        }
+
     }
 
     public void Retry()
