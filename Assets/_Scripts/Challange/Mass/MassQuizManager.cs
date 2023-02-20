@@ -49,15 +49,9 @@ public class MassQuizManager : MonoBehaviour
     {
         // Set Here the current Text for Question, Category, Difficulty. use condition
 
-        // if Easy
-        stopTimer = false;
-        quizTopUI.TimerSlider.maxValue = timeLimit;
-        quizTopUI.TimerSlider.value = timeLimit;
+        quizTopUI.Category.text = QuizData.CATEGORY;
 
-        quizTopUI.Category.text = "Mass";
-
-        DurstenfeldShuffle(WeightedObjects);
-        GenerateQuestion();
+        DIFFICULTY = QuizData.DIFFICULTY;
         
         audioSource = GetComponent<AudioSource>();
 
@@ -75,6 +69,15 @@ public class MassQuizManager : MonoBehaviour
             quizTopUI.Difiiculty.text = "Hard";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
         }
+
+        // Timer
+        stopTimer = false;
+        quizTopUI.TimerSlider.maxValue = timeLimit;
+        quizTopUI.TimerSlider.value = timeLimit;
+
+        DurstenfeldShuffle(WeightedObjects);
+        GenerateQuestion();
+
     }
 
 
