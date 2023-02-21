@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/__Scenes/6_Mass.unity
     guid: 778c7b9d0136d4c4e9c50f0379b6e334
+  - enabled: 1
+    path: Assets/__Scenes/8_Score.unity
+    guid: 63f941aec7b243f4e8c7ff86657fe4a9
   m_configObjects: {}
