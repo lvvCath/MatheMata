@@ -9,22 +9,32 @@ public class MassQuizManager : MonoBehaviour
 {
     [Header("Game Objects")]
     public GameObject[] WeightedObjects;
+    public GameObject[] AverageObjects;
     private int[,] Combinations;
 
     [Header("Level Change")]
     public string CATEGORY;
     public string DIFFICULTY;
 
+    [Header("Main Question Container")]
+    public GameObject EasyQuestionContainer;
+    public GameObject AverageQuestionContainer;
+    public GameObject HardQuestionContainer;
+    
     [Header("Quiz Options")]
     public GameObject[] Options;
 
+    // [Header("Quiz Average Options")]
+    // public GameObject[] AverageOptions;
+
     [Header("Game Object Container")]
-    
     public GameObject[] Container;
+    public GameObject[] AverageContainer;
+    public GameObject[] HardContainer;
     public QuizTopUI quizTopUI;
     List<int> arrRecord = new List<int>();
 
-
+    [Header("Quiz Values")]
     public int currentQuestionNo;
     public float timeLimit;
     private int score;
@@ -58,16 +68,21 @@ public class MassQuizManager : MonoBehaviour
         if (DIFFICULTY == "Easy") {
             quizTopUI.Difiiculty.text = "Easy";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Easy");
+            EasyQuestionContainer.SetActive(true);
+            timeLimit = 90;
         }
 
         if (DIFFICULTY == "Average") {
             quizTopUI.Difiiculty.text = "Average";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Average");
+            AverageQuestionContainer.SetActive(true);
+            timeLimit = 5;
         }
 
         if (DIFFICULTY == "Hard") {
             quizTopUI.Difiiculty.text = "Hard";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
+            timeLimit = 30;
         }
 
         // Timer
@@ -138,6 +153,7 @@ public class MassQuizManager : MonoBehaviour
             if (DIFFICULTY == "Average") {
                 quizTopUI.Difiiculty.text = "Average";
                 quizTopUI.Question.text = "Tick the box of the scale with the correct balance";
+
                 AverageQuestion();
                 SetAnswers();
             }
@@ -145,6 +161,7 @@ public class MassQuizManager : MonoBehaviour
             if (DIFFICULTY == "Hard") {
                 quizTopUI.Difiiculty.text = "Hard";
                 quizTopUI.Question.text = "Drag n' Drop the objects until both sides of the scale are equal";
+                
                 HardQuestion();
                 SetAnswers();
             }
@@ -244,7 +261,7 @@ public class MassQuizManager : MonoBehaviour
         float parent_width = Container[0].GetComponent<RectTransform>().rect.width;
         float parent_height = Container[0].GetComponent<RectTransform>().rect.height;
         arrRecord.Clear();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < Container.Length; i++)
         {
             int currObject = Random.Range(0, WeightedObjects.Length);
             bool flag = true;
@@ -264,7 +281,49 @@ public class MassQuizManager : MonoBehaviour
 
     private void AverageQuestion()
     {
-        // to add function
+        // Instantiate the two objects based on the Child Container (Object1 and Object2)
+        GameObject container;
+        arrRecord.Clear();
+        int currObject = Random.Range(0, WeightedObjects.Length);
+        for (int i = 0; i < AverageContainer.Length; i++)
+        {
+            currObject = Random.Range(0, WeightedObjects.Length);
+            for (int j = 0; j < 2; j++)
+            {
+                container = AverageContainer[i].transform.GetChild(j).gameObject;
+                if (container.transform.childCount > 0)
+                    {
+                        Object.Destroy(container.transform.GetChild(0).gameObject);
+                    }
+            }
+        }
+        for (int i = 0; i < AverageContainer.Length; i++)
+        {
+            bool flag = true;
+            for (int j = 0; j < 2; j++)
+            {
+                
+                while (flag)
+                {
+                    currObject = Random.Range(0, WeightedObjects.Length);
+                    if (arrRecord.Count() != 2){
+                        arrRecord.Add(currObject);
+                        flag = false;
+                    }
+                    currObject = Random.Range(0, WeightedObjects.Length);
+                    if (arrRecord.Contains(currObject) == false) // checks if the object was already used in question.
+                    {
+                        arrRecord.Add(currObject);
+                        flag = true;
+                    }
+                }
+                container = AverageContainer[i].transform.GetChild(j).gameObject;
+                Instantiate(WeightedObjects[arrRecord[j]], container.transform);
+            }
+        }
+        Debug.Log(arrRecord[0]);
+        Debug.Log(arrRecord[1]);
+        
     }
 
     private void HardQuestion()
