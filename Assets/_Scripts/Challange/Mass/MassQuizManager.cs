@@ -24,7 +24,7 @@ public class MassQuizManager : MonoBehaviour
     [Header("Quiz Options")]
     public GameObject[] Options;
 
-    // [Header("Quiz Average Options")]
+    // [Header("Quiz Average Scale")]
     // public GameObject[] AverageOptions;
 
     [Header("Game Object Container")]
@@ -152,7 +152,7 @@ public class MassQuizManager : MonoBehaviour
 
             if (DIFFICULTY == "Average") {
                 quizTopUI.Difiiculty.text = "Average";
-                quizTopUI.Question.text = "Tick the box of the scale with the correct balance";
+                quizTopUI.Question.text = "Pick the scale where _____ and ______ is in the right balance";
 
                 AverageQuestion();
                 SetAnswers();
@@ -160,7 +160,7 @@ public class MassQuizManager : MonoBehaviour
 
             if (DIFFICULTY == "Hard") {
                 quizTopUI.Difiiculty.text = "Hard";
-                quizTopUI.Question.text = "Drag n' Drop the objects until both sides of the scale are equal";
+                quizTopUI.Question.text = "Drag n' Drop the _____ to match the weight of _____ on the scale";
                 
                 HardQuestion();
                 SetAnswers();
@@ -241,7 +241,24 @@ public class MassQuizManager : MonoBehaviour
         }
 
         if (DIFFICULTY == "Average"){
-            
+            string[] correctans = {"Scale A", "Scale B", "Scale C"};
+            for (int i = 0; i < Options.Length; i++) {
+                Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = correctans[i];
+            }
+            int firstWeight =  WeightedObjects[arrRecord[0]].GetComponent<ItemWeight>().weight;
+            int secondWeight = WeightedObjects[arrRecord[1]].GetComponent<ItemWeight>().weight;
+            if (firstWeight > secondWeight)
+            {
+                Options[0].GetComponent<MassAnswerScript>().isCorrect = true;
+            }
+            if (firstWeight < secondWeight)
+            {
+                Options[2].GetComponent<MassAnswerScript>().isCorrect = true;
+            }
+            if (firstWeight == secondWeight)
+            {
+                Options[1].GetComponent<MassAnswerScript>().isCorrect = true;
+            }
         }
 
         if (DIFFICULTY == "Hard"){
@@ -283,11 +300,12 @@ public class MassQuizManager : MonoBehaviour
     {
         // Instantiate the two objects based on the Child Container (Object1 and Object2)
         GameObject container;
+        GameObject child;
+
         arrRecord.Clear();
         int currObject = Random.Range(0, WeightedObjects.Length);
         for (int i = 0; i < AverageContainer.Length; i++)
         {
-            currObject = Random.Range(0, WeightedObjects.Length);
             for (int j = 0; j < 2; j++)
             {
                 container = AverageContainer[i].transform.GetChild(j).gameObject;
@@ -297,32 +315,37 @@ public class MassQuizManager : MonoBehaviour
                     }
             }
         }
+        
         for (int i = 0; i < AverageContainer.Length; i++)
         {
-            bool flag = true;
-            for (int j = 0; j < 2; j++)
+            for (int j = 0; j < AverageContainer[i].transform.childCount-1; j++)
             {
-                
+                bool flag = true;
                 while (flag)
                 {
-                    currObject = Random.Range(0, WeightedObjects.Length);
-                    if (arrRecord.Count() != 2){
-                        arrRecord.Add(currObject);
-                        flag = false;
-                    }
                     currObject = Random.Range(0, WeightedObjects.Length);
                     if (arrRecord.Contains(currObject) == false) // checks if the object was already used in question.
                     {
                         arrRecord.Add(currObject);
-                        flag = true;
+                        flag = false;
                     }
                 }
                 container = AverageContainer[i].transform.GetChild(j).gameObject;
                 Instantiate(WeightedObjects[arrRecord[j]], container.transform);
             }
+            if (WeightedObjects[arrRecord[0]].GetComponent<ItemWeight>().weight < WeightedObjects[arrRecord[1]].GetComponent<ItemWeight>().weight)
+            {
+                container = AverageContainer[i].transform.GetChild(0).gameObject;
+                child = container.transform.GetChild(0).gameObject;
+                child.transform.localScale = new Vector2(child.transform.localScale.x*0.5f, child.transform.localScale.y*0.5f);
+            }
+            if (WeightedObjects[arrRecord[1]].GetComponent<ItemWeight>().weight < WeightedObjects[arrRecord[0]].GetComponent<ItemWeight>().weight)
+            {
+                container = AverageContainer[i].transform.GetChild(1).gameObject;
+                child = container.transform.GetChild(0).gameObject;
+                child.transform.localScale = new Vector2(child.transform.localScale.x*0.5f, child.transform.localScale.y*0.5f);
+            }
         }
-        Debug.Log(arrRecord[0]);
-        Debug.Log(arrRecord[1]);
         
     }
 
