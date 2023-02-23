@@ -5433,6 +5433,7 @@ GameObject:
   - component: {fileID: 2070558178}
   - component: {fileID: 2070558177}
   - component: {fileID: 2070558176}
+  - component: {fileID: 2070558180}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5523,6 +5524,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2070558180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070558175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f20bc62f189660448bd269a393967e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StarLength:
+  - {fileID: 403445798}
+  - {fileID: 16011267}
+  - {fileID: 512971066}
+  StarMass:
+  - {fileID: 722607162}
+  - {fileID: 643025410}
+  - {fileID: 1695104019}
+  StarCapacity:
+  - {fileID: 1962945923}
+  - {fileID: 960449238}
+  - {fileID: 183533775}
+  ScoreLength_TMP:
+  - {fileID: 1695769081}
+  - {fileID: 2040426092}
+  - {fileID: 528421750}
+  ScoreMass_TMP:
+  - {fileID: 4249139}
+  - {fileID: 1108749517}
+  - {fileID: 1646789814}
+  ScoreCapacity_TMP:
+  - {fileID: 2122680202}
+  - {fileID: 1603982440}
+  - {fileID: 1088319250}
 --- !u!1 &2122680200
 GameObject:
   m_ObjectHideFlags: 0

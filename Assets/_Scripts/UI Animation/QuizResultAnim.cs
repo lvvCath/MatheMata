@@ -87,6 +87,10 @@ public class QuizResultAnim : MonoBehaviour
     {
         Score.SetText(score);
         Total.SetText(total);
+
+        // Save Score
+        PlayerPrefs.SetInt($"{Category.text} {Difficulty.text} Score", int.Parse(score));
+        PlayerPrefs.SetInt($"{Category.text} {Difficulty.text} Total", int.Parse(total));
     }
 
     public void OnEnable()
