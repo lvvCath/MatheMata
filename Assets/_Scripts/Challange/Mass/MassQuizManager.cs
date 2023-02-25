@@ -243,7 +243,9 @@ public class MassQuizManager : MonoBehaviour
         if (DIFFICULTY == "Average"){
             string[] correctans = {"Scale A", "Scale B", "Scale C"};
             for (int i = 0; i < Options.Length; i++) {
+                Options[i].GetComponent<MassAnswerScript>().isCorrect = false;
                 Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = correctans[i];
+
             }
             int firstWeight =  WeightedObjects[arrRecord[0]].GetComponent<ItemWeight>().weight;
             int secondWeight = WeightedObjects[arrRecord[1]].GetComponent<ItemWeight>().weight;
@@ -302,7 +304,6 @@ public class MassQuizManager : MonoBehaviour
         GameObject container;
         GameObject child;
 
-        arrRecord.Clear();
         int currObject = Random.Range(0, WeightedObjects.Length);
         for (int i = 0; i < AverageContainer.Length; i++)
         {
@@ -315,7 +316,7 @@ public class MassQuizManager : MonoBehaviour
                     }
             }
         }
-        
+        arrRecord.Clear();
         for (int i = 0; i < AverageContainer.Length; i++)
         {
             for (int j = 0; j < AverageContainer[i].transform.childCount-1; j++)
