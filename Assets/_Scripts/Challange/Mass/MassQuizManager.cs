@@ -9,8 +9,16 @@ public class MassQuizManager : MonoBehaviour
 {
     [Header("Game Objects")]
     public GameObject[] WeightedObjects;
+
+    [Header("Average Game Objects")]
     public GameObject[] AverageObjects;
-    private int[,] Combinations;
+
+    [Header("Hard Game Objects")]
+    public GameObject[] HeavyObjects;
+    public GameObject[] LightObjects;
+    public GameObject scaleBar;
+    public GameObject LeftScale;
+    public GameObject RightScale;
 
     [Header("Level Change")]
     public string CATEGORY;
@@ -20,12 +28,11 @@ public class MassQuizManager : MonoBehaviour
     public GameObject EasyQuestionContainer;
     public GameObject AverageQuestionContainer;
     public GameObject HardQuestionContainer;
+    public GameObject OptionContainer;
     
     [Header("Quiz Options")]
     public GameObject[] Options;
-
-    // [Header("Quiz Average Scale")]
-    // public GameObject[] AverageOptions;
+    public GameObject SubmitButton;
 
     [Header("Game Object Container")]
     public GameObject[] Container;
@@ -69,6 +76,7 @@ public class MassQuizManager : MonoBehaviour
             quizTopUI.Difiiculty.text = "Easy";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Easy");
             EasyQuestionContainer.SetActive(true);
+            OptionContainer.SetActive(true);
             timeLimit = 90;
         }
 
@@ -76,12 +84,15 @@ public class MassQuizManager : MonoBehaviour
             quizTopUI.Difiiculty.text = "Average";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Average");
             AverageQuestionContainer.SetActive(true);
+            OptionContainer.SetActive(true);
             timeLimit = 5;
         }
 
         if (DIFFICULTY == "Hard") {
             quizTopUI.Difiiculty.text = "Hard";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
+            HardQuestionContainer.SetActive(true);
+
             timeLimit = 30;
         }
 
@@ -352,6 +363,6 @@ public class MassQuizManager : MonoBehaviour
 
     private void HardQuestion()
     {
-        // to add function
+        
     }
 }
