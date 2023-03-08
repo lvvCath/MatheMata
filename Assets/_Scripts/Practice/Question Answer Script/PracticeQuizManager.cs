@@ -36,8 +36,8 @@ public class PracticeQuizManager : MonoBehaviour
     public GameObject scale;
 
     [Header("Audio SFX")]
-    public AudioClip correctSFX;
-    public AudioClip wrongSFX;
+    public AudioSource correctSFX;
+    public AudioSource wrongSFX;
 
     private AudioSource audioSource;
 
@@ -59,7 +59,7 @@ public class PracticeQuizManager : MonoBehaviour
     public void correct()
     {
         CorrectOverlay.SetActive(true);
-        audioSource.PlayOneShot(correctSFX);
+        correctSFX.Play();
         StartCoroutine(hideUI(CorrectOverlay, 2.0f, "correct"));
 
     }
@@ -67,7 +67,7 @@ public class PracticeQuizManager : MonoBehaviour
     public void wrong()
     {
         WrongOverlay.SetActive(true);
-        audioSource.PlayOneShot(wrongSFX);
+        wrongSFX.Play();
         StartCoroutine(hideUI(WrongOverlay, 2.0f, "wrong"));
     }
 

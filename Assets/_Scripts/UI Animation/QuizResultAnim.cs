@@ -48,9 +48,9 @@ public class QuizResultAnim : MonoBehaviour
         // darken color for star
         Color c = new Color32(96, 96, 96, 255); 
 
-        // Great Job! - if perfect
-        Header.text = "Great Job!";
-        HeaderShadow.text = "Great Job!";
+        // Excellent! - if perfect
+        Header.text = "Excellent!";
+        HeaderShadow.text = "Excellent!";
 
         // Good Job! - if score is less than the total darken 3rd star
         if ( System.Convert.ToInt32(Score.text) < System.Convert.ToInt32(Total.text) )

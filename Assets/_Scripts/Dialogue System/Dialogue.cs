@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public Button nextButton;
     public string[] lines;
+    public AudioClip[] linesAudio;
     public float textSpeed;
 
     [SerializeField] GameObject pointer, questionPanel;
@@ -19,7 +20,7 @@ public class Dialogue : MonoBehaviour
     Button option1, option2, option3, pauseBTN, hintBTN;
 
     float xPointPos, yPointPos;
-
+    private AudioSource audioSource;
     private int index;
     void Start()
     {
@@ -30,6 +31,7 @@ public class Dialogue : MonoBehaviour
         hintBTN.enabled = false;
 
         textComponent.text = string.Empty;
+        audioSource = GetComponent<AudioSource>();
         StartDialogue();
     }
 
@@ -50,6 +52,7 @@ public class Dialogue : MonoBehaviour
     {
         index = 0;
         StartCoroutine(TypeLine());
+        audioSource.PlayOneShot(linesAudio[index]);
     }
 
     IEnumerator TypeLine()
@@ -65,9 +68,11 @@ public class Dialogue : MonoBehaviour
     {
         if(index < lines.Length - 1)
         {
+            audioSource.Stop();
             index++;
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
+            audioSource.PlayOneShot(linesAudio[index]);
             if(index == 1)
             {
                 xPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.x) - (-90.66f);
