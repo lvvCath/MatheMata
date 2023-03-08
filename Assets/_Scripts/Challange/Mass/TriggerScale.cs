@@ -10,8 +10,6 @@ public class TriggerScale : MonoBehaviour
     public float rotateTime;
 
     [Header("Question")]
-    public GameObject Q4;
-    public GameObject Q5;
 
     private GameObject objDetected;
     private float objMass;
@@ -23,21 +21,10 @@ public class TriggerScale : MonoBehaviour
 
     private void OnEnable()
     {
-        // if Q4 is active
-        if (Q4.activeSelf)
-        {
-            scaleRight_totalMass = 0;
-            scaleLeft_mass = LeftScale.GetComponent<LeftScale>().GetWatermelonMass();
-        }
-
-        if (Q5.activeSelf)
-        {
-            scaleRight_totalMass = 0;
-            scaleLeft_mass = LeftScale.GetComponent<LeftScale>().GetPineappleMass();
-        }
-
+        scaleRight_totalMass = 0;
+        scaleLeft_mass = LeftScale.GetComponent<ScaleLeft>().GetTotalMass();
+        Debug.Log("Left Scale Mass " + scaleLeft_mass); 
         scale();
-
     }
 
     public float GetTotalMass()

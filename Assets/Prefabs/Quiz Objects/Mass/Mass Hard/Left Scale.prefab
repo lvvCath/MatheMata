@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3710689633059578620}
   - component: {fileID: 3710689633059578621}
   - component: {fileID: 3710689633059578617}
-  - component: {fileID: 3710689633059578616}
+  - component: {fileID: 1252774864}
   m_Layer: 3
   m_Name: Left Scale
   m_TagString: Untagged
@@ -30,10 +30,10 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710689633059578593}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710689633059578593}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -185,7 +185,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 229.73318, y: 67.17052}
   m_EdgeRadius: 0
---- !u!114 &3710689633059578616
+--- !u!114 &1252774864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,8 +194,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3710689633059578593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa60e48d9eaec2c4ea2c119c992257c5, type: 3}
+  m_Script: {fileID: 11500000, guid: c61ba5f46e6a52a4f8a9cb8fc51d7f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  watermelon: {fileID: 0}
-  pineapple: {fileID: 0}
