@@ -15,6 +15,7 @@ public class TriggerScale : MonoBehaviour
     private float objMass;
 
     private float scaleRight_totalMass;
+    [SerializeField]
     private float scaleLeft_mass;
 
     private bool isEqual;
@@ -22,7 +23,7 @@ public class TriggerScale : MonoBehaviour
     private void OnEnable()
     {
         scaleRight_totalMass = 0;
-        scaleLeft_mass = LeftScale.GetComponent<ScaleLeft>().GetTotalMass();
+        ScaleLeft leftscale = LeftScale.GetComponent<ScaleLeft>();
         Debug.Log("Left Scale Mass " + scaleLeft_mass); 
         scale();
     }

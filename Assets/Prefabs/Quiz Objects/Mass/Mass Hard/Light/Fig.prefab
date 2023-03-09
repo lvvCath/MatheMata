@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2125771236990044403}
   - component: {fileID: 3925904840399964459}
   - component: {fileID: -2038997937278194570}
-  - component: {fileID: -5111380587045865433}
+  - component: {fileID: -9040546722128015129}
   m_Layer: 0
   m_Name: Fig
   m_TagString: Untagged
@@ -120,13 +120,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-5111380587045865433
+--- !u!114 &-9040546722128015129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 354019745369180973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8797d1e19b46a0b4bbdd7c2b51681dfc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2981f02dc17569b46ac1a5743ad680c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  container: {fileID: 0}

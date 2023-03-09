@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6373483261159139736}
   - component: {fileID: -5969964572082023645}
   - component: {fileID: 8223448279854545704}
-  - component: {fileID: 3449742309949870442}
+  - component: {fileID: -2114171237121286007}
   m_Layer: 0
   m_Name: Peach
   m_TagString: Untagged
@@ -120,13 +120,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3449742309949870442
+--- !u!114 &-2114171237121286007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3588574052933134035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8797d1e19b46a0b4bbdd7c2b51681dfc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2981f02dc17569b46ac1a5743ad680c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  container: {fileID: 0}

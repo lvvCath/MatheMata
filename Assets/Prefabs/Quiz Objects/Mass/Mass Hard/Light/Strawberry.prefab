@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4137274452263426075}
   - component: {fileID: 7279760233952582586}
   - component: {fileID: 3181550229930484246}
-  - component: {fileID: 7902078482042882246}
+  - component: {fileID: -536484573211315099}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.00000080466}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 166.6, y: 160.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4318351939148534131
@@ -120,13 +120,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7902078482042882246
+--- !u!114 &-536484573211315099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3673241964919675744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8797d1e19b46a0b4bbdd7c2b51681dfc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2981f02dc17569b46ac1a5743ad680c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  container: {fileID: 0}

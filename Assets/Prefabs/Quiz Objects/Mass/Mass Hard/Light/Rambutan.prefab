@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5907214844472252606}
   - component: {fileID: -5709353407058372613}
   - component: {fileID: -6852429864111359848}
-  - component: {fileID: 5072930359409744455}
+  - component: {fileID: 542075702787770293}
   m_Layer: 0
   m_Name: Rambutan
   m_TagString: Untagged
@@ -120,13 +120,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5072930359409744455
+--- !u!114 &542075702787770293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2031067241701650679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8797d1e19b46a0b4bbdd7c2b51681dfc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2981f02dc17569b46ac1a5743ad680c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  container: {fileID: 0}

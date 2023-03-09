@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ObjectDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class ObjectFunction : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [Header("Canvas")]
     public Canvas canvas;
+
+    public GameObject container;
 
     private string TAG_IGNORE = "fruit";
 
     private RectTransform rectTrans;
 
-    private float init_gravity;
 
     private void Start()
     {
         rectTrans = gameObject.GetComponent<RectTransform>();
-        init_gravity = gameObject.GetComponent<Rigidbody2D>().gravityScale;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -40,6 +40,7 @@ public class ObjectDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = init_gravity;
+        Instantiate(this, container.transform.position, Quaternion.identity, container.transform);
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
     }
 }

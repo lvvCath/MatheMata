@@ -7,6 +7,9 @@ using TMPro;
 
 public class MassQuizManager : MonoBehaviour
 {
+    [Header("Canvas")]
+    public Canvas canvas;
+
     [Header("Game Objects")]
     public GameObject[] WeightedObjects;
 
@@ -93,7 +96,7 @@ public class MassQuizManager : MonoBehaviour
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
             HardQuestionContainer.SetActive(true);
 
-            timeLimit = 30;
+            timeLimit = 5;
         }
 
         // Timer
@@ -313,7 +316,6 @@ public class MassQuizManager : MonoBehaviour
     {
         // Instantiate the two objects based on the Child Container (Object1 and Object2)
         GameObject container;
-        GameObject child;
 
         int currObject = Random.Range(0, WeightedObjects.Length);
         for (int i = 0; i < AverageContainer.Length; i++)
@@ -345,24 +347,30 @@ public class MassQuizManager : MonoBehaviour
                 container = AverageContainer[i].transform.GetChild(j).gameObject;
                 Instantiate(WeightedObjects[arrRecord[j]], container.transform);
             }
-            if (WeightedObjects[arrRecord[0]].GetComponent<ItemWeight>().weight < WeightedObjects[arrRecord[1]].GetComponent<ItemWeight>().weight)
-            {
-                container = AverageContainer[i].transform.GetChild(0).gameObject;
-                child = container.transform.GetChild(0).gameObject;
-                child.transform.localScale = new Vector2(child.transform.localScale.x*0.5f, child.transform.localScale.y*0.5f);
-            }
-            if (WeightedObjects[arrRecord[1]].GetComponent<ItemWeight>().weight < WeightedObjects[arrRecord[0]].GetComponent<ItemWeight>().weight)
-            {
-                container = AverageContainer[i].transform.GetChild(1).gameObject;
-                child = container.transform.GetChild(0).gameObject;
-                child.transform.localScale = new Vector2(child.transform.localScale.x*0.5f, child.transform.localScale.y*0.5f);
-            }
         }
         
     }
 
     private void HardQuestion()
     {
+        //GameObject[] Instances;
+        GameObject heavy = HardContainer[0];
+        GameObject light = HardContainer[1];
+        if (heavy.transform.childCount > 0){
+            Object.Destroy(heavy.transform.GetChild(0).gameObject);
+        }
+        for (int i = light.transform.childCount-1; i >= 0; i--)
+        {
+            GameObject.Destroy(light.transform.GetChild(i).gameObject);
+        }
         
+        int currHeavy = Random.Range(0, HeavyObjects.Length);
+        int currLight = Random.Range(0, LightObjects.Length);
+
+        GameObject currObject = LightObjects[currLight];    
+        currObject.GetComponent<ObjectFunction>().canvas = canvas;
+        currObject.GetComponent<ObjectFunction>().container = light;
+        Instantiate(currObject, light.transform);
+        Instantiate(HeavyObjects[currHeavy], heavy.transform);
     }
 }
