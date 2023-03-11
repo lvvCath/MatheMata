@@ -43,6 +43,7 @@ public class MassQuizManager : MonoBehaviour
     public GameObject[] HardContainer;
     public QuizTopUI quizTopUI;
     List<int> arrRecord = new List<int>();
+    List<int> arrLight = new List<int>();
 
     [Header("Quiz Values")]
     public int currentQuestionNo;
@@ -96,7 +97,7 @@ public class MassQuizManager : MonoBehaviour
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
             HardQuestionContainer.SetActive(true);
 
-            timeLimit = 5;
+            timeLimit = 30;
         }
 
         // Timer
@@ -105,6 +106,8 @@ public class MassQuizManager : MonoBehaviour
         quizTopUI.TimerSlider.value = timeLimit;
 
         DurstenfeldShuffle(WeightedObjects);
+        DurstenfeldShuffle(HeavyObjects);
+        DurstenfeldShuffle(LightObjects);
         GenerateQuestion();
 
     }
@@ -278,7 +281,13 @@ public class MassQuizManager : MonoBehaviour
         }
 
         if (DIFFICULTY == "Hard"){
-            
+            SubmitButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Submit";
+            if (RightScale.GetComponent<TriggerScale>().GetTotalMass() == LeftScale.GetComponent<ScaleLeft>().GetObjectMass())
+            {
+                SubmitButton.GetComponent<MassAnswerScript>().isCorrect = true;
+            }else{
+                SubmitButton.GetComponent<MassAnswerScript>().isCorrect = false;
+            }
         }
     }
 
@@ -370,6 +379,26 @@ public class MassQuizManager : MonoBehaviour
         GameObject currObject = LightObjects[currLight];    
         currObject.GetComponent<ObjectFunction>().canvas = canvas;
         currObject.GetComponent<ObjectFunction>().container = light;
+
+        bool flag = true;
+            while (flag)
+            {
+                currHeavy = Random.Range(0, HeavyObjects.Length);
+                if (arrRecord.Contains(currHeavy) == false) // checks if the object was already used in question.
+                {
+                    arrRecord.Add(currHeavy);
+                    flag = false;
+                }
+                currLight = Random.Range(0, LightObjects.Length);
+                if (arrLight.Contains(currLight) == false) // checks if the object was already used in question.
+                {
+                    arrLight.Add(currLight);
+                    flag = false;
+                }
+            }
+
+        LeftScale.GetComponent<ScaleLeft>().SetHeavyObject(HeavyObjects[currHeavy]);
+
         Instantiate(currObject, light.transform);
         Instantiate(HeavyObjects[currHeavy], heavy.transform);
     }

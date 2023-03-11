@@ -10,22 +10,19 @@ public class TriggerScale : MonoBehaviour
     public float rotateTime;
 
     [Header("Question")]
-
     private GameObject objDetected;
     private float objMass;
 
-    private float scaleRight_totalMass;
-    [SerializeField]
+    private float scaleRight_totalMass = 0;
     private float scaleLeft_mass;
 
     private bool isEqual;
-
+    
     private void OnEnable()
     {
+        LeanTween.rotateZ(scaleBar, 10, rotateTime);
+        scaleLeft_mass = LeftScale.GetComponent<ScaleLeft>().GetObjectMass();
         scaleRight_totalMass = 0;
-        ScaleLeft leftscale = LeftScale.GetComponent<ScaleLeft>();
-        Debug.Log("Left Scale Mass " + scaleLeft_mass); 
-        scale();
     }
 
     public float GetTotalMass()
@@ -46,6 +43,7 @@ public class TriggerScale : MonoBehaviour
         scaleRight_totalMass += objMass;
 
         scale();
+        //Debug.Log(IsEqual());
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -56,6 +54,7 @@ public class TriggerScale : MonoBehaviour
         scaleRight_totalMass -= objMass;
 
         scale();
+        //Debug.Log(IsEqual());
     }
 
     void scale()
@@ -63,6 +62,7 @@ public class TriggerScale : MonoBehaviour
         if (scaleLeft_mass == scaleRight_totalMass) // 0
         {
             isEqual = true;
+            Debug.Log(isEqual);
             LeanTween.rotateZ(scaleBar, 0, rotateTime);
         }
 

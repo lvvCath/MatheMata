@@ -14,6 +14,8 @@ public class ObjectFunction : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     private RectTransform rectTrans;
 
+    Vector3 initialPosition;
+
 
     private void Start()
     {
@@ -30,6 +32,7 @@ public class ObjectFunction : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        initialPosition = gameObject.transform.position;
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 
@@ -40,7 +43,10 @@ public class ObjectFunction : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Instantiate(this, container.transform.position, Quaternion.identity, container.transform);
+        if (initialPosition == container.transform.position)
+        {
+            Instantiate(this, container.transform.position, Quaternion.identity, container.transform);
+        }
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
     }
 }
