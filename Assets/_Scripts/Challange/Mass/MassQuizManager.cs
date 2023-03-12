@@ -263,8 +263,8 @@ public class MassQuizManager : MonoBehaviour
                 Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = correctans[i];
 
             }
-            int firstWeight =  AverageObjects[arrRecord[0]].GetComponent<ItemWeight>().weight;
-            int secondWeight = AverageObjects[arrRecord[1]].GetComponent<ItemWeight>().weight;
+            int firstWeight =  AverageObjects[arrLight[0]].GetComponent<ItemWeight>().weight;
+            int secondWeight = AverageObjects[arrLight[1]].GetComponent<ItemWeight>().weight;
             if (firstWeight > secondWeight)
             {
                 Options[0].GetComponent<MassAnswerScript>().isCorrect = true;

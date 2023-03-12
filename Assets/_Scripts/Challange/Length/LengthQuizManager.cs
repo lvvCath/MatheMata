@@ -57,10 +57,8 @@ public class LengthQuizManager : MonoBehaviour
     public GameObject ResultPanel;
 
     [Header("Audio SFX")]
-    public AudioClip correctSFX;
-    public AudioClip wrongSFX;
-
-    private AudioSource audioSource;
+    public AudioSource correctSFX;
+    public AudioSource wrongSFX;
 
      private void Start()
     {
@@ -99,7 +97,6 @@ public class LengthQuizManager : MonoBehaviour
         
         DurstenfeldShuffle(LongObjects);
         GenerateQuestion();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() 
@@ -250,7 +247,7 @@ public class LengthQuizManager : MonoBehaviour
 
         quizTopUI.Score.text = (score).ToString() + " / " + LongObjects.Length.ToString();
         CorrectOverlay.SetActive(true);
-        audioSource.PlayOneShot(correctSFX);
+        correctSFX.Play();
         StartCoroutine(nextQuestion(CorrectOverlay, 2.0f, "correct"));
     }
 
@@ -259,7 +256,7 @@ public class LengthQuizManager : MonoBehaviour
         stopTimer = true; // Timer
 
         WrongOverlay.SetActive(true);
-        audioSource.PlayOneShot(wrongSFX);
+        wrongSFX.Play();
         StartCoroutine(nextQuestion(WrongOverlay, 2.0f, "wrong"));
     }
 

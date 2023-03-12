@@ -44,6 +44,11 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         canvasGroup.blocksRaycasts = true;
 
+        Debug.Log("GameObject position: " + gameObject.transform.position);
+        Debug.Log("Object1Slot position: " + object1Slot.transform.position);
+        Debug.Log("Object2Slot position: " + object2Slot.transform.position);
+        Debug.Log("Object3Slot position: " + object3Slot.transform.position);
+
         if ((gameObject.transform.position == object1Slot.transform.position) || 
             (gameObject.transform.position == object2Slot.transform.position) ||
             (gameObject.transform.position == object3Slot.transform.position)
