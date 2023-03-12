@@ -1574,6 +1574,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4584252093646280194, guid: 24618abfb5ee35641b1d737e5a20a8dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584252093646280194, guid: 24618abfb5ee35641b1d737e5a20a8dd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584252093646280194, guid: 24618abfb5ee35641b1d737e5a20a8dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584252093646280194, guid: 24618abfb5ee35641b1d737e5a20a8dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -4227,7 +4239,7 @@ MonoBehaviour:
   - {fileID: 6600451145376140909, guid: 0220b287dff534e4daef876c3b1d0686, type: 3}
   - {fileID: 914331214890234736, guid: ecd4a2e722384c24dae7c1e0bedca1fb, type: 3}
   - {fileID: 1842916741656758627, guid: 4e8d6b1bb2737e84e94aa4059da95322, type: 3}
-  - {fileID: 3563140227205932519, guid: 6649c775ae3466841a862c467c6c9f83, type: 3}
+  - {fileID: 260278129826093186, guid: 6649c775ae3466841a862c467c6c9f83, type: 3}
   - {fileID: 6564805882547653340, guid: 8256736f22e3d2e4bbe46c2a73b7eae9, type: 3}
   - {fileID: 240397712115048519, guid: ce004d23472c72642950ccedc2df61cf, type: 3}
   - {fileID: 1362795807051906029, guid: 1fa2ffacc138438409d47bda8d56b042, type: 3}
@@ -4235,28 +4247,6 @@ MonoBehaviour:
   - {fileID: 6081275141721084401, guid: fe2e152e21bdd0843a7ab4d248c76352, type: 3}
   - {fileID: 200149236378485151, guid: bd6396886f14e1c40a79324c3fe3c530, type: 3}
   - {fileID: 1119473603771756388, guid: 780ed32cc932c654d91150d85e5f001f, type: 3}
-  AverageLight:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  AverageHeavy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ScaleArr:
   - {fileID: 8256937911043222733, guid: c58f11d3a65c4e144a9adff2bf19d700, type: 3}
   - {fileID: 2560203363034374173, guid: 574732b9182ead742a43789e5f3eef3d, type: 3}

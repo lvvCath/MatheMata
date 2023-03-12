@@ -15,8 +15,6 @@ public class MassQuizManager : MonoBehaviour
 
     [Header("Average Game Objects")]
     public GameObject[] AverageObjects;
-    public GameObject[] AverageLight;
-    public GameObject[] AverageHeavy;
     public GameObject[] ScaleArr;
 
     [Header("Hard Game Objects")]
@@ -327,6 +325,7 @@ public class MassQuizManager : MonoBehaviour
         // Instantiate the two objects based on the Child Container (Object1 and Object2)
         
         GameObject container;
+        int counter = 0;
         int currObject = Random.Range(0, AverageObjects.Length);
         for (int i = 0; i < AverageContainer.Length; i++)
         {
@@ -339,23 +338,31 @@ public class MassQuizManager : MonoBehaviour
                     }
             }
         }
-        arrRecord.Clear();
+
+        arrLight.Clear();
         for (int i = 0; i < AverageContainer.Length; i++)
         {
             for (int j = 0; j < AverageContainer[i].transform.childCount-1; j++)
             {
+
                 bool flag = true;
+                if (counter >= 2) 
+                {
+                    flag = false;
+                }
                 while (flag)
                 {
                     currObject = Random.Range(0, AverageObjects.Length);
                     if (arrRecord.Contains(currObject) == false) // checks if the object was already used in question.
                     {
                         arrRecord.Add(currObject);
+                        arrLight.Add(currObject);
                         flag = false;
+                        Debug.Log(currObject);
                     }
                 }
                 container = AverageContainer[i].transform.GetChild(j).gameObject;
-                GameObject newObj = Instantiate(AverageObjects[arrRecord[j]], container.transform);
+                GameObject newObj = Instantiate(AverageObjects[arrLight[j]], container.transform);
 
                 // Get the RectTransform component of the instantiated object
                 RectTransform newObjRect = newObj.GetComponent<RectTransform>();
@@ -365,9 +372,10 @@ public class MassQuizManager : MonoBehaviour
                 newObjRect.anchorMax = new Vector2(0.5f, 0f);
                 newObjRect.pivot = new Vector2(0.5f, 0f);
                 newObjRect.anchoredPosition = new Vector2(0f, 0f);
+        counter++;
             }
         }
-        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + AverageObjects[arrRecord[0]].name + "</color> and <color=#ffcb2b>" + AverageObjects[arrRecord[1]].name + "</color> is in the right balance";
+        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + AverageObjects[arrLight[0]].name + "</color> and <color=#ffcb2b>" + AverageObjects[arrLight[1]].name + "</color> is in the right balance";
         
     }
 
