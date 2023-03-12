@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine. EventSystems;
+using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class CapacityDragnDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [Header("Canvas")]
     public Canvas canvas;
@@ -30,7 +30,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         initialPosition = gameObject.transform.position;
-        //Debug.Log("OBJ initial position: " + initialPosition);
+        Debug.Log("OBJ initial position: " + initialPosition);
 
         canvasGroup.blocksRaycasts = false;
     }
@@ -38,6 +38,9 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnDrag(PointerEventData eventData)
     {
         rectTrans.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        // Vector3 mousePos = Camera.main.ScreenToWorldPoint(eventData.position);
+        // mousePos.z = gameObject.transform.position.z; // keep Z position the same
+        // rectTrans.position = mousePos;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -49,7 +52,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         Debug.Log("Object2Slot position: " + object2Slot.transform.position);
         Debug.Log("Object3Slot position: " + object3Slot.transform.position);
 
-        if ((gameObject.transform.position == object1Slot.transform.position) || 
+        if ((gameObject.transform.position == object1Slot.transform.position) ||
             (gameObject.transform.position == object2Slot.transform.position) ||
             (gameObject.transform.position == object3Slot.transform.position)
             )
