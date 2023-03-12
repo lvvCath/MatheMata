@@ -169,7 +169,6 @@ public class MassQuizManager : MonoBehaviour
 
             if (DIFFICULTY == "Average") {
                 quizTopUI.Difiiculty.text = "Average";
-                quizTopUI.Question.text = "Pick the scale where _____ and ______ is in the right balance";
 
                 AverageQuestion();
                 SetAnswers();
@@ -177,7 +176,6 @@ public class MassQuizManager : MonoBehaviour
 
             if (DIFFICULTY == "Hard") {
                 quizTopUI.Difiiculty.text = "Hard";
-                quizTopUI.Question.text = "Drag n' Drop the _____ to match the weight of _____ on the scale";
                 
                 HardQuestion();
                 SetAnswers();
@@ -324,8 +322,8 @@ public class MassQuizManager : MonoBehaviour
     private void AverageQuestion()
     {
         // Instantiate the two objects based on the Child Container (Object1 and Object2)
+        
         GameObject container;
-
         int currObject = Random.Range(0, WeightedObjects.Length);
         for (int i = 0; i < AverageContainer.Length; i++)
         {
@@ -357,6 +355,7 @@ public class MassQuizManager : MonoBehaviour
                 Instantiate(WeightedObjects[arrRecord[j]], container.transform);
             }
         }
+        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + WeightedObjects[arrRecord[0]].name + "</color> and <color=#ffcb2b>" + WeightedObjects[arrRecord[1]].name + "</color> is in the right balance";
         
     }
 
@@ -376,10 +375,6 @@ public class MassQuizManager : MonoBehaviour
         int currHeavy = Random.Range(0, HeavyObjects.Length);
         int currLight = Random.Range(0, LightObjects.Length);
 
-        GameObject currObject = LightObjects[currLight];    
-        currObject.GetComponent<ObjectFunction>().canvas = canvas;
-        currObject.GetComponent<ObjectFunction>().container = light;
-
         bool flag = true;
             while (flag)
             {
@@ -396,6 +391,11 @@ public class MassQuizManager : MonoBehaviour
                     flag = false;
                 }
             }
+            GameObject currObject = LightObjects[currLight];    
+            currObject.GetComponent<ObjectFunction>().canvas = canvas;
+            currObject.GetComponent<ObjectFunction>().container = light;
+
+            quizTopUI.Question.text = "Drag n' Drop the <color=#ffcb2b>"+ LightObjects[currLight].name +"</color> to match the weight of <color=#ffcb2b>"+ HeavyObjects[currHeavy].name +"</color> on the scale";
         //LeftScale.GetComponent<ScaleLeft>().SetHeavyObject(HeavyObjects[currHeavy]);
 
         Instantiate(currObject, light.transform);

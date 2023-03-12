@@ -6,7 +6,6 @@ using UnityEngine;
 public class TriggerScale : MonoBehaviour
 {
     [Header("Scale")]
-    public GameObject ScaleLeft;
     public GameObject scaleBar;
     public float rotateTime;
 
@@ -47,7 +46,6 @@ public class TriggerScale : MonoBehaviour
         objMass = objDetected.GetComponent<Rigidbody2D>().mass;
         scaleRight_Mass += (int)objMass;
         Debug.Log(scaleRight_Mass);
-        //scaleRight_Mass = Math.Round(scaleRight_Mass);
         scale();
     }
 

@@ -11,7 +11,7 @@ public class ScaleLeft : MonoBehaviour
     private GameObject objDetected;
     private float objMass;
     
-    private void Start()
+    private void OnEnable()
     {
         RightScale.GetComponent<TriggerScale>().SetLeftScaleMass(20);
     }
