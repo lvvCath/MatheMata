@@ -1,33 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class TriggerScale : MonoBehaviour
 {
     [Header("Scale")]
+    public GameObject ScaleLeft;
     public GameObject scaleBar;
-    public GameObject LeftScale;
     public float rotateTime;
 
     [Header("Question")]
     private GameObject objDetected;
     private float objMass;
 
-    private float scaleRight_totalMass = 0;
-    private float scaleLeft_mass;
+    private int scaleRight_Mass;
+    private int scaleLeft_mass;
 
     private bool isEqual;
-    
-    private void OnEnable()
+
+    private void Start()
     {
+        scaleRight_Mass = 0;
         LeanTween.rotateZ(scaleBar, 10, rotateTime);
-        scaleLeft_mass = LeftScale.GetComponent<ScaleLeft>().GetObjectMass();
-        scaleRight_totalMass = 0;
+    }
+
+    public void SetLeftScaleMass (int LeftMass) 
+    {
+        scaleLeft_mass = LeftMass;
     }
 
     public float GetTotalMass()
     {
-        return scaleRight_totalMass;
+        return scaleRight_Mass;
     }
 
     public bool IsEqual()
@@ -39,43 +44,43 @@ public class TriggerScale : MonoBehaviour
     {
         objDetected = collision.gameObject;
         objMass = objDetected.GetComponent<Rigidbody2D>().mass;
-
-        scaleRight_totalMass += objMass;
-
+        scaleRight_Mass += (int)objMass;
+        Debug.Log(scaleRight_Mass);
+        //scaleRight_Mass = Math.Round(scaleRight_Mass);
         scale();
-        //Debug.Log(IsEqual());
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         objDetected = collision.gameObject;
         objMass = objDetected.GetComponent<Rigidbody2D>().mass;
-
-        scaleRight_totalMass -= objMass;
-
+        scaleRight_Mass -= (int)objMass;
+        Debug.Log(scaleRight_Mass);
+        //scaleRight_Mass = Math.Round(scaleRight_Mass);
         scale();
-        //Debug.Log(IsEqual());
     }
 
     void scale()
     {
-        if (scaleLeft_mass == scaleRight_totalMass) // 0
+        Debug.Log("Scale Left Mass: " + scaleLeft_mass);
+        Debug.Log("Right Scale Mass: " + scaleRight_Mass);
+        if (scaleLeft_mass == scaleRight_Mass) // 0
         {
             isEqual = true;
-            Debug.Log(isEqual);
             LeanTween.rotateZ(scaleBar, 0, rotateTime);
         }
 
-        if (scaleLeft_mass < scaleRight_totalMass) // -10
+        if (scaleLeft_mass < scaleRight_Mass) // -10
         {
             isEqual = false;
             LeanTween.rotateZ(scaleBar, -10, rotateTime);
         }
 
-        if (scaleLeft_mass > scaleRight_totalMass) // 10
+        if (scaleLeft_mass > scaleRight_Mass) // 10
         {
             isEqual = false;
             LeanTween.rotateZ(scaleBar, 10, rotateTime);
         }
+        Debug.Log("IsEqual Scale Value: " + IsEqual());
     }
 }

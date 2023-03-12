@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1522464867897425091}
   m_Layer: 0
   m_Name: Jackfruit
-  m_TagString: Untagged
+  m_TagString: fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

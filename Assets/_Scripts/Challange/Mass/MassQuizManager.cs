@@ -97,7 +97,7 @@ public class MassQuizManager : MonoBehaviour
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
             HardQuestionContainer.SetActive(true);
 
-            timeLimit = 30;
+            timeLimit = 60;
         }
 
         // Timer
@@ -282,13 +282,13 @@ public class MassQuizManager : MonoBehaviour
 
         if (DIFFICULTY == "Hard"){
             SubmitButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Submit";
-            if (RightScale.GetComponent<TriggerScale>().GetTotalMass() == LeftScale.GetComponent<ScaleLeft>().GetObjectMass())
-            {
-                SubmitButton.GetComponent<MassAnswerScript>().isCorrect = true;
-            }else{
-                SubmitButton.GetComponent<MassAnswerScript>().isCorrect = false;
-            }
         }
+    }
+
+    public void HardMassSubmit()
+    {
+        SubmitButton.GetComponent<MassAnswerScript>().isCorrect = RightScale.GetComponent<TriggerScale>().IsEqual();
+        Debug.Log(SubmitButton.GetComponent<MassAnswerScript>().isCorrect);
     }
 
     private void EasyQuestion()
@@ -396,8 +396,7 @@ public class MassQuizManager : MonoBehaviour
                     flag = false;
                 }
             }
-
-        LeftScale.GetComponent<ScaleLeft>().SetHeavyObject(HeavyObjects[currHeavy]);
+        //LeftScale.GetComponent<ScaleLeft>().SetHeavyObject(HeavyObjects[currHeavy]);
 
         Instantiate(currObject, light.transform);
         Instantiate(HeavyObjects[currHeavy], heavy.transform);
