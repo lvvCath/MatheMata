@@ -6,10 +6,16 @@ public class ScaleLeft : MonoBehaviour
 {
     [SerializeField]
     private GameObject RightScale;
+    public GameObject scaleBar;
     private int Mass;
     private GameObject objDetected;
     private float objMass;
     
+    private void Start()
+    {
+        RightScale.GetComponent<TriggerScale>().SetLeftScaleMass(20);
+    }
+
     public float GetObjectMass ()
     {
         return Mass;

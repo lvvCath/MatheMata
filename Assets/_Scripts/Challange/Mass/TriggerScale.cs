@@ -19,7 +19,8 @@ public class TriggerScale : MonoBehaviour
 
     private bool isEqual;
 
-    private void Start()
+    
+    private void Awake()
     {
         scaleRight_Mass = 0;
         LeanTween.rotateZ(scaleBar, 10, rotateTime);

@@ -2415,6 +2415,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 561562658}
     m_Modifications:
     - target: {fileID: 1252774864, guid: 0ad133b18fa1551499f990fdc404e2c3, type: 3}
+      propertyPath: scaleBar
+      value: 
+      objectReference: {fileID: 930409905}
+    - target: {fileID: 1252774864, guid: 0ad133b18fa1551499f990fdc404e2c3, type: 3}
       propertyPath: RightScale
       value: 
       objectReference: {fileID: 1822526814}
