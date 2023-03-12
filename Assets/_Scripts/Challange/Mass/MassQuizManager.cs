@@ -15,6 +15,9 @@ public class MassQuizManager : MonoBehaviour
 
     [Header("Average Game Objects")]
     public GameObject[] AverageObjects;
+    public GameObject[] AverageLight;
+    public GameObject[] AverageHeavy;
+    public GameObject[] ScaleArr;
 
     [Header("Hard Game Objects")]
     public GameObject[] HeavyObjects;
@@ -262,8 +265,8 @@ public class MassQuizManager : MonoBehaviour
                 Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = correctans[i];
 
             }
-            int firstWeight =  WeightedObjects[arrRecord[0]].GetComponent<ItemWeight>().weight;
-            int secondWeight = WeightedObjects[arrRecord[1]].GetComponent<ItemWeight>().weight;
+            int firstWeight =  AverageObjects[arrRecord[0]].GetComponent<ItemWeight>().weight;
+            int secondWeight = AverageObjects[arrRecord[1]].GetComponent<ItemWeight>().weight;
             if (firstWeight > secondWeight)
             {
                 Options[0].GetComponent<MassAnswerScript>().isCorrect = true;
@@ -324,7 +327,7 @@ public class MassQuizManager : MonoBehaviour
         // Instantiate the two objects based on the Child Container (Object1 and Object2)
         
         GameObject container;
-        int currObject = Random.Range(0, WeightedObjects.Length);
+        int currObject = Random.Range(0, AverageObjects.Length);
         for (int i = 0; i < AverageContainer.Length; i++)
         {
             for (int j = 0; j < 2; j++)
@@ -344,7 +347,7 @@ public class MassQuizManager : MonoBehaviour
                 bool flag = true;
                 while (flag)
                 {
-                    currObject = Random.Range(0, WeightedObjects.Length);
+                    currObject = Random.Range(0, AverageObjects.Length);
                     if (arrRecord.Contains(currObject) == false) // checks if the object was already used in question.
                     {
                         arrRecord.Add(currObject);
@@ -352,10 +355,19 @@ public class MassQuizManager : MonoBehaviour
                     }
                 }
                 container = AverageContainer[i].transform.GetChild(j).gameObject;
-                Instantiate(WeightedObjects[arrRecord[j]], container.transform);
+                GameObject newObj = Instantiate(AverageObjects[arrRecord[j]], container.transform);
+
+                // Get the RectTransform component of the instantiated object
+                RectTransform newObjRect = newObj.GetComponent<RectTransform>();
+
+                // Set the anchored position to the bottom of the child container
+                newObjRect.anchorMin = new Vector2(0.5f, 0f);
+                newObjRect.anchorMax = new Vector2(0.5f, 0f);
+                newObjRect.pivot = new Vector2(0.5f, 0f);
+                newObjRect.anchoredPosition = new Vector2(0f, 0f);
             }
         }
-        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + WeightedObjects[arrRecord[0]].name + "</color> and <color=#ffcb2b>" + WeightedObjects[arrRecord[1]].name + "</color> is in the right balance";
+        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + AverageObjects[arrRecord[0]].name + "</color> and <color=#ffcb2b>" + AverageObjects[arrRecord[1]].name + "</color> is in the right balance";
         
     }
 
