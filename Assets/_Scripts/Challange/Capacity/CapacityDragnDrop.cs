@@ -20,7 +20,7 @@ public class CapacityDragnDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
 
     private RectTransform rectTrans;
 
-    Vector2 initialPosition;
+    Vector3 initialPosition;
 
     private void Start()
     {
