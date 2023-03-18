@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5598735274598645126}
   - component: {fileID: 5598735274598645127}
   - component: {fileID: 5598735274598645121}
+  - component: {fileID: -1966851546822528820}
   m_Layer: 0
   m_Name: Smartphone
   m_TagString: Untagged
@@ -90,3 +91,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 4
+--- !u!114 &-1966851546822528820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5598735274598645125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1
