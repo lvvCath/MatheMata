@@ -48,12 +48,17 @@ public class ObjectFunction : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (initialPosition == container.transform.position)
-        {
-            Instantiate(this, container.transform.position, Quaternion.identity, container.transform);
+        // if (initialPosition == container.transform.position)
+        // {
+        //     Instantiate(this, container.transform.position, Quaternion.identity, container.transform);
 
-            this.GetComponent<ObjectFunction>().enabled = false;
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
-        }
+        //     this.GetComponent<ObjectFunction>().enabled = false;
+        //     gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
+        // }
+
+        Instantiate(this, container.transform.position, Quaternion.identity, container.transform);
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponent<ObjectFunction>().enabled = false;
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
     }
 }
