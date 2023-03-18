@@ -108,7 +108,6 @@ public class MassQuizManager : MonoBehaviour
 
         DurstenfeldShuffle(WeightedObjects);
         DurstenfeldShuffle(HeavyObjects);
-        DurstenfeldShuffle(LightObjects);
         GenerateQuestion();
 
     }
@@ -384,6 +383,7 @@ public class MassQuizManager : MonoBehaviour
         //GameObject[] Instances;
         GameObject heavy = HardContainer[0];
         GameObject light = HardContainer[1];
+        int heavyObject_mass;
         if (heavy.transform.childCount > 0){
             Object.Destroy(heavy.transform.GetChild(0).gameObject);
         }
@@ -411,14 +411,26 @@ public class MassQuizManager : MonoBehaviour
                     flag = false;
                 }
             }
-            GameObject currObject = LightObjects[currLight];    
-            currObject.GetComponent<ObjectFunction>().canvas = canvas;
-            currObject.GetComponent<ObjectFunction>().container = light;
+        GameObject currObject = LightObjects[currLight];
+        GameObject leftObject = HeavyObjects[currHeavy];
 
-            quizTopUI.Question.text = "Drag n' Drop the <color=#ffcb2b>"+ LightObjects[currLight].name +"</color> to match the weight of <color=#ffcb2b>"+ HeavyObjects[currHeavy].name +"</color> on the scale";
-        //LeftScale.GetComponent<ScaleLeft>().SetHeavyObject(HeavyObjects[currHeavy]);
+        heavyObject_mass = leftObject.GetComponent<HeavyObjectClass>().lightEstimates[currLight];
+        RightScale.GetComponent<TriggerScale>().SetLeftScaleMass(heavyObject_mass);
+           
+        currObject.GetComponent<ObjectFunction>().canvas = canvas;
+        currObject.GetComponent<ObjectFunction>().container = light;
+
+        quizTopUI.Question.text = "Drag n' Drop the <color=#ffcb2b>"+ currObject.name +"</color> to match the weight of <color=#ffcb2b>"+ HeavyObjects[currHeavy].name +"</color> on the scale";
 
         Instantiate(currObject, light.transform);
-        Instantiate(HeavyObjects[currHeavy], heavy.transform);
+        Instantiate(leftObject, heavy.transform);
+    }
+
+    public void DestroyOnClick () {
+
+        if(HardContainer[1].transform.childCount > 1)
+        {
+            Object.Destroy(HardContainer[1].transform.GetChild(0).gameObject);
+        }
     }
 }

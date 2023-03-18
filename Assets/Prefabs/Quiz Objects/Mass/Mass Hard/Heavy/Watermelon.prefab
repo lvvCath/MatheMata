@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8695793000916705701}
   - component: {fileID: 1566223192666286212}
   - component: {fileID: -1347524785007034182}
+  - component: {fileID: -8497464588974975736}
   m_Layer: 0
   m_Name: Watermelon
   m_TagString: fruit
@@ -125,3 +126,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8497464588974975736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695793000916705699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a490adec2749070479a22bf34691e02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightEstimates: 04000000080000000700000005000000060000000600000004000000060000000900000005000000

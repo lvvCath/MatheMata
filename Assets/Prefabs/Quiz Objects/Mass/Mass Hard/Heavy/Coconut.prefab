@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2073509947276109234}
   - component: {fileID: 8115707351300804011}
   - component: {fileID: 1748810493223446956}
+  - component: {fileID: -4577809502982533215}
   m_Layer: 0
   m_Name: Coconut
   m_TagString: fruit
@@ -125,3 +126,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4577809502982533215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073509947276109232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a490adec2749070479a22bf34691e02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightEstimates: 02000000050000000500000002000000030000000300000002000000030000000600000004000000

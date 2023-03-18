@@ -16,10 +16,15 @@ public class ObjectFunction : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     Vector3 initialPosition;
 
+    
 
     private void Start()
     {
         rectTrans = gameObject.GetComponent<RectTransform>();
+        if(container.transform.position == initialPosition)
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -46,7 +51,9 @@ public class ObjectFunction : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         if (initialPosition == container.transform.position)
         {
             Instantiate(this, container.transform.position, Quaternion.identity, container.transform);
+
+            this.GetComponent<ObjectFunction>().enabled = false;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
         }
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
     }
 }
