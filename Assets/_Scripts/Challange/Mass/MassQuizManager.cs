@@ -7,24 +7,46 @@ using TMPro;
 
 public class MassQuizManager : MonoBehaviour
 {
+    [Header("Canvas")]
+    public Canvas canvas;
+
     [Header("Game Objects")]
     public GameObject[] WeightedObjects;
-    private int[,] Combinations;
+
+    [Header("Average Game Objects")]
+    public GameObject[] AverageObjects;
+    public GameObject[] ScaleArr;
+
+    [Header("Hard Game Objects")]
+    public GameObject[] HeavyObjects;
+    public GameObject[] LightObjects;
+    public GameObject scaleBar;
+    public GameObject LeftScale;
+    public GameObject RightScale;
 
     [Header("Level Change")]
     public string CATEGORY;
     public string DIFFICULTY;
 
+    [Header("Main Question Container")]
+    public GameObject EasyQuestionContainer;
+    public GameObject AverageQuestionContainer;
+    public GameObject HardQuestionContainer;
+    public GameObject OptionContainer;
+    
     [Header("Quiz Options")]
     public GameObject[] Options;
+    public GameObject SubmitButton;
 
     [Header("Game Object Container")]
-    
     public GameObject[] Container;
+    public GameObject[] AverageContainer;
+    public GameObject[] HardContainer;
     public QuizTopUI quizTopUI;
     List<int> arrRecord = new List<int>();
+    List<int> arrLight = new List<int>();
 
-
+    [Header("Quiz Values")]
     public int currentQuestionNo;
     public float timeLimit;
     private int score;
@@ -58,16 +80,25 @@ public class MassQuizManager : MonoBehaviour
         if (DIFFICULTY == "Easy") {
             quizTopUI.Difiiculty.text = "Easy";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Easy");
+            EasyQuestionContainer.SetActive(true);
+            OptionContainer.SetActive(true);
+            timeLimit = 90;
         }
 
         if (DIFFICULTY == "Average") {
             quizTopUI.Difiiculty.text = "Average";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Average");
+            AverageQuestionContainer.SetActive(true);
+            OptionContainer.SetActive(true);
+            timeLimit = 5;
         }
 
         if (DIFFICULTY == "Hard") {
             quizTopUI.Difiiculty.text = "Hard";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
+            HardQuestionContainer.SetActive(true);
+
+            timeLimit = 60;
         }
 
         // Timer
@@ -76,6 +107,7 @@ public class MassQuizManager : MonoBehaviour
         quizTopUI.TimerSlider.value = timeLimit;
 
         DurstenfeldShuffle(WeightedObjects);
+        DurstenfeldShuffle(HeavyObjects);
         GenerateQuestion();
 
     }
@@ -137,14 +169,14 @@ public class MassQuizManager : MonoBehaviour
 
             if (DIFFICULTY == "Average") {
                 quizTopUI.Difiiculty.text = "Average";
-                quizTopUI.Question.text = "Tick the box of the scale with the correct balance";
+
                 AverageQuestion();
                 SetAnswers();
             }
 
             if (DIFFICULTY == "Hard") {
                 quizTopUI.Difiiculty.text = "Hard";
-                quizTopUI.Question.text = "Drag n' Drop the objects until both sides of the scale are equal";
+                
                 HardQuestion();
                 SetAnswers();
             }
@@ -224,12 +256,37 @@ public class MassQuizManager : MonoBehaviour
         }
 
         if (DIFFICULTY == "Average"){
-            
+            string[] correctans = {"Scale A", "Scale B", "Scale C"};
+            for (int i = 0; i < Options.Length; i++) {
+                Options[i].GetComponent<MassAnswerScript>().isCorrect = false;
+                Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = correctans[i];
+
+            }
+            int firstWeight =  AverageObjects[arrLight[0]].GetComponent<ItemWeight>().weight;
+            int secondWeight = AverageObjects[arrLight[1]].GetComponent<ItemWeight>().weight;
+            if (firstWeight > secondWeight)
+            {
+                Options[0].GetComponent<MassAnswerScript>().isCorrect = true;
+            }
+            if (firstWeight < secondWeight)
+            {
+                Options[2].GetComponent<MassAnswerScript>().isCorrect = true;
+            }
+            if (firstWeight == secondWeight)
+            {
+                Options[1].GetComponent<MassAnswerScript>().isCorrect = true;
+            }
         }
 
         if (DIFFICULTY == "Hard"){
-            
+            SubmitButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Submit";
         }
+    }
+
+    public void HardMassSubmit()
+    {
+        SubmitButton.GetComponent<MassAnswerScript>().isCorrect = RightScale.GetComponent<TriggerScale>().IsEqual();
+        Debug.Log(SubmitButton.GetComponent<MassAnswerScript>().isCorrect);
     }
 
     private void EasyQuestion()
@@ -244,7 +301,7 @@ public class MassQuizManager : MonoBehaviour
         float parent_width = Container[0].GetComponent<RectTransform>().rect.width;
         float parent_height = Container[0].GetComponent<RectTransform>().rect.height;
         arrRecord.Clear();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < Container.Length; i++)
         {
             int currObject = Random.Range(0, WeightedObjects.Length);
             bool flag = true;
@@ -264,11 +321,116 @@ public class MassQuizManager : MonoBehaviour
 
     private void AverageQuestion()
     {
-        // to add function
+        // Instantiate the two objects based on the Child Container (Object1 and Object2)
+        
+        GameObject container;
+        int counter = 0;
+        int currObject = Random.Range(0, AverageObjects.Length);
+        for (int i = 0; i < AverageContainer.Length; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                container = AverageContainer[i].transform.GetChild(j).gameObject;
+                if (container.transform.childCount > 0)
+                    {
+                        Object.Destroy(container.transform.GetChild(0).gameObject);
+                    }
+            }
+        }
+
+        arrLight.Clear();
+        for (int i = 0; i < AverageContainer.Length; i++)
+        {
+            for (int j = 0; j < AverageContainer[i].transform.childCount-1; j++)
+            {
+
+                bool flag = true;
+                if (counter >= 2) 
+                {
+                    flag = false;
+                }
+                while (flag)
+                {
+                    currObject = Random.Range(0, AverageObjects.Length);
+                    if (arrRecord.Contains(currObject) == false) // checks if the object was already used in question.
+                    {
+                        arrRecord.Add(currObject);
+                        arrLight.Add(currObject);
+                        flag = false;
+                        Debug.Log(currObject);
+                    }
+                }
+                container = AverageContainer[i].transform.GetChild(j).gameObject;
+                GameObject newObj = Instantiate(AverageObjects[arrLight[j]], container.transform);
+
+                // Get the RectTransform component of the instantiated object
+                RectTransform newObjRect = newObj.GetComponent<RectTransform>();
+
+                // Set the anchored position to the bottom of the child container
+                newObjRect.anchorMin = new Vector2(0.5f, 0f);
+                newObjRect.anchorMax = new Vector2(0.5f, 0f);
+                newObjRect.pivot = new Vector2(0.5f, 0f);
+                newObjRect.anchoredPosition = new Vector2(0f, 0f);
+        counter++;
+            }
+        }
+        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + AverageObjects[arrLight[0]].name + "</color> and <color=#ffcb2b>" + AverageObjects[arrLight[1]].name + "</color> is in the right balance";
+        
     }
 
     private void HardQuestion()
     {
-        // to add function
+        //GameObject[] Instances;
+        GameObject heavy = HardContainer[0];
+        GameObject light = HardContainer[1];
+        int heavyObject_mass;
+        if (heavy.transform.childCount > 0){
+            Object.Destroy(heavy.transform.GetChild(0).gameObject);
+        }
+        for (int i = light.transform.childCount-1; i >= 0; i--)
+        {
+            GameObject.Destroy(light.transform.GetChild(i).gameObject);
+        }
+        
+        int currHeavy = Random.Range(0, HeavyObjects.Length);
+        int currLight = Random.Range(0, LightObjects.Length);
+
+        bool flag = true;
+            while (flag)
+            {
+                currHeavy = Random.Range(0, HeavyObjects.Length);
+                if (arrRecord.Contains(currHeavy) == false) // checks if the object was already used in question.
+                {
+                    arrRecord.Add(currHeavy);
+                    flag = false;
+                }
+                currLight = Random.Range(0, LightObjects.Length);
+                if (arrLight.Contains(currLight) == false) // checks if the object was already used in question.
+                {
+                    arrLight.Add(currLight);
+                    flag = false;
+                }
+            }
+        GameObject currObject = LightObjects[currLight];
+        GameObject leftObject = HeavyObjects[currHeavy];
+
+        heavyObject_mass = leftObject.GetComponent<HeavyObjectClass>().lightEstimates[currLight];
+        RightScale.GetComponent<TriggerScale>().SetLeftScaleMass(heavyObject_mass);
+           
+        currObject.GetComponent<ObjectFunction>().canvas = canvas;
+        currObject.GetComponent<ObjectFunction>().container = light;
+
+        quizTopUI.Question.text = "Drag n' Drop the <color=#ffcb2b>"+ currObject.name +"</color> to match the weight of <color=#ffcb2b>"+ HeavyObjects[currHeavy].name +"</color> on the scale";
+
+        Instantiate(currObject, light.transform);
+        Instantiate(leftObject, heavy.transform);
+    }
+
+    public void DestroyOnClick () {
+
+        if(HardContainer[1].transform.childCount > 1)
+        {
+            Object.Destroy(HardContainer[1].transform.GetChild(0).gameObject);
+        }
     }
 }
