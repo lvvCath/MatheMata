@@ -354,11 +354,16 @@ public class CapacityQuizManager : MonoBehaviour
                 arrRecord.Add(currSecondObject);
                 flag = false;
             }
-            else if (currFirstObject != currSecondObject && arrRecord.Contains(currFirstObject) && arrRecord.Contains(currSecondObject))
+            else if (CapacityObjects[currFirstObject].transform.GetComponent<ItemCapacity>().capacity == CapacityObjects[currSecondObject].transform.GetComponent<ItemCapacity>().capacity)
             {
-                arrRecord.Remove(currSecondObject);
+                Object.Destroy(EasyContainer[1].transform.GetChild(0).gameObject);
                 flag = true;
             }
+            // else if (currFirstObject != currSecondObject && arrRecord.Contains(currFirstObject) && arrRecord.Contains(currSecondObject))
+            // {
+            //     arrRecord.Remove(currSecondObject);
+            //     flag = true;
+            // }
         }
 
         firstObjName = CapacityObjects[currFirstObject].name;
