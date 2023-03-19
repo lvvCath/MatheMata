@@ -29,11 +29,12 @@ public class AIOLength : MonoBehaviour
 
     // Easy private variables
     private List<int> L_shortRecord = new List<int>();
-    private int L_currentQuestionNo = 0;
+    private int L_currentQuestionNo;
     private string L_shortObjName;
 
-    private void Start()
+    public void callStart()
     {
+        L_currentQuestionNo = 0;
         DurstenfeldShuffle(L_LongObj);
         DurstenfeldShuffle(L_ShortObjOption);
     }

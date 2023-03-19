@@ -19,6 +19,11 @@ public class QuizSceneManager : MonoBehaviour
         SceneManager.LoadScene("8_Score");
     }
 
+    public void toAllInOne()
+    {
+        SceneManager.LoadScene("9_AllInOne");
+    }
+
     public void setLengthCategory() {
         QuizData.CATEGORY = "Length";
     }
