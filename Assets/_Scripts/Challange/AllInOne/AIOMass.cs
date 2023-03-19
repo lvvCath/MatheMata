@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-
+using System.Linq;
 using TMPro;
-
-public class MassQuizManager : MonoBehaviour
+public class AIOMass : MonoBehaviour
 {
     [Header("Canvas")]
     public Canvas canvas;
@@ -23,16 +21,6 @@ public class MassQuizManager : MonoBehaviour
     public GameObject scaleBar;
     public GameObject LeftScale;
     public GameObject RightScale;
-
-    [Header("Level Change")]
-    public string CATEGORY;
-    public string DIFFICULTY;
-
-    [Header("Main Question Container")]
-    public GameObject EasyQuestionContainer;
-    public GameObject AverageQuestionContainer;
-    public GameObject HardQuestionContainer;
-    public GameObject OptionContainer;
     
     [Header("Quiz Options")]
     public GameObject[] Options;
@@ -48,71 +36,13 @@ public class MassQuizManager : MonoBehaviour
 
     [Header("Quiz Values")]
     public int currentQuestionNo;
-    public float timeLimit;
-    private int score;
-    private float timer;
-    private bool stopTimer;
     private string[] QuestionList = {"Which of the following is the lightest?", "Which of the following is the heaviest?"};
 
-    [Header("PopUp Overlay Panel")]
-    public GameObject WrongOverlay;
-    public GameObject CorrectOverlay;
-
-    public GameObject ResultPanel;
-
-    [Header("Audio SFX")]
-    public AudioClip correctSFX;
-    public AudioClip wrongSFX;
-
-    private AudioSource audioSource;
-
-    // Start is called before the first frame update
-    void Start()
+    public void callStart()
     {
-        // Set Here the current Text for Question, Category, Difficulty. use condition
-
-        quizTopUI.Category.text = QuizData.CATEGORY;
-
-        DIFFICULTY = QuizData.DIFFICULTY;
-        
-        audioSource = GetComponent<AudioSource>();
-
-        if (DIFFICULTY == "Easy") {
-            quizTopUI.Difiiculty.text = "Easy";
-            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Easy");
-            EasyQuestionContainer.SetActive(true);
-            OptionContainer.SetActive(true);
-            timeLimit = 60;
-        }
-
-        if (DIFFICULTY == "Average") {
-            quizTopUI.Difiiculty.text = "Average";
-            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Average");
-            AverageQuestionContainer.SetActive(true);
-            OptionContainer.SetActive(true);
-            timeLimit = 90;
-        }
-
-        if (DIFFICULTY == "Hard") {
-            quizTopUI.Difiiculty.text = "Hard";
-            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
-            HardQuestionContainer.SetActive(true);
-
-            timeLimit = 100;
-        }
-
-        // Timer
-        stopTimer = false;
-        quizTopUI.TimerSlider.maxValue = timeLimit;
-        quizTopUI.TimerSlider.value = timeLimit;
-
         DurstenfeldShuffle(WeightedObjects);
         DurstenfeldShuffle(HeavyObjects);
-        GenerateQuestion();
-
     }
-
-
 
     // Shuffle Algorithm
     private void DurstenfeldShuffle<T>(T[] gameObjectArr) 
@@ -120,7 +50,7 @@ public class MassQuizManager : MonoBehaviour
         int last_index = gameObjectArr.Length - 1;
         while (last_index > 0)
         {
-            int rand_index = UnityEngine.Random.Range(0, last_index+1); //modify in documentation "+1"
+            int rand_index = UnityEngine.Random.Range(0, last_index+1);
             T temp = gameObjectArr[last_index];
             gameObjectArr[last_index] = gameObjectArr[rand_index];
             gameObjectArr[rand_index] = temp;
@@ -128,108 +58,13 @@ public class MassQuizManager : MonoBehaviour
         }
     }
 
-    private void Update() 
-    {
-        if(stopTimer == false)
-        {
-            timer -= Time.deltaTime;
-            // Text Timer
-            int minutes = Mathf.FloorToInt(timer / 60);
-            int seconds = Mathf.FloorToInt(timer % 60);
-            quizTopUI.Timer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
-            // Slider Timer
-            quizTopUI.TimerSlider.value = timer;
-
-            if (timer <= 0)
-            {
-                GenerateQuestion();
-            }
-        }
-        
-    }
-
-    private void GenerateQuestion()
-    {
-        if (currentQuestionNo < 10)
-        {
-            // Timer
-            stopTimer = false;
-            timer = timeLimit;
-
-            quizTopUI.QuestionNo.text = "Question " + (currentQuestionNo+1).ToString();
-            
-            if (DIFFICULTY == "Easy") {
-                quizTopUI.Difiiculty.text = "Easy";
-                int question = UnityEngine.Random.Range(0, QuestionList.Length);
-                quizTopUI.Question.text = QuestionList[question];
-
-                EasyQuestion();
-                SetAnswers();
-            }
-
-            if (DIFFICULTY == "Average") {
-                quizTopUI.Difiiculty.text = "Average";
-
-                AverageQuestion();
-                SetAnswers();
-            }
-
-            if (DIFFICULTY == "Hard") {
-                quizTopUI.Difiiculty.text = "Hard";
-                
-                HardQuestion();
-                SetAnswers();
-            }
-
-            currentQuestionNo += 1;
-        }else
-        {
-            // Timer
-            stopTimer = true;
-            quizTopUI.Timer.text = "00:00";
-
-            // Display Result Panel
-            ResultPanel.SetActive(true);
-            ResultPanel.GetComponent<QuizResultAnim>().setScore(score.ToString(), WeightedObjects.Length.ToString());
-        }
-    }
-
-    IEnumerator nextQuestion(GameObject guiParentCanvas, float secondsToWait, string answer)
-    {
-        yield return new WaitForSeconds(secondsToWait);
-        guiParentCanvas.GetComponent<OverlayPanel>().CloseOverlay();
-
-        GenerateQuestion();
-
-    }
-
-    public void correct()
-    {
-        score += 1;
-        stopTimer = true; // Timer
-
-        quizTopUI.Score.text = (score).ToString() + " / " + WeightedObjects.Length.ToString();
-        CorrectOverlay.SetActive(true);
-        audioSource.PlayOneShot(correctSFX);
-        StartCoroutine(nextQuestion(CorrectOverlay, 2.0f, "correct"));
-    }
-
-    public void wrong()
-    {
-        stopTimer = true; // Timer
-
-        WrongOverlay.SetActive(true);
-        audioSource.PlayOneShot(wrongSFX);
-        StartCoroutine(nextQuestion(WrongOverlay, 2.0f, "wrong"));
-    }
-
-    public void SetAnswers()
+    public void SetAnswers(string DIFFICULTY)
     {
         if (DIFFICULTY == "Easy"){
             List<int> arrayWeight = new List<int>();
             int ind;
             for (int i = 0; i < Options.Length; i++){
-                Options[i].GetComponent<MassAnswerScript>().isCorrect = false;
+                Options[i].GetComponent<AIOAnswerScript>().isCorrect = false;
                 Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = WeightedObjects[arrRecord[i]].name;
                 arrayWeight.Add(WeightedObjects[arrRecord[i]].GetComponent<ItemWeight>().weight);
             }
@@ -238,7 +73,7 @@ public class MassQuizManager : MonoBehaviour
             {
                 correctEasyAns = arrayWeight.Min();
                 ind = arrayWeight.IndexOf(correctEasyAns);
-                Options[ind].GetComponent<MassAnswerScript>().isCorrect = true;
+                Options[ind].GetComponent<AIOAnswerScript>().isCorrect = true;
                     
             }
 
@@ -246,7 +81,7 @@ public class MassQuizManager : MonoBehaviour
             {
                 correctEasyAns = arrayWeight.Max();
                 ind = arrayWeight.IndexOf(correctEasyAns);
-                Options[ind].GetComponent<MassAnswerScript>().isCorrect = true;
+                Options[ind].GetComponent<AIOAnswerScript>().isCorrect = true;
                     
             }
         }
@@ -254,7 +89,7 @@ public class MassQuizManager : MonoBehaviour
         if (DIFFICULTY == "Average"){
             string[] correctans = {"Scale A", "Scale B", "Scale C"};
             for (int i = 0; i < Options.Length; i++) {
-                Options[i].GetComponent<MassAnswerScript>().isCorrect = false;
+                Options[i].GetComponent<AIOAnswerScript>().isCorrect = false;
                 Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = correctans[i];
 
             }
@@ -262,15 +97,15 @@ public class MassQuizManager : MonoBehaviour
             int secondWeight = AverageObjects[arrLight[1]].GetComponent<ItemWeight>().weight;
             if (firstWeight > secondWeight)
             {
-                Options[0].GetComponent<MassAnswerScript>().isCorrect = true;
+                Options[0].GetComponent<AIOAnswerScript>().isCorrect = true;
             }
             if (firstWeight < secondWeight)
             {
-                Options[2].GetComponent<MassAnswerScript>().isCorrect = true;
+                Options[2].GetComponent<AIOAnswerScript>().isCorrect = true;
             }
             if (firstWeight == secondWeight)
             {
-                Options[1].GetComponent<MassAnswerScript>().isCorrect = true;
+                Options[1].GetComponent<AIOAnswerScript>().isCorrect = true;
             }
         }
 
@@ -281,11 +116,14 @@ public class MassQuizManager : MonoBehaviour
 
     public void HardMassSubmit()
     {
-        SubmitButton.GetComponent<MassAnswerScript>().isCorrect = RightScale.GetComponent<TriggerScale>().IsEqual();
+        SubmitButton.GetComponent<AIOAnswerScript>().isCorrect = RightScale.GetComponent<TriggerScale>().IsEqual();
     }
 
-    private void EasyQuestion()
+    public void EasyQuestion()
     {
+        int question = UnityEngine.Random.Range(0, QuestionList.Length);
+        quizTopUI.Question.text = QuestionList[question];
+
         // Instantiate
         if (Container[0].transform.childCount > 0){
             Object.Destroy(Container[0].transform.GetChild(0).gameObject);
@@ -314,7 +152,7 @@ public class MassQuizManager : MonoBehaviour
         }
     }
 
-    private void AverageQuestion()
+    public void AverageQuestion()
     {
         // Instantiate the two objects based on the Child Container (Object1 and Object2)
         
@@ -372,7 +210,7 @@ public class MassQuizManager : MonoBehaviour
         
     }
 
-    private void HardQuestion()
+    public void HardQuestion()
     {
         //GameObject[] Instances;
         GameObject heavy = HardContainer[0];
