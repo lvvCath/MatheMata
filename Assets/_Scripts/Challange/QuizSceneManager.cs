@@ -84,11 +84,10 @@ public class QuizSceneManager : MonoBehaviour
         {
             SceneManager.LoadScene("6_Mass");
         }
-        // if (QuizData.CATEGORY == "Capacity") 
-        // {
-            
-        // }
+        if (QuizData.CATEGORY == "Capacity") 
+        {
+            SceneManager.LoadScene("7_Capacity");
+        }
     }
-
 
 }
