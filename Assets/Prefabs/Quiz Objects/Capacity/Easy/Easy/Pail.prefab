@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2570753356444186315}
   - component: {fileID: 2570753356444186312}
   - component: {fileID: 2570753356444186313}
+  - component: {fileID: 7312828925093797840}
   m_Layer: 5
   m_Name: Pail
   m_TagString: Untagged
@@ -105,3 +106,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capacity: 10
+--- !u!114 &7312828925093797840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2570753356444186319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa21e924e2017314f8deaa4d5950ad89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objLabel: Pail

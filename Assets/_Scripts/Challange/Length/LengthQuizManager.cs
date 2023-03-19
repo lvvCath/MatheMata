@@ -62,8 +62,6 @@ public class LengthQuizManager : MonoBehaviour
 
      private void Start()
     {
-        // Set Here the current Text for Question, Category, Difficulty. use condition
-
         quizTopUI.Category.text = QuizData.CATEGORY;
         
         DIFFICULTY = QuizData.DIFFICULTY;
@@ -166,8 +164,6 @@ public class LengthQuizManager : MonoBehaviour
             // Display Result Panel
             ResultPanel.SetActive(true);
             ResultPanel.GetComponent<QuizResultAnim>().setScore(score.ToString(), LongObjects.Length.ToString());
-            
-            Debug.Log("GAME OVER");
         }
 
     }

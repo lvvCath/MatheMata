@@ -45,7 +45,6 @@ public class TriggerScale : MonoBehaviour
         objDetected = collision.gameObject;
         objMass = objDetected.GetComponent<Rigidbody2D>().mass;
         scaleRight_Mass += (int)objMass;
-        Debug.Log(scaleRight_Mass);
         scale();
     }
 
@@ -54,15 +53,11 @@ public class TriggerScale : MonoBehaviour
         objDetected = collision.gameObject;
         objMass = objDetected.GetComponent<Rigidbody2D>().mass;
         scaleRight_Mass -= (int)objMass;
-        Debug.Log(scaleRight_Mass);
-        //scaleRight_Mass = Math.Round(scaleRight_Mass);
         scale();
     }
 
     void scale()
     {
-        Debug.Log("Scale Left Mass: " + scaleLeft_mass);
-        Debug.Log("Right Scale Mass: " + scaleRight_Mass);
         if (scaleLeft_mass == scaleRight_Mass) // 0
         {
             isEqual = true;
@@ -80,6 +75,5 @@ public class TriggerScale : MonoBehaviour
             isEqual = false;
             LeanTween.rotateZ(scaleBar, 10, rotateTime);
         }
-        Debug.Log("IsEqual Scale Value: " + IsEqual());
     }
 }
