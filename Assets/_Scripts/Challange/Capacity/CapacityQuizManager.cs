@@ -236,15 +236,15 @@ public class CapacityQuizManager : MonoBehaviour
 
         if (DIFFICULTY == "Easy")
         {
-            string choice0 = "MORE";
-            string choice1 = "LESS";
+            string[] choice = {"MORE", "LESS"};
+            DurstenfeldShuffle(Options);
 
             for (int i = 0; i < Options.Length; i++)
             {
                 Options[i].GetComponent<CapacityAnswerScript>().isCorrect = false;
 
-                Options[0].transform.GetChild(0).GetComponent<TMP_Text>().text = choice0;
-                Options[1].transform.GetChild(0).GetComponent<TMP_Text>().text = choice1;
+                Options[0].transform.GetChild(0).GetComponent<TMP_Text>().text = choice[0];
+                Options[1].transform.GetChild(0).GetComponent<TMP_Text>().text = choice[1];
             }
 
             if (left < right)
@@ -349,14 +349,16 @@ public class CapacityQuizManager : MonoBehaviour
                 arrRecord.Add(currFirstObject);
                 flag = false;
             }
-            else if (arrRecord.Contains(currSecondObject) == false) // checks if the object was already used in question.
+            
+            if (arrRecord.Contains(currSecondObject) == false) // checks if the object was already used in question.
             {
                 arrRecord.Add(currSecondObject);
                 flag = false;
             }
-            else if (CapacityObjects[currFirstObject].transform.GetComponent<ItemCapacity>().capacity == CapacityObjects[currSecondObject].transform.GetComponent<ItemCapacity>().capacity)
+
+            if (CapacityObjects[currFirstObject].transform.GetComponent<ItemCapacity>().capacity == CapacityObjects[currSecondObject].transform.GetComponent<ItemCapacity>().capacity)
             {
-                Object.Destroy(EasyContainer[1].transform.GetChild(0).gameObject);
+                arrRecord.Remove(currSecondObject);
                 flag = true;
             }
             // else if (currFirstObject != currSecondObject && arrRecord.Contains(currFirstObject) && arrRecord.Contains(currSecondObject))
