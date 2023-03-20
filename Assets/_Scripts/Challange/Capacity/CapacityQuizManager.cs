@@ -392,8 +392,8 @@ public class CapacityQuizManager : MonoBehaviour
             Object.Destroy(AverContainer[2].transform.GetChild(0).gameObject);
         }
 
-        float parent_width = AverContainer[0].GetComponent<RectTransform>().rect.width;
-        float parent_height = AverContainer[0].GetComponent<RectTransform>().rect.height;
+        // float parent_width = AverContainer[0].GetComponent<RectTransform>().rect.width;
+        // float parent_height = AverContainer[0].GetComponent<RectTransform>().rect.height;
 
         arrRecord.Clear();
 
@@ -411,7 +411,7 @@ public class CapacityQuizManager : MonoBehaviour
                 }
             }
             Instantiate(aveCapacityObjects[currObject], AverContainer[i].transform);
-            aveCapacityObjects[i].GetComponent<RectTransform>().sizeDelta = new Vector2(parent_width, parent_height);
+            //aveCapacityObjects[i].GetComponent<RectTransform>().sizeDelta = new Vector2(parent_width, parent_height);
         }
     }
 
