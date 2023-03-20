@@ -22,8 +22,6 @@ public class ScoreSummaryManager : MonoBehaviour
     int[] TotalScore;
     int[] TotalItems;
     
-
-
     // Start is called before the first frame update
     void Start()
     {

@@ -33,6 +33,10 @@ public class AIOQuizManager : MonoBehaviour
     public GameObject M_AveCont;
     public GameObject M_HardCont;
     public GameObject M_OptionCont;
+    public GameObject C_EasyCont;
+    public GameObject C_AveCont;
+    public GameObject C_HardCont;
+
 
     [Header("Quiz Manager")]
     public GameObject QUIZMANAGER;
@@ -48,13 +52,14 @@ public class AIOQuizManager : MonoBehaviour
         ResultPanel.GetComponent<QuizResultAnim>().setQuiz("All In One", ""); 
 
         // Timer
-        timeLimit = 30;
+        timeLimit = 60;
         stopTimer = false;
         quizTopUI.TimerSlider.maxValue = timeLimit;
         quizTopUI.TimerSlider.value = timeLimit;
 
         QUIZMANAGER.GetComponent<AIOLength>().callStart();
         QUIZMANAGER.GetComponent<AIOMass>().callStart();
+        QUIZMANAGER.GetComponent<AIOCapacity>().callStart();
         GenerateQuestion();
     }
 
@@ -88,6 +93,9 @@ public class AIOQuizManager : MonoBehaviour
             M_AveCont.SetActive(false);
             M_HardCont.SetActive(false);
             M_OptionCont.SetActive(false);
+            C_EasyCont.SetActive(false);
+            C_AveCont.SetActive(false);
+            C_HardCont.SetActive(false);
 
             // Timer
             stopTimer = false;
@@ -95,8 +103,7 @@ public class AIOQuizManager : MonoBehaviour
 
             quizTopUI.QuestionNo.text = "Question " + (currentQuestionNo+1).ToString();
 
-            // int randCategory = Random.Range(1, 4); // (1) Length, (2) Mass, (3) Capacity
-            randCategory = Random.Range(1, 3); // (1) Length, (2) Mass
+            randCategory = Random.Range(1, 4); // (1) Length, (2) Mass, (3) Capacity
             randDifficulty = Random.Range(1, 4);  // (1) Easy, (2) Average, (3) Hard
 
             // randCategory = 1;
@@ -136,46 +143,47 @@ public class AIOQuizManager : MonoBehaviour
                             M_EasyCont.SetActive(true);
                             M_OptionCont.SetActive(true);
                             QUIZMANAGER.GetComponent<AIOMass>().EasyQuestion();
-                            QUIZMANAGER.GetComponent<AIOMass>().SetAnswers(DIFFICULTY);
                             break;
                         case 2:
                             DIFFICULTY = "Average";
                             M_AveCont.SetActive(true);
                             M_OptionCont.SetActive(true);
                             QUIZMANAGER.GetComponent<AIOMass>().AverageQuestion();
-                            QUIZMANAGER.GetComponent<AIOMass>().SetAnswers(DIFFICULTY);
                             break;
                         case 3:
                             DIFFICULTY = "Hard";
                             M_HardCont.SetActive(true);
                             QUIZMANAGER.GetComponent<AIOMass>().HardQuestion();
-                            QUIZMANAGER.GetComponent<AIOMass>().SetAnswers(DIFFICULTY);
-
                             break;
                         default:
                             Debug.LogError("Invalid difficulty level: " + randDifficulty);
                             break;
                     }
+                    QUIZMANAGER.GetComponent<AIOMass>().SetAnswers(DIFFICULTY);
                     break;
                 case 3:
                     quizTopUI.Difiiculty.text = "Capacity";
                     switch (randDifficulty) {
                         case 1:
                             DIFFICULTY = "Easy";
-                            //...
+                            C_EasyCont.SetActive(true);
+                            QUIZMANAGER.GetComponent<AIOCapacity>().EasyQuestion();
                             break;
                         case 2:
                             DIFFICULTY = "Average";
-                            //...
+                            C_AveCont.SetActive(true);
+                            QUIZMANAGER.GetComponent<AIOCapacity>().AverageQuestion();
                             break;
                         case 3:
                             DIFFICULTY = "Hard";
-                            //...
+                            C_HardCont.SetActive(true);
+                            QUIZMANAGER.GetComponent<AIOCapacity>().HardQuestion();
                             break;
                         default:
                             Debug.LogError("Invalid difficulty level: " + randDifficulty);
                             break;
                     }
+                    QUIZMANAGER.GetComponent<AIOCapacity>().SetAnswers(DIFFICULTY);
                     break;
                 default:
                     Debug.LogError("Invalid category: " + randCategory);
