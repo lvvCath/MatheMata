@@ -61,10 +61,8 @@ public class CapacityQuizManager : MonoBehaviour
     public GameObject ResultPanel;
 
     [Header("Audio SFX")]
-    public AudioClip correctSFX;
-    public AudioClip wrongSFX;
-
-    private AudioSource audioSource;
+    public AudioSource correctSFX;
+    public AudioSource wrongSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -74,8 +72,6 @@ public class CapacityQuizManager : MonoBehaviour
         quizTopUI.Category.text = QuizData.CATEGORY;
 
         DIFFICULTY = QuizData.DIFFICULTY;
-
-        audioSource = GetComponent<AudioSource>();
 
         if (DIFFICULTY == "Easy")
         {
@@ -217,7 +213,7 @@ public class CapacityQuizManager : MonoBehaviour
 
         quizTopUI.Score.text = (score).ToString() + " / " + CapacityObjects.Length.ToString();
         CorrectOverlay.SetActive(true);
-        audioSource.PlayOneShot(correctSFX);
+        correctSFX.Play();
         StartCoroutine(nextQuestion(CorrectOverlay, 2.0f, "correct"));
     }
 
@@ -227,7 +223,7 @@ public class CapacityQuizManager : MonoBehaviour
         stopTimer = true; // Timer
 
         WrongOverlay.SetActive(true);
-        audioSource.PlayOneShot(wrongSFX);
+        wrongSFX.Play();
         StartCoroutine(nextQuestion(WrongOverlay, 2.0f, "wrong"));
     }
 
@@ -368,9 +364,9 @@ public class CapacityQuizManager : MonoBehaviour
             // }
         }
 
-        firstObjName = CapacityObjects[currFirstObject].name;
+        firstObjName = CapacityObjects[currFirstObject].GetComponent<LabelScriptClass>().objLabel;
         left = CapacityObjects[currFirstObject].GetComponent<ItemCapacity>().capacity;
-        secondObjName = CapacityObjects[currSecondObject].name;
+        secondObjName = CapacityObjects[currSecondObject].GetComponent<LabelScriptClass>().objLabel;
         right = CapacityObjects[currSecondObject].GetComponent<ItemCapacity>().capacity;
 
         GameObject leftObject = CapacityObjects[currFirstObject];
