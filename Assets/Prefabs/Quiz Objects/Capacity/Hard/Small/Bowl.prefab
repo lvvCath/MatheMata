@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5322985519611299471
+--- !u!1 &2425145240435056019
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5322985519611299470}
-  - component: {fileID: 5322985519611299465}
-  - component: {fileID: 5322985519611299466}
-  - component: {fileID: 5322985519611299467}
-  - component: {fileID: 5322985519611299468}
-  - component: {fileID: 5322985519611299469}
-  - component: {fileID: 3658201247241429665}
+  - component: {fileID: 2425145240435056016}
+  - component: {fileID: 2425145240435056020}
+  - component: {fileID: 2425145240435056023}
+  - component: {fileID: 2425145240435056022}
+  - component: {fileID: 2425145240435056017}
   m_Layer: 0
-  m_Name: Milk
+  m_Name: Bowl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5322985519611299470
+--- !u!224 &2425145240435056016
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
+  m_GameObject: {fileID: 2425145240435056019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.04905562}
+  m_LocalPosition: {x: 0, y: 0, z: -8967.003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 330, y: 522}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5322985519611299465
+--- !u!222 &2425145240435056020
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
+  m_GameObject: {fileID: 2425145240435056019}
   m_CullTransparentMesh: 1
---- !u!114 &5322985519611299466
+--- !u!114 &2425145240435056023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
+  m_GameObject: {fileID: 2425145240435056019}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -70,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c14899bb4ab7aca4dbd5341f41cc6ead, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a4b05b616bb7a545aaf0aa15c1c04a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -80,56 +78,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5322985519611299467
+--- !u!114 &2425145240435056022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
+  m_GameObject: {fileID: 2425145240435056019}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 3
-  m_AspectRatio: 0.7306273
---- !u!114 &5322985519611299468
+  m_AspectRatio: 1
+--- !u!114 &2425145240435056017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
+  m_GameObject: {fileID: 2425145240435056019}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa21e924e2017314f8deaa4d5950ad89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objLabel: Milk
---- !u!114 &5322985519611299469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ec49afa4c599b04eacdc7043265253b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallEstimate: 060000000500000004000000030000000200000001000000
---- !u!114 &3658201247241429665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71e2df00d61213e44bfe96b5bb691199, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 010000000200000003000000040000000500000006000000
+  objLabel: Bowl

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &278641395843434843
+--- !u!1 &1909727074697129889
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 278641395843434842}
-  - component: {fileID: 278641395843434838}
-  - component: {fileID: 278641395843434839}
-  - component: {fileID: 278641395843434836}
-  - component: {fileID: 278641395843434837}
+  - component: {fileID: 1909727074697129888}
+  - component: {fileID: 1909727074697129892}
+  - component: {fileID: 1909727074697129893}
+  - component: {fileID: 1909727074697129890}
+  - component: {fileID: 1909727074697129891}
   m_Layer: 0
   m_Name: Wine Glass
   m_TagString: Untagged
@@ -20,15 +20,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &278641395843434842
+--- !u!224 &1909727074697129888
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278641395843434843}
+  m_GameObject: {fileID: 1909727074697129889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.04905562}
+  m_LocalPosition: {x: 0, y: 0, z: -8967.003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,21 +40,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &278641395843434838
+--- !u!222 &1909727074697129892
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278641395843434843}
+  m_GameObject: {fileID: 1909727074697129889}
   m_CullTransparentMesh: 1
---- !u!114 &278641395843434839
+--- !u!114 &1909727074697129893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278641395843434843}
+  m_GameObject: {fileID: 1909727074697129889}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dec0df830a2455e41aacddc1ed941391, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 43fef6756d463e8418317954c1161a48, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -78,13 +78,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &278641395843434836
+--- !u!114 &1909727074697129890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278641395843434843}
+  m_GameObject: {fileID: 1909727074697129889}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
@@ -92,16 +92,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 3
   m_AspectRatio: 1
---- !u!114 &278641395843434837
+--- !u!114 &1909727074697129891
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278641395843434843}
+  m_GameObject: {fileID: 1909727074697129889}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa21e924e2017314f8deaa4d5950ad89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objLabel: Wine Glass
+  objLabel: Wine

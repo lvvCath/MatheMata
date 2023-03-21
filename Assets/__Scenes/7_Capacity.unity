@@ -1409,27 +1409,37 @@ MonoBehaviour:
   - {fileID: 1680290406658329111, guid: 33b98384a2fa2da4eaced557a2662760, type: 3}
   - {fileID: 7461261085725657029, guid: 06e130998b3ca864d905d147e948da48, type: 3}
   hardCapacityObjects:
+  - {fileID: 8311244383307185419, guid: c1ec8d9d7fa98994baa10868384384e2, type: 3}
   - {fileID: 8790474227096040206, guid: d2bc40c6d1245a94c93e2e1badd3f0df, type: 3}
   - {fileID: 8844783910872539137, guid: 7934caf8a7e38d241be6151e54daf89a, type: 3}
   - {fileID: 5322985519611299471, guid: 3d93da0885a8b8d4d82d728a97769e6f, type: 3}
-  - {fileID: 8790474227096040206, guid: d2bc40c6d1245a94c93e2e1badd3f0df, type: 3}
-  - {fileID: 8844783910872539137, guid: 7934caf8a7e38d241be6151e54daf89a, type: 3}
-  - {fileID: 5322985519611299471, guid: 3d93da0885a8b8d4d82d728a97769e6f, type: 3}
+  - {fileID: 1705805843247784631, guid: 539d62bafc2cfd746a9cc61e362ffae9, type: 3}
+  - {fileID: 3917181501161436200, guid: 93cbefd712bf01f4d9675c114a839fd6, type: 3}
   - {fileID: 1666025188376510288, guid: 93dfdb98304dbde41a70bc4b913d5649, type: 3}
-  - {fileID: 5322985519611299471, guid: 3d93da0885a8b8d4d82d728a97769e6f, type: 3}
-  - {fileID: 8844783910872539137, guid: 7934caf8a7e38d241be6151e54daf89a, type: 3}
+  - {fileID: 7548812526050237900, guid: 91cc21797f27ee34e8bfd7eb0cdd10d3, type: 3}
+  - {fileID: 8311244383307185419, guid: c1ec8d9d7fa98994baa10868384384e2, type: 3}
   - {fileID: 8790474227096040206, guid: d2bc40c6d1245a94c93e2e1badd3f0df, type: 3}
+  - {fileID: 8844783910872539137, guid: 7934caf8a7e38d241be6151e54daf89a, type: 3}
+  - {fileID: 5322985519611299471, guid: 3d93da0885a8b8d4d82d728a97769e6f, type: 3}
+  - {fileID: 1705805843247784631, guid: 539d62bafc2cfd746a9cc61e362ffae9, type: 3}
+  - {fileID: 3917181501161436200, guid: 93cbefd712bf01f4d9675c114a839fd6, type: 3}
+  - {fileID: 1666025188376510288, guid: 93dfdb98304dbde41a70bc4b913d5649, type: 3}
+  - {fileID: 7548812526050237900, guid: 91cc21797f27ee34e8bfd7eb0cdd10d3, type: 3}
   hardSmallCapacityObjects:
-  - {fileID: 1708274812138180188, guid: 98893f0ea2f7709408f16778391b9247, type: 3}
-  - {fileID: 278641395843434843, guid: 231fb33f509d02c4baea12476e5918c0, type: 3}
-  - {fileID: 4232635215332921268, guid: b49e9eacfb1713b4797bc0d9b5b17d88, type: 3}
-  - {fileID: 1708274812138180188, guid: 98893f0ea2f7709408f16778391b9247, type: 3}
-  - {fileID: 4232635215332921268, guid: b49e9eacfb1713b4797bc0d9b5b17d88, type: 3}
-  - {fileID: 278641395843434843, guid: 231fb33f509d02c4baea12476e5918c0, type: 3}
-  - {fileID: 4232635215332921268, guid: b49e9eacfb1713b4797bc0d9b5b17d88, type: 3}
-  - {fileID: 1708274812138180188, guid: 98893f0ea2f7709408f16778391b9247, type: 3}
-  - {fileID: 278641395843434843, guid: 231fb33f509d02c4baea12476e5918c0, type: 3}
-  - {fileID: 1708274812138180188, guid: 98893f0ea2f7709408f16778391b9247, type: 3}
+  - {fileID: 2425145240435056019, guid: 0d177823cdf2a24429f2807bf72cb486, type: 3}
+  - {fileID: 7161560270275169488, guid: 4ce7487ee9ecf7c4b8fca036e44b7b84, type: 3}
+  - {fileID: 9216636370203155642, guid: 08c5d32f06739324ab3443aa7c2eebf6, type: 3}
+  - {fileID: 3803835334115469672, guid: 1771eccaca9c5754e902ad75f53bec3b, type: 3}
+  - {fileID: 6860952930894042855, guid: 6b816aafecdf49844898298d380d528d, type: 3}
+  - {fileID: 1007528671624452794, guid: d294173a6380afa469f88ea22db1a2af, type: 3}
+  - {fileID: 1909727074697129889, guid: c70fbd9e9cf21d04eaa74e0710673d07, type: 3}
+  - {fileID: 2425145240435056019, guid: 0d177823cdf2a24429f2807bf72cb486, type: 3}
+  - {fileID: 7161560270275169488, guid: 4ce7487ee9ecf7c4b8fca036e44b7b84, type: 3}
+  - {fileID: 9216636370203155642, guid: 08c5d32f06739324ab3443aa7c2eebf6, type: 3}
+  - {fileID: 3803835334115469672, guid: 1771eccaca9c5754e902ad75f53bec3b, type: 3}
+  - {fileID: 6860952930894042855, guid: 6b816aafecdf49844898298d380d528d, type: 3}
+  - {fileID: 1007528671624452794, guid: d294173a6380afa469f88ea22db1a2af, type: 3}
+  - {fileID: 1909727074697129889, guid: c70fbd9e9cf21d04eaa74e0710673d07, type: 3}
   AVE_CapacitySlots:
   - {fileID: 315282160}
   - {fileID: 1604284287}
@@ -2461,7 +2471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.6136667}
-  m_AnchoredPosition: {x: -0.49890137, y: 5.5}
+  m_AnchoredPosition: {x: -0.49902344, y: 5.5}
   m_SizeDelta: {x: 0, y: -6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &925102343
