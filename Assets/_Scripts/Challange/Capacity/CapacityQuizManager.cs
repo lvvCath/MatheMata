@@ -78,7 +78,7 @@ public class CapacityQuizManager : MonoBehaviour
             quizTopUI.Difiiculty.text = "Easy";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Capacity", "Easy");
             EasyQContainer.SetActive(true);
-            timeLimit = 90;
+            timeLimit = 30;
         }
 
         if (DIFFICULTY == "Average")
@@ -94,7 +94,7 @@ public class CapacityQuizManager : MonoBehaviour
             quizTopUI.Difiiculty.text = "Hard";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Capacity", "Hard");
             HardQContainer.SetActive(true);
-            timeLimit = 30;
+            timeLimit = 90;
         }
 
         // Timer
@@ -175,7 +175,7 @@ public class CapacityQuizManager : MonoBehaviour
             if (DIFFICULTY == "Hard")
             {
                 quizTopUI.Difiiculty.text = "Hard";
-                quizTopUI.Question.text = "Select the correct capacity of the object";
+                quizTopUI.Question.text = "Select the <color=#ffcb2b>CORRECT CAPACITY</color> of the given object";
                 HardQuestion();
                 SetAnswers();
             }
