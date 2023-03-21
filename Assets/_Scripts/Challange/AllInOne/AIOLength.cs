@@ -44,7 +44,7 @@ public class AIOLength : MonoBehaviour
         int last_index = gameObjectArr.Length - 1;
         while (last_index > 0)
         {
-            int rand_index = Random.Range(0, last_index+1); //modify in documentation "+1"
+            int rand_index = Random.Range(0, last_index+1);
             T temp = gameObjectArr[last_index];
             gameObjectArr[last_index] = gameObjectArr[rand_index];
             gameObjectArr[rand_index] = temp;

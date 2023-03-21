@@ -61,10 +61,8 @@ public class CapacityQuizManager : MonoBehaviour
     public GameObject ResultPanel;
 
     [Header("Audio SFX")]
-    public AudioClip correctSFX;
-    public AudioClip wrongSFX;
-
-    private AudioSource audioSource;
+    public AudioSource correctSFX;
+    public AudioSource wrongSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -75,14 +73,12 @@ public class CapacityQuizManager : MonoBehaviour
 
         DIFFICULTY = QuizData.DIFFICULTY;
 
-        audioSource = GetComponent<AudioSource>();
-
         if (DIFFICULTY == "Easy")
         {
             quizTopUI.Difiiculty.text = "Easy";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Capacity", "Easy");
             EasyQContainer.SetActive(true);
-            timeLimit = 90;
+            timeLimit = 30;
         }
 
         if (DIFFICULTY == "Average")
@@ -98,7 +94,7 @@ public class CapacityQuizManager : MonoBehaviour
             quizTopUI.Difiiculty.text = "Hard";
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Capacity", "Hard");
             HardQContainer.SetActive(true);
-            timeLimit = 30;
+            timeLimit = 90;
         }
 
         // Timer
@@ -179,7 +175,7 @@ public class CapacityQuizManager : MonoBehaviour
             if (DIFFICULTY == "Hard")
             {
                 quizTopUI.Difiiculty.text = "Hard";
-                quizTopUI.Question.text = "Select the correct capacity of the object";
+                quizTopUI.Question.text = "Select the <color=#ffcb2b>CORRECT CAPACITY</color> of the given object";
                 HardQuestion();
                 SetAnswers();
             }
@@ -217,7 +213,7 @@ public class CapacityQuizManager : MonoBehaviour
 
         quizTopUI.Score.text = (score).ToString() + " / " + CapacityObjects.Length.ToString();
         CorrectOverlay.SetActive(true);
-        audioSource.PlayOneShot(correctSFX);
+        correctSFX.Play();
         StartCoroutine(nextQuestion(CorrectOverlay, 2.0f, "correct"));
     }
 
@@ -227,7 +223,7 @@ public class CapacityQuizManager : MonoBehaviour
         stopTimer = true; // Timer
 
         WrongOverlay.SetActive(true);
-        audioSource.PlayOneShot(wrongSFX);
+        wrongSFX.Play();
         StartCoroutine(nextQuestion(WrongOverlay, 2.0f, "wrong"));
     }
 
@@ -236,15 +232,15 @@ public class CapacityQuizManager : MonoBehaviour
 
         if (DIFFICULTY == "Easy")
         {
-            string choice0 = "MORE";
-            string choice1 = "LESS";
+            string[] choice = {"MORE", "LESS"};
+            DurstenfeldShuffle(Options);
 
             for (int i = 0; i < Options.Length; i++)
             {
                 Options[i].GetComponent<CapacityAnswerScript>().isCorrect = false;
 
-                Options[0].transform.GetChild(0).GetComponent<TMP_Text>().text = choice0;
-                Options[1].transform.GetChild(0).GetComponent<TMP_Text>().text = choice1;
+                Options[0].transform.GetChild(0).GetComponent<TMP_Text>().text = choice[0];
+                Options[1].transform.GetChild(0).GetComponent<TMP_Text>().text = choice[1];
             }
 
             if (left < right)
@@ -349,21 +345,28 @@ public class CapacityQuizManager : MonoBehaviour
                 arrRecord.Add(currFirstObject);
                 flag = false;
             }
-            else if (arrRecord.Contains(currSecondObject) == false) // checks if the object was already used in question.
+            
+            if (arrRecord.Contains(currSecondObject) == false) // checks if the object was already used in question.
             {
                 arrRecord.Add(currSecondObject);
                 flag = false;
             }
-            else if (currFirstObject != currSecondObject && arrRecord.Contains(currFirstObject) && arrRecord.Contains(currSecondObject))
+
+            if (CapacityObjects[currFirstObject].transform.GetComponent<ItemCapacity>().capacity == CapacityObjects[currSecondObject].transform.GetComponent<ItemCapacity>().capacity)
             {
                 arrRecord.Remove(currSecondObject);
                 flag = true;
             }
+            // else if (currFirstObject != currSecondObject && arrRecord.Contains(currFirstObject) && arrRecord.Contains(currSecondObject))
+            // {
+            //     arrRecord.Remove(currSecondObject);
+            //     flag = true;
+            // }
         }
 
-        firstObjName = CapacityObjects[currFirstObject].name;
+        firstObjName = CapacityObjects[currFirstObject].GetComponent<LabelScriptClass>().objLabel;
         left = CapacityObjects[currFirstObject].GetComponent<ItemCapacity>().capacity;
-        secondObjName = CapacityObjects[currSecondObject].name;
+        secondObjName = CapacityObjects[currSecondObject].GetComponent<LabelScriptClass>().objLabel;
         right = CapacityObjects[currSecondObject].GetComponent<ItemCapacity>().capacity;
 
         GameObject leftObject = CapacityObjects[currFirstObject];
@@ -385,8 +388,8 @@ public class CapacityQuizManager : MonoBehaviour
             Object.Destroy(AverContainer[2].transform.GetChild(0).gameObject);
         }
 
-        float parent_width = AverContainer[0].GetComponent<RectTransform>().rect.width;
-        float parent_height = AverContainer[0].GetComponent<RectTransform>().rect.height;
+        // float parent_width = AverContainer[0].GetComponent<RectTransform>().rect.width;
+        // float parent_height = AverContainer[0].GetComponent<RectTransform>().rect.height;
 
         arrRecord.Clear();
 
@@ -404,7 +407,7 @@ public class CapacityQuizManager : MonoBehaviour
                 }
             }
             Instantiate(aveCapacityObjects[currObject], AverContainer[i].transform);
-            aveCapacityObjects[i].GetComponent<RectTransform>().sizeDelta = new Vector2(parent_width, parent_height);
+            //aveCapacityObjects[i].GetComponent<RectTransform>().sizeDelta = new Vector2(parent_width, parent_height);
         }
     }
 

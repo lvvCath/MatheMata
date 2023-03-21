@@ -90,7 +90,7 @@ public class MassQuizManager : MonoBehaviour
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Average");
             AverageQuestionContainer.SetActive(true);
             OptionContainer.SetActive(true);
-            timeLimit = 90;
+            timeLimit = 45;
         }
 
         if (DIFFICULTY == "Hard") {
@@ -98,7 +98,7 @@ public class MassQuizManager : MonoBehaviour
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz("Mass", "Hard");
             HardQuestionContainer.SetActive(true);
 
-            timeLimit = 100;
+            timeLimit = 30;
         }
 
         // Timer
