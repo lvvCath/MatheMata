@@ -30,7 +30,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8844783910872539137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.04905562}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1347, y: 924}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8844783910872539163
 CanvasRenderer:
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AspectMode: 3
+  m_AspectMode: 0
   m_AspectRatio: 0.7306273
 --- !u!114 &8844783910872539140
 MonoBehaviour:
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa21e924e2017314f8deaa4d5950ad89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objLabel: Kettle
+  objLabel: Tea Pot
 --- !u!114 &8844783910872539143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,4 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e2df00d61213e44bfe96b5bb691199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 0100000002000000030000000400000005000000
+  multiplier: 070000000600000005000000040000000300000002000000

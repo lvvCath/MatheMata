@@ -22,12 +22,13 @@ public class AIOCapacity : MonoBehaviour
     public GameObject[] HardOptions;
 
     [Header("Game Object Container")]
-
     public GameObject[] EasyContainer;
     public GameObject[] AverContainer;
-    public GameObject[] HardContainer;
 
-    public GameObject[] txtContainer;
+    [Header("Hard Grid")]
+    public GameObject QuestionObject;
+    public GameObject QuestionAGrid;
+    public GameObject QuestionBGrid;
 
     List<int> arrRecord = new List<int>();
     private List<int> smallRecord = new List<int>();
@@ -38,6 +39,9 @@ public class AIOCapacity : MonoBehaviour
     private int right;
     private int correctAns;
     private string smallHardObjName;
+    private int currHardSmall;
+    private int currHardObjNo;
+    private int multiplier;
 
     public int currentQuestionNo;
 
@@ -46,7 +50,6 @@ public class AIOCapacity : MonoBehaviour
         DurstenfeldShuffle(CapacityObjects);
         DurstenfeldShuffle(aveCapacityObjects);
         DurstenfeldShuffle(hardCapacityObjects);
-        DurstenfeldShuffle(hardSmallCapacityObjects);
     }
 
     public void DurstenfeldShuffle<T>(T[] gameObjectArr) 
@@ -95,7 +98,19 @@ public class AIOCapacity : MonoBehaviour
 
         if (DIFFICULTY == "Hard")
         {
-            int[] hardAnswers = { correctAns + 3, correctAns };
+            int[] hardAnswers = new int[2];
+            string sign = (UnityEngine.Random.value > 0.5f) ? "-" : "+"; // Randomly choose between "-" and "+"
+            // Assign values to the hard answers array
+            if (sign == "-" && ((multiplier - 1) != 0))
+            {
+                hardAnswers[0] = multiplier - 1;
+                hardAnswers[1] = multiplier;
+            }
+            else
+            {
+                hardAnswers[0] = multiplier + 1;
+                hardAnswers[1] = multiplier;
+            }
             DurstenfeldShuffle(hardAnswers);
 
             for (int i = 0; i < HardOptions.Length; i++)
@@ -103,12 +118,40 @@ public class AIOCapacity : MonoBehaviour
                 if (HardOptions[i] != null) // add null check
                 {
                     HardOptions[i].GetComponent<AIOAnswerScript>().isCorrect = false;
-                    HardOptions[i].transform.GetChild(0).GetComponent<TMP_Text>().text = hardAnswers[i].ToString() + " " + smallHardObjName;
+                    GameObject OptionGrid = HardOptions[i].transform.GetChild(0).gameObject;
+                    // Destroy child objects in grid
+                    if (OptionGrid.transform.childCount > 0)
+                    {
+                        for (var j = OptionGrid.transform.childCount - 1; j >= 0; j--)
+                        {
+                            Object.Destroy(OptionGrid.transform.GetChild(j).gameObject);
+                        }
+                    }
+                    // setup grid
+                    OptionGrid.GetComponent<CapacityGridLayout>().row = currHardObjNo;
+                    switch (currHardObjNo) 
+                    {
+                            case 2:
+                                OptionGrid.GetComponent<CapacityGridLayout>().columns = new int[] {hardAnswers[i], hardAnswers[i]};
+                                break;
+                            case 3:
+                                OptionGrid.GetComponent<CapacityGridLayout>().columns = new int[] {hardAnswers[i], hardAnswers[i], hardAnswers[i]};
+                                break;
+                            case 4:
+                                OptionGrid.GetComponent<CapacityGridLayout>().columns = new int[] {hardAnswers[i], hardAnswers[i], hardAnswers[i], hardAnswers[i]};
+                                break;
+                            default:
+                                OptionGrid.GetComponent<CapacityGridLayout>().columns = new int[] {hardAnswers[i], hardAnswers[i], hardAnswers[i], hardAnswers[i], hardAnswers[i]};
+                                break;
+                    }
+                    OptionGrid.GetComponent<CapacityGridLayout>().cellPrefab = hardSmallCapacityObjects[currHardSmall];
+                    OptionGrid.GetComponent<CapacityGridLayout>().SetCells();
 
-                    if (hardAnswers[i] == correctAns)
+                    // multiplier * currHardObjNo
+                    if (hardAnswers[i] * currHardObjNo == correctAns)
                     {
                         HardOptions[i].GetComponent<AIOAnswerScript>().isCorrect = true;
-                    }
+                    } 
                 }
             }
         }
@@ -169,13 +212,13 @@ public class AIOCapacity : MonoBehaviour
         {
             currFirstObject = Random.Range(0, CapacityObjects.Length);
             currSecondObject = Random.Range(0, CapacityObjects.Length);
-            if (arrRecord.Contains(currFirstObject) == false) // checks if the object was already used in question.
+            if (arrRecord.Contains(currFirstObject) == false)
             {
                 arrRecord.Add(currFirstObject);
                 flag = false;
             }
             
-            if (arrRecord.Contains(currSecondObject) == false) // checks if the object was already used in question.
+            if (arrRecord.Contains(currSecondObject) == false)
             {
                 arrRecord.Add(currSecondObject);
                 flag = false;
@@ -232,73 +275,61 @@ public class AIOCapacity : MonoBehaviour
         }
     }
 
-    public void HardQuestion()
-    {
-        quizTopUI.Question.text = "Select the correct capacity of the object";
-        // Game Objects Instances
-        GameObject ifBig = HardContainer[0];
-        GameObject equalSmall = HardContainer[1];
-        GameObject thenBig = HardContainer[2];
-
-        int shortCapacity = 0;
-        int multiplierCapacity = 0;
-
-        if (HardContainer[0].transform.childCount > 0)
+    public void HardQuestion() {
+        if (QuestionObject.transform.childCount > 0)
         {
-            Object.Destroy(HardContainer[0].transform.GetChild(0).gameObject);
-            Object.Destroy(HardContainer[1].transform.GetChild(0).gameObject);
-            Object.Destroy(HardContainer[2].transform.GetChild(0).gameObject);
+            Object.Destroy(QuestionObject.transform.GetChild(0).gameObject);
         }
-
-        int currParentObject = Random.Range(0, hardCapacityObjects.Length);
-        int currEqualObject = Random.Range(0, hardSmallCapacityObjects.Length);
-
-        bool flag = true;
-        while (flag)
+        if (QuestionAGrid.transform.childCount > 0)
         {
-            currParentObject = Random.Range(0, hardCapacityObjects.Length);
-            if (arrRecord.Contains(currParentObject) == false) // checks if the object was already used in question.
+            for (var i = QuestionAGrid.transform.childCount - 1; i >= 0; i--)
             {
-                arrRecord.Add(currParentObject);
-                flag = false;
-            }
-            currEqualObject = Random.Range(0, hardSmallCapacityObjects.Length);
-            if (smallRecord.Contains(currEqualObject) == false) // checks if the object was already used in question.
-            {
-                smallRecord.Add(currEqualObject);
-                flag = false;
+                Object.Destroy(QuestionAGrid.transform.GetChild(i).gameObject);
             }
         }
-        int[] smallEstimate = hardCapacityObjects[currParentObject].GetComponent<BigObjectClass>().smallEstimate;
-        DurstenfeldShuffle(smallEstimate);
-        int[] multiplier = hardCapacityObjects[currParentObject].GetComponent<MultiplierClassScript>().multiplier;
-        DurstenfeldShuffle(multiplier);
-
-
-        for (int i = 0; i < smallEstimate.Length; i++)
+        if (QuestionBGrid.transform.childCount > 0)
         {
-            shortCapacity = hardCapacityObjects[currParentObject].GetComponent<BigObjectClass>().smallEstimate[i];
+            for (var i = QuestionBGrid.transform.childCount - 1; i >= 0; i--)
+            {
+                Object.Destroy(QuestionBGrid.transform.GetChild(i).gameObject);
+            }
         }
 
-        for (int i = 0; i < multiplier.Length; i++)
-        {
-            multiplierCapacity = hardCapacityObjects[currParentObject].GetComponent<MultiplierClassScript>().multiplier[i];
+        GameObject MainObject;
+        MainObject = GameObject.Instantiate(hardCapacityObjects[currentQuestionNo], QuestionObject.transform);
+
+        RectTransform _rTransform = MainObject.GetComponent<RectTransform>();
+        float _rWidth = QuestionObject.GetComponent<RectTransform>().rect.width;
+        float _rHeight = QuestionObject.GetComponent<RectTransform>().rect.height;
+        _rTransform.sizeDelta = new Vector2(_rWidth, _rHeight);
+        
+        currHardSmall = Random.Range(0, 6); // select random small object
+        multiplier = hardCapacityObjects[currentQuestionNo].GetComponent<MultiplierClassScript>().multiplier[currHardSmall];
+
+        if (multiplier > 5) {
+            int tmp = Mathf.FloorToInt(multiplier/2);
+            QuestionAGrid.GetComponent<CapacityGridLayout>().row = 2;
+            QuestionAGrid.GetComponent<CapacityGridLayout>().columns = new int[] {multiplier-tmp, tmp};
+        } else {
+            QuestionAGrid.GetComponent<CapacityGridLayout>().row = 1;
+            QuestionAGrid.GetComponent<CapacityGridLayout>().columns = new int[] {multiplier};
         }
+        QuestionAGrid.GetComponent<CapacityGridLayout>().cellPrefab = hardSmallCapacityObjects[currHardSmall];
+        QuestionAGrid.GetComponent<CapacityGridLayout>().SetCells();
 
-        correctAns = shortCapacity * multiplierCapacity;
-        smallHardObjName = hardSmallCapacityObjects[currEqualObject].name;
 
-        for (int i = 0; i < txtContainer.Length; i++)
-        {
-            txtContainer[0].transform.GetComponent<TMP_Text>().text = shortCapacity.ToString();
-            txtContainer[1].transform.GetComponent<TMP_Text>().text = multiplierCapacity.ToString();
-        }
+        currHardObjNo = Random.Range(2, 4);
+        QuestionBGrid.GetComponent<CapacityGridLayout>().columns = new int[] {currHardObjNo};
+        QuestionBGrid.GetComponent<CapacityGridLayout>().cellPrefab = hardCapacityObjects[currentQuestionNo];
+        QuestionBGrid.GetComponent<CapacityGridLayout>().SetCells();
 
-        GameObject smallObject = hardSmallCapacityObjects[currEqualObject];
-        GameObject compareObject = hardCapacityObjects[currParentObject];
+        smallHardObjName = hardSmallCapacityObjects[currHardSmall].GetComponent<LabelScriptClass>().objLabel;
+        correctAns = multiplier * currHardObjNo;
 
-        Instantiate(compareObject, ifBig.transform);
-        Instantiate(smallObject, equalSmall.transform);
-        Instantiate(compareObject, thenBig.transform);
+        firstObjName = hardCapacityObjects[currentQuestionNo].GetComponent<LabelScriptClass>().objLabel;
+        secondObjName = hardSmallCapacityObjects[currHardSmall].GetComponent<LabelScriptClass>().objLabel;
+        quizTopUI.Question.text = multiplier + " " + secondObjName + " are needed to fill 1 " + firstObjName + ". How many <color=#ffcb2b>" + secondObjName + "</color> are needed to fill <color=#ffcb2b>" + currHardObjNo + " " + firstObjName + "</color>." ;
+        currentQuestionNo += 1 ;
     }
+
 }
