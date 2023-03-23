@@ -21,6 +21,7 @@ public class QuizSceneManager : MonoBehaviour
 
     public void toAllInOne()
     {
+        QuizData.CATEGORY = "All In One";
         SceneManager.LoadScene("9_AllInOne");
     }
 
@@ -39,55 +40,19 @@ public class QuizSceneManager : MonoBehaviour
     public void Easy()
     {
         QuizData.DIFFICULTY = "Easy";
-
-        if (QuizData.CATEGORY == "Length") 
-        {
-            SceneManager.LoadScene("5_Length");
-        }
-        if (QuizData.CATEGORY == "Mass") 
-        {
-            SceneManager.LoadScene("6_Mass");
-        }
-        if (QuizData.CATEGORY == "Capacity") 
-        {
-            SceneManager.LoadScene("7_Capacity");
-        }
+        SceneManager.LoadScene("9_AllInOne");
     }
 
     public void Average()
     {
         QuizData.DIFFICULTY = "Average";
-
-        if (QuizData.CATEGORY == "Length") 
-        {
-            SceneManager.LoadScene("5_Length");
-        }
-        if (QuizData.CATEGORY == "Mass") 
-        {
-            SceneManager.LoadScene("6_Mass");
-        }
-        if (QuizData.CATEGORY == "Capacity") 
-        {
-            SceneManager.LoadScene("7_Capacity");
-        }
+        SceneManager.LoadScene("9_AllInOne");
     }
 
     public void Hard()
     {
         QuizData.DIFFICULTY = "Hard";
-
-        if (QuizData.CATEGORY == "Length") 
-        {
-            SceneManager.LoadScene("5_Length");
-        }
-        if (QuizData.CATEGORY == "Mass") 
-        {
-            SceneManager.LoadScene("6_Mass");
-        }
-        if (QuizData.CATEGORY == "Capacity") 
-        {
-            SceneManager.LoadScene("7_Capacity");
-        }
+        SceneManager.LoadScene("9_AllInOne");
     }
 
 }

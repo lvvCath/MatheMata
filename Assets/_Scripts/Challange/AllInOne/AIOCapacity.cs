@@ -99,8 +99,7 @@ public class AIOCapacity : MonoBehaviour
         if (DIFFICULTY == "Hard")
         {
             int[] hardAnswers = new int[2];
-            string sign = (UnityEngine.Random.value > 0.5f) ? "-" : "+"; // Randomly choose between "-" and "+"
-            // Assign values to the hard answers array
+            string sign = (UnityEngine.Random.value > 0.5f) ? "-" : "+";
             if (sign == "-" && ((multiplier - 1) != 0))
             {
                 hardAnswers[0] = multiplier - 1;
@@ -115,7 +114,7 @@ public class AIOCapacity : MonoBehaviour
 
             for (int i = 0; i < HardOptions.Length; i++)
             {
-                if (HardOptions[i] != null) // add null check
+                if (HardOptions[i] != null)
                 {
                     HardOptions[i].GetComponent<AIOAnswerScript>().isCorrect = false;
                     GameObject OptionGrid = HardOptions[i].transform.GetChild(0).gameObject;
@@ -242,12 +241,12 @@ public class AIOCapacity : MonoBehaviour
         Instantiate(leftObject, firstContainer.transform);
         Instantiate(rightObject, secondContainer.transform);
 
-        quizTopUI.Question.text = "<color=#ffcb2b>" + firstObjName + "</color>  HOLDS __ __ __ __ THAN THE  <color=#ffcb2b>" + secondObjName + "</color>";
+        quizTopUI.Question.text = "<color=#ffcb2b>" + firstObjName + "</color> holds __ __ __ __ than the <color=#ffcb2b>" + secondObjName + "</color>";
     }
 
     public void AverageQuestion()
     {
-        quizTopUI.Question.text = "Arrange the objects from LEAST to GREATEST capacity";
+        quizTopUI.Question.text = "Arrange the objects from <color=#ffcb2b>least</color> to <color=#ffcb2b>greatest</color> capacity";
         // Instantiate
         if (AverContainer[0].transform.childCount > 0)
         {

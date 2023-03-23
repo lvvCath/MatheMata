@@ -36,7 +36,7 @@ public class AIOMass : MonoBehaviour
 
     [Header("Quiz Values")]
     public int currentQuestionNo;
-    private string[] QuestionList = {"Which of the following is the lightest?", "Which of the following is the heaviest?"};
+    private string[] QuestionList = {"Which of the following is the <color=#ffcb2b>lightest</color>?", "Which of the following is the <color=#ffcb2b>heaviest</color>?"};
 
     public void callStart()
     {
@@ -185,7 +185,7 @@ public class AIOMass : MonoBehaviour
                 while (flag)
                 {
                     currObject = Random.Range(0, AverageObjects.Length);
-                    if (arrRecord.Contains(currObject) == false) // checks if the object was already used in question.
+                    if (arrRecord.Contains(currObject) == false)
                     {
                         arrRecord.Add(currObject);
                         arrLight.Add(currObject);
@@ -195,10 +195,8 @@ public class AIOMass : MonoBehaviour
                 container = AverageContainer[i].transform.GetChild(j).gameObject;
                 GameObject newObj = Instantiate(AverageObjects[arrLight[j]], container.transform);
 
-                // Get the RectTransform component of the instantiated object
                 RectTransform newObjRect = newObj.GetComponent<RectTransform>();
 
-                // Set the anchored position to the bottom of the child container
                 newObjRect.anchorMin = new Vector2(0.5f, 0f);
                 newObjRect.anchorMax = new Vector2(0.5f, 0f);
                 newObjRect.pivot = new Vector2(0.5f, 0f);
@@ -231,13 +229,13 @@ public class AIOMass : MonoBehaviour
             while (flag)
             {
                 currHeavy = Random.Range(0, HeavyObjects.Length);
-                if (arrRecord.Contains(currHeavy) == false) // checks if the object was already used in question.
+                if (arrRecord.Contains(currHeavy) == false)
                 {
                     arrRecord.Add(currHeavy);
                     flag = false;
                 }
                 currLight = Random.Range(0, LightObjects.Length);
-                if (arrLight.Contains(currLight) == false) // checks if the object was already used in question.
+                if (arrLight.Contains(currLight) == false)
                 {
                     arrLight.Add(currLight);
                     flag = false;
