@@ -24,6 +24,10 @@ public class AIOLength : MonoBehaviour
     public GameObject L_EA_ShortCont;
     public GameObject L_H_ShortObjCont;
 
+    [Header("Question Audio")]
+    public AudioClip[] QAudioClip;
+    public AudioClip[] NoAudioClip;
+
     // private variables
     private int correctAns;
 
@@ -31,12 +35,19 @@ public class AIOLength : MonoBehaviour
     private List<int> L_shortRecord = new List<int>();
     private int L_currentQuestionNo;
     private string L_shortObjName;
+    // hard variable
+    private int shortEstimate;
+    private AudioSource audioSource;
+    private AudioClip LongObjAudio;
+    private AudioClip ShortObjAudio;
+
 
     public void callStart()
     {
         L_currentQuestionNo = 0;
         DurstenfeldShuffle(L_LongObj);
         DurstenfeldShuffle(L_ShortObjOption);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void DurstenfeldShuffle<T>(T[] gameObjectArr) 
@@ -178,6 +189,8 @@ public class AIOLength : MonoBehaviour
 
         // Setup the grid cells
         L_EA_ShortCont.GetComponent<LetCGridLayout>().SetCells();
+        LongObjAudio = L_LongObj[L_currentQuestionNo].GetComponent<ObjectInfo>().ObjAudioClip;
+        ShortObjAudio = L_ShortObj[currShortObject].GetComponent<ObjectInfo>().ObjAudioClip;
         L_currentQuestionNo +=1;
     }
 
@@ -205,7 +218,7 @@ public class AIOLength : MonoBehaviour
             }
         }
 
-        int shortEstimate = L_LongObj[currentQuestionNo].GetComponent<LongObjectClass>().ShortEstimate[currShortObject];
+        shortEstimate = L_LongObj[currentQuestionNo].GetComponent<LongObjectClass>().ShortEstimate[currShortObject];
         L_shortObjName = L_ShortObj[currShortObject].name;
 
         // Creates grid columns based on the number of the short objects
@@ -221,6 +234,9 @@ public class AIOLength : MonoBehaviour
             quizTopUI.Question.text = "Which of the following objects has the length of <color=#ffcb2b>" + shortEstimate + " " + L_shortObjName + "</color>?"; 
         }
 
+        LongObjAudio = L_LongObj[currentQuestionNo].GetComponent<ObjectInfo>().ObjAudioClip;
+        ShortObjAudio = L_ShortObj[currShortObject].GetComponent<ObjectInfo>().ObjAudioClip;
+
     }
 
     IEnumerator DieGameObject(GameObject gameobject){
@@ -228,5 +244,26 @@ public class AIOLength : MonoBehaviour
      Object.Destroy(gameobject);
     }
 
+    public IEnumerator QuestionAudio(string DIFFICULTY, int currentQuestionNo)
+    {
+        AudioClip[] clips;
 
+        if (DIFFICULTY == "Easy") {
+            clips = new AudioClip[] { QAudioClip[0], ShortObjAudio, QAudioClip[1], LongObjAudio };
+            
+        } else if (DIFFICULTY == "Average") {
+            clips = new AudioClip[] { QAudioClip[2], ShortObjAudio, QAudioClip[3], LongObjAudio };
+
+        } else {
+            clips = new AudioClip[] { QAudioClip[4], NoAudioClip[shortEstimate-1], ShortObjAudio };
+        }
+
+        foreach (AudioClip clip in clips)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+
+            yield return new WaitForSeconds(audioSource.clip.length);
+        }
+    }
 }

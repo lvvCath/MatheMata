@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Pencil
+  ObjAudioClip: {fileID: 8300000, guid: 3f7aa03376197bc4dad5293dd1ae8063, type: 3}
 --- !u!114 &-5314389730165144946
 MonoBehaviour:
   m_ObjectHideFlags: 0

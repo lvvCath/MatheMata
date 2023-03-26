@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Pan
+  ObjAudioClip: {fileID: 8300000, guid: 65c5979de6381104ab5f82c8dce50714, type: 3}

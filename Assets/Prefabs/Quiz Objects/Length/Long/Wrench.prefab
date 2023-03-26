@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Wrench
+  ObjAudioClip: {fileID: 8300000, guid: af03321665a01b04bbea190e6b107cbc, type: 3}
 --- !u!114 &6197914767507610653
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Coins
+  ObjAudioClip: {fileID: 8300000, guid: aa91486c6f964ed43805077e085669cc, type: 3}

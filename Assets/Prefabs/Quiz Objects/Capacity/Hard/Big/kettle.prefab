@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8844783910872539162}
   - component: {fileID: 8844783910872539141}
   - component: {fileID: 8844783910872539140}
-  - component: {fileID: 8844783910872539143}
   - component: {fileID: -5523569635997348368}
   m_Layer: 0
   m_Name: kettle
@@ -107,19 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Tea Pot
---- !u!114 &8844783910872539143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8844783910872539137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ec49afa4c599b04eacdc7043265253b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallEstimate: 070000000600000005000000040000000300000002000000
+  ObjAudioClip: {fileID: 8300000, guid: e4364cb981083c248a058d0635fdbd1b, type: 3}
 --- !u!114 &-5523569635997348368
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Coin
+  ObjAudioClip: {fileID: 8300000, guid: aa91486c6f964ed43805077e085669cc, type: 3}
 --- !u!114 &8925644198231480867
 MonoBehaviour:
   m_ObjectHideFlags: 0

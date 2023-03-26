@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Candy
+  ObjAudioClip: {fileID: 8300000, guid: 1feb56984e0d687489f6f6e984e1f30b, type: 3}
 --- !u!114 &2518868167660616913
 MonoBehaviour:
   m_ObjectHideFlags: 0

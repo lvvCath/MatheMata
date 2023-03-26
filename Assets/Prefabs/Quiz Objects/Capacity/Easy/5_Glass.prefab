@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Glass
+  ObjAudioClip: {fileID: 8300000, guid: 58d9fba390843ce43bc48f21b34fef0b, type: 3}

@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Hanger
+  ObjAudioClip: {fileID: 8300000, guid: 5cbe772e2532d6d4e86141e5b8b30628, type: 3}
 --- !u!114 &-7289035717395388267
 MonoBehaviour:
   m_ObjectHideFlags: 0

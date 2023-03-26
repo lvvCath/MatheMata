@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -843129343397654501}
   - component: {fileID: 2216809761175605308}
   - component: {fileID: -5984412733823044993}
+  - component: {fileID: -2054093824357735466}
   m_Layer: 0
   m_Name: Kiwi
   m_TagString: fruit
@@ -140,3 +141,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   container: {fileID: 0}
+--- !u!114 &-2054093824357735466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229965575484075363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Kiwi
+  ObjAudioClip: {fileID: 8300000, guid: be12f40c69137884c960386308e2b140, type: 3}

@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Sandwich
+  ObjAudioClip: {fileID: 8300000, guid: c67fe82798c802741bea87521881432d, type: 3}
 --- !u!114 &-8957786805425716667
 MonoBehaviour:
   m_ObjectHideFlags: 0

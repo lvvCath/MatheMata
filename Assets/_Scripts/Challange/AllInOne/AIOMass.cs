@@ -36,12 +36,22 @@ public class AIOMass : MonoBehaviour
 
     [Header("Quiz Values")]
     public int currentQuestionNo;
+
+    [Header("Question Audio")]
+    public AudioClip[] QAudioClip;
+
+    private AudioSource audioSource;
+    private AudioClip EasyAudio;
+    private AudioClip Obj1Audio;
+    private AudioClip Obj2Audio;
+
     private string[] QuestionList = {"Which of the following is the <color=#ffcb2b>lightest</color>?", "Which of the following is the <color=#ffcb2b>heaviest</color>?"};
 
     public void callStart()
     {
         DurstenfeldShuffle(WeightedObjects);
         DurstenfeldShuffle(HeavyObjects);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Shuffle Algorithm
@@ -107,6 +117,8 @@ public class AIOMass : MonoBehaviour
             {
                 Options[1].GetComponent<AIOAnswerScript>().isCorrect = true;
             }
+            Obj1Audio = AverageObjects[arrLight[0]].GetComponent<ItemWeight>().ObjAudioClip;
+            Obj2Audio = AverageObjects[arrLight[1]].GetComponent<ItemWeight>().ObjAudioClip;
         }
 
         if (DIFFICULTY == "Hard"){
@@ -149,6 +161,15 @@ public class AIOMass : MonoBehaviour
             }
             Instantiate(WeightedObjects[currObject], Container[i].transform);
             WeightedObjects[i].GetComponent<RectTransform>().sizeDelta = new Vector2(parent_width, parent_height);
+        }
+        if (question == 0)
+        {
+            EasyAudio = QAudioClip[1];
+        }
+
+        if (question == 1)
+        {
+            EasyAudio = QAudioClip[0];
         }
     }
 
@@ -254,6 +275,9 @@ public class AIOMass : MonoBehaviour
 
         Instantiate(currObject, light.transform);
         Instantiate(leftObject, heavy.transform);
+
+        Obj1Audio = currObject.GetComponent<ObjectInfo>().ObjAudioClip;
+        Obj2Audio = leftObject.GetComponent<HeavyObjectClass>().ObjAudioClip;
     }
 
     public void DestroyOnClick () {
@@ -261,6 +285,29 @@ public class AIOMass : MonoBehaviour
         if(HardContainer[1].transform.childCount > 1)
         {
             Object.Destroy(HardContainer[1].transform.GetChild(0).gameObject);
+        }
+    }
+
+    public IEnumerator QuestionAudio(string DIFFICULTY)
+    {
+        AudioClip[] clips;
+
+        if (DIFFICULTY == "Easy") {
+            clips = new AudioClip[] { EasyAudio };
+            
+        } else if (DIFFICULTY == "Average") {
+            clips = new AudioClip[] { QAudioClip[2], Obj1Audio, QAudioClip[3], Obj2Audio, QAudioClip[4] };
+
+        } else {
+            clips = new AudioClip[] { QAudioClip[5], Obj1Audio, QAudioClip[6], Obj2Audio, QAudioClip[7] };
+        }
+
+        foreach (AudioClip clip in clips)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+
+            yield return new WaitForSeconds(audioSource.clip.length);
         }
     }
 }

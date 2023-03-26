@@ -5,4 +5,5 @@ using UnityEngine;
 public class HeavyObjectClass : MonoBehaviour
 {
     public int[] lightEstimates;
+    public AudioClip ObjAudioClip;
 }

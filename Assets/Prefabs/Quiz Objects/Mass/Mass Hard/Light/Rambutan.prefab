@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5709353407058372613}
   - component: {fileID: -6852429864111359848}
   - component: {fileID: 542075702787770293}
+  - component: {fileID: -5720937857105212717}
   m_Layer: 0
   m_Name: Rambutan
   m_TagString: fruit
@@ -140,3 +141,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   container: {fileID: 0}
+--- !u!114 &-5720937857105212717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031067241701650679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Rambutan
+  ObjAudioClip: {fileID: 8300000, guid: 784d215c04d23ed4f85d1da3f70532e3, type: 3}

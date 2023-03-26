@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1666025188376510315}
   - component: {fileID: 1666025188376510292}
   - component: {fileID: 1666025188376510293}
-  - component: {fileID: 1666025188376510294}
   - component: {fileID: -497100400044644959}
   m_Layer: 0
   m_Name: Pitcher
@@ -107,19 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Pitcher
---- !u!114 &1666025188376510294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666025188376510288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ec49afa4c599b04eacdc7043265253b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallEstimate: 090000000800000007000000060000000500000004000000
+  ObjAudioClip: {fileID: 8300000, guid: 8fc3c28ca26377e4daa0d97e012092fa, type: 3}
 --- !u!114 &-497100400044644959
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -90,3 +90,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 7
+  ObjAudioClip: {fileID: 8300000, guid: 85441dcc95e07024b8f306e084cdb2ba, type: 3}

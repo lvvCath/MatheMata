@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Banana
+  ObjAudioClip: {fileID: 8300000, guid: c000535bbc5904241a8c7715b4a2aa4c, type: 3}
 --- !u!114 &8938501846168916996
 MonoBehaviour:
   m_ObjectHideFlags: 0

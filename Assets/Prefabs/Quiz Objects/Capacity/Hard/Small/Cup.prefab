@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Teacups
+  ObjAudioClip: {fileID: 8300000, guid: c38a587535e6590459fcfa79e5480951, type: 3}

@@ -30,6 +30,15 @@ public class AIOCapacity : MonoBehaviour
     public GameObject QuestionAGrid;
     public GameObject QuestionBGrid;
 
+    [Header("Question Audio")]
+    public AudioClip[] QAudioClip;
+    public AudioClip[] NoAudioClip;
+    private AudioSource audioSource;
+    private AudioClip Obj1Audio;
+    private AudioClip Obj2Audio;
+    private AudioClip No1Audio;
+    private AudioClip No2Audio;
+
     List<int> arrRecord = new List<int>();
     private List<int> smallRecord = new List<int>();
 
@@ -50,6 +59,7 @@ public class AIOCapacity : MonoBehaviour
         DurstenfeldShuffle(CapacityObjects);
         DurstenfeldShuffle(aveCapacityObjects);
         DurstenfeldShuffle(hardCapacityObjects);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void DurstenfeldShuffle<T>(T[] gameObjectArr) 
@@ -242,6 +252,9 @@ public class AIOCapacity : MonoBehaviour
         Instantiate(rightObject, secondContainer.transform);
 
         quizTopUI.Question.text = "<color=#ffcb2b>" + firstObjName + "</color> holds __ __ __ __ than the <color=#ffcb2b>" + secondObjName + "</color>";
+
+        Obj1Audio = CapacityObjects[currFirstObject].GetComponent<LabelScriptClass>().ObjAudioClip;
+        Obj2Audio = CapacityObjects[currSecondObject].GetComponent<LabelScriptClass>().ObjAudioClip;
     }
 
     public void AverageQuestion()
@@ -328,7 +341,36 @@ public class AIOCapacity : MonoBehaviour
         firstObjName = hardCapacityObjects[currentQuestionNo].GetComponent<LabelScriptClass>().objLabel;
         secondObjName = hardSmallCapacityObjects[currHardSmall].GetComponent<LabelScriptClass>().objLabel;
         quizTopUI.Question.text = multiplier + " " + secondObjName + " are needed to fill 1 " + firstObjName + ". How many <color=#ffcb2b>" + secondObjName + "</color> are needed to fill <color=#ffcb2b>" + currHardObjNo + " " + firstObjName + "</color>." ;
+        
+        Obj1Audio = hardCapacityObjects[currentQuestionNo].GetComponent<LabelScriptClass>().ObjAudioClip;
+        Obj2Audio = hardSmallCapacityObjects[currHardSmall].GetComponent<LabelScriptClass>().ObjAudioClip;
+        No1Audio = NoAudioClip[multiplier-1];
+        No2Audio = NoAudioClip[currHardObjNo-1];
+
         currentQuestionNo += 1 ;
+    }
+
+    public IEnumerator QuestionAudio(string DIFFICULTY)
+    {
+        AudioClip[] clips;
+
+        if (DIFFICULTY == "Easy") {
+            clips = new AudioClip[] { Obj1Audio, QAudioClip[0], Obj2Audio };
+            
+        } else if (DIFFICULTY == "Average") {
+            clips = new AudioClip[] { QAudioClip[1] };
+
+        } else {
+            clips = new AudioClip[] { No1Audio, Obj2Audio, QAudioClip[2], NoAudioClip[0], Obj1Audio, QAudioClip[3], Obj2Audio, QAudioClip[2], No2Audio, Obj1Audio  };
+        }
+
+        foreach (AudioClip clip in clips)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+
+            yield return new WaitForSeconds(audioSource.clip.length);
+        }
     }
 
 }

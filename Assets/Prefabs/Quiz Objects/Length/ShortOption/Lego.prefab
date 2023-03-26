@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Lego
+  ObjAudioClip: {fileID: 8300000, guid: d9910c6feb3ccd147bede6c7587fa259, type: 3}
 --- !u!114 &2604338445030225127
 MonoBehaviour:
   m_ObjectHideFlags: 0

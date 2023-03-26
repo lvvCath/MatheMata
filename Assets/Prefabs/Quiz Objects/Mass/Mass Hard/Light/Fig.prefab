@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3925904840399964459}
   - component: {fileID: -2038997937278194570}
   - component: {fileID: -9040546722128015129}
+  - component: {fileID: -6889815449546410374}
   m_Layer: 0
   m_Name: Fig
   m_TagString: fruit
@@ -140,3 +141,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   container: {fileID: 0}
+--- !u!114 &-6889815449546410374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354019745369180973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Fig
+  ObjAudioClip: {fileID: 8300000, guid: c46aa1b270f8cd346af6286bff7550b6, type: 3}

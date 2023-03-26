@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Bowls
+  ObjAudioClip: {fileID: 8300000, guid: d25752df5cad6814494a658624c2acc8, type: 3}

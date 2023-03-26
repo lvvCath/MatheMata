@@ -229,8 +229,6 @@ public class AIOQuizManager : MonoBehaviour
             // Display Result Panel
             ResultPanel.SetActive(true);
             ResultPanel.GetComponent<QuizResultAnim>().setScore(score.ToString(), total.ToString());
-            
-            Debug.Log("GAME OVER");
         }
 
     }
@@ -275,6 +273,72 @@ public class AIOQuizManager : MonoBehaviour
         C_EasyCont.SetActive(false);
         C_AveCont.SetActive(false);
         C_HardCont.SetActive(false);
+    }
+
+    public void PlayQuestion()
+    {
+        switch (randCategory) {
+            case 1:
+                switch (randDifficulty) {
+                    case 1:
+                        DIFFICULTY = "Easy";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOLength>().QuestionAudio(DIFFICULTY, currentQuestionNo));
+                        break;
+                    case 2:
+                        DIFFICULTY = "Average";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOLength>().QuestionAudio(DIFFICULTY, currentQuestionNo));
+                        break;
+                    case 3:
+                        DIFFICULTY = "Hard";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOLength>().QuestionAudio(DIFFICULTY, currentQuestionNo));
+                        break;
+                    default:
+                        Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                        break;
+                }
+                break;
+            case 2:
+                switch (randDifficulty) {
+                    case 1:
+                        DIFFICULTY = "Easy";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOMass>().QuestionAudio(DIFFICULTY));
+                        break;
+                    case 2:
+                        DIFFICULTY = "Average";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOMass>().QuestionAudio(DIFFICULTY));
+                        break;
+                    case 3:
+                        DIFFICULTY = "Hard";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOMass>().QuestionAudio(DIFFICULTY));
+                        break;
+                    default:
+                        Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                        break;
+                }
+                break;
+            case 3:
+                switch (randDifficulty) {
+                    case 1:
+                        DIFFICULTY = "Easy";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOCapacity>().QuestionAudio(DIFFICULTY));
+                        break;
+                    case 2:
+                        DIFFICULTY = "Average";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOCapacity>().QuestionAudio(DIFFICULTY));
+                        break;
+                    case 3:
+                        DIFFICULTY = "Hard";
+                        StartCoroutine(QUIZMANAGER.GetComponent<AIOCapacity>().QuestionAudio(DIFFICULTY));
+                        break;
+                    default:
+                        Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                        break;
+                }
+                break;
+            default:
+                Debug.LogError("Invalid category: " + randCategory);
+                break;
+        }
     }
 
 }

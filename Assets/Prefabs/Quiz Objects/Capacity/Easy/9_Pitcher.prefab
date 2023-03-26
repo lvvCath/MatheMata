@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Pitcher
+  ObjAudioClip: {fileID: 8300000, guid: 8fc3c28ca26377e4daa0d97e012092fa, type: 3}

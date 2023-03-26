@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Ants
+  ObjAudioClip: {fileID: 8300000, guid: b1f1201ded1c163489d0a2f78974a8b8, type: 3}

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5322985519611299466}
   - component: {fileID: 5322985519611299467}
   - component: {fileID: 5322985519611299468}
-  - component: {fileID: 5322985519611299469}
   - component: {fileID: 3658201247241429665}
   m_Layer: 0
   m_Name: Milk
@@ -107,19 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Milk Carton
---- !u!114 &5322985519611299469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5322985519611299471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ec49afa4c599b04eacdc7043265253b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallEstimate: 060000000500000004000000030000000200000001000000
+  ObjAudioClip: {fileID: 8300000, guid: 100114e17b91840498ca33dfbaf98205, type: 3}
 --- !u!114 &3658201247241429665
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Erasers
+  ObjAudioClip: {fileID: 8300000, guid: a1413d2c9db7f494e862e0e3585f9b19, type: 3}

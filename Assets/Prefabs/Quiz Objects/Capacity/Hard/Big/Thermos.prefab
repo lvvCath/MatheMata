@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7548812526050237902}
   - component: {fileID: 7548812526050237909}
   - component: {fileID: 7548812526050237906}
-  - component: {fileID: 7548812526050237907}
   - component: {fileID: 7548812526050237904}
   m_Layer: 0
   m_Name: Thermos
@@ -107,19 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Thermos
---- !u!114 &7548812526050237907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7548812526050237900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ec49afa4c599b04eacdc7043265253b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallEstimate: 040000000900000008000000070000000600000005000000
+  ObjAudioClip: {fileID: 8300000, guid: fb8b2e682796a0a41b695a1e101aba8b, type: 3}
 --- !u!114 &7548812526050237904
 MonoBehaviour:
   m_ObjectHideFlags: 0

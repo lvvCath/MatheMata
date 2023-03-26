@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Ladle
+  ObjAudioClip: {fileID: 8300000, guid: 0b2be71e1c5df8441bc1f112aa84e8b4, type: 3}
 --- !u!114 &-6849116732370214856
 MonoBehaviour:
   m_ObjectHideFlags: 0

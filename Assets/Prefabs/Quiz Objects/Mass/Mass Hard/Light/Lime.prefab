@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5041348296750761512}
   - component: {fileID: -3665950730041902193}
   - component: {fileID: 4925818681996502004}
+  - component: {fileID: -4549345029377900628}
   m_Layer: 0
   m_Name: Lime
   m_TagString: fruit
@@ -140,3 +141,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   container: {fileID: 0}
+--- !u!114 &-4549345029377900628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697544254662494340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Lime
+  ObjAudioClip: {fileID: 8300000, guid: f63680c89b380924cbc743977efb62c0, type: 3}

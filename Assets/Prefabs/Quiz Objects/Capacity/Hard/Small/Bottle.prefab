@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Bottles
+  ObjAudioClip: {fileID: 8300000, guid: 12765eaffc2e6d740a7061587d9dbe0a, type: 3}

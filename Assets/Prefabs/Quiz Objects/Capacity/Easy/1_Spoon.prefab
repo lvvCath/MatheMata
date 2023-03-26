@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Spoon
+  ObjAudioClip: {fileID: 8300000, guid: 43d43fd7d5b197e438d35855fb392346, type: 3}

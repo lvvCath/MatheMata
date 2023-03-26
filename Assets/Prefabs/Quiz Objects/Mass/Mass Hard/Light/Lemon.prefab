@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6790162003009742841}
   - component: {fileID: -4591185371536562549}
   - component: {fileID: -5301880543829795523}
+  - component: {fileID: -1107233818804386147}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: fruit
@@ -140,3 +141,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   container: {fileID: 0}
+--- !u!114 &-1107233818804386147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084536970285763563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab90a51680b018548b535a2723872ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Lemon
+  ObjAudioClip: {fileID: 8300000, guid: 594c24c7978086a4c946bd94c33871b9, type: 3}

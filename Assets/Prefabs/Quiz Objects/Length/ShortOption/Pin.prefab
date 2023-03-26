@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Pin
+  ObjAudioClip: {fileID: 8300000, guid: 56d081bbb620a8748b4d3005c32229b5, type: 3}
 --- !u!114 &3815023491341153789
 MonoBehaviour:
   m_ObjectHideFlags: 0

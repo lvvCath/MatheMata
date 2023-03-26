@@ -103,4 +103,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa21e924e2017314f8deaa4d5950ad89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objLabel: Cup
+  objLabel: Tea Cup
+  ObjAudioClip: {fileID: 8300000, guid: ec9e2ac7d7d46094eba6ddebcafbdcbf, type: 3}

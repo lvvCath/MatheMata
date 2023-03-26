@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Dipper
+  ObjAudioClip: {fileID: 8300000, guid: ba5ce059fdf6a9c4f8253d42f93db7d9, type: 3}

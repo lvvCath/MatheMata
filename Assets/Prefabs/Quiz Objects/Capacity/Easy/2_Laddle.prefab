@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objLabel: Laddle
+  ObjAudioClip: {fileID: 8300000, guid: ac0eaa91e37c8b44a8c84ee189ee8fd0, type: 3}

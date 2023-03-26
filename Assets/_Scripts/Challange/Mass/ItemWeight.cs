@@ -5,4 +5,5 @@ using UnityEngine;
 public class ItemWeight : MonoBehaviour
 {
     public int weight;
+    public AudioClip ObjAudioClip;
 }

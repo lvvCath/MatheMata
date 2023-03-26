@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Paper Clip
+  ObjAudioClip: {fileID: 8300000, guid: 2ae73782aff041c4b86c2f9b0415290a, type: 3}
 --- !u!114 &8787874205104160863
 MonoBehaviour:
   m_ObjectHideFlags: 0

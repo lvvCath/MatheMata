@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Keys
+  ObjAudioClip: {fileID: 8300000, guid: ad20a093155e7254988b66eb16fb8ca0, type: 3}

@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Ruler
+  ObjAudioClip: {fileID: 8300000, guid: fafe1520a3ef8a644b1d13cdf66d1331, type: 3}
 --- !u!114 &-3359658164149618345
 MonoBehaviour:
   m_ObjectHideFlags: 0

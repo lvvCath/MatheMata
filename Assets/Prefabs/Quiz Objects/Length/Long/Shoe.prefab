@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Shoe
+  ObjAudioClip: {fileID: 8300000, guid: 57833aeccd3734e41960df09fad1080a, type: 3}
 --- !u!114 &-8423546693285737357
 MonoBehaviour:
   m_ObjectHideFlags: 0

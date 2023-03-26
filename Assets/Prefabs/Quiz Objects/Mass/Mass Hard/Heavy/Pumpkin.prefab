@@ -139,3 +139,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightEstimates: 05000000090000000800000006000000070000000700000005000000070000000a00000006000000
+  ObjAudioClip: {fileID: 8300000, guid: 8f59543d48d5deb44b5fcfab8b6ae67e, type: 3}
