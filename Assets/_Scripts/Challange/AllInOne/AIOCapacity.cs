@@ -53,6 +53,7 @@ public class AIOCapacity : MonoBehaviour
     private int multiplier;
 
     public int currentQuestionNo;
+    private IEnumerator currentQuestionAudioCoroutine = null;
 
     public void callStart()
     {
@@ -350,6 +351,29 @@ public class AIOCapacity : MonoBehaviour
         currentQuestionNo += 1 ;
     }
 
+    public void ToggleQuestionAudio(string DIFFICULTY)
+    {
+        if (currentQuestionAudioCoroutine != null) {
+            audioSource.Stop();
+            StopCoroutine(currentQuestionAudioCoroutine);
+            currentQuestionAudioCoroutine = null;
+            return;
+        }
+
+        currentQuestionAudioCoroutine = QuestionAudio(DIFFICULTY);
+        StartCoroutine(currentQuestionAudioCoroutine);
+    }
+
+    public void StopQuestionAudio()
+    {
+        if (currentQuestionAudioCoroutine != null) {
+            audioSource.Stop();
+            StopCoroutine(currentQuestionAudioCoroutine);
+            currentQuestionAudioCoroutine = null;
+            return;
+        }
+    }
+
     public IEnumerator QuestionAudio(string DIFFICULTY)
     {
         AudioClip[] clips;
@@ -366,11 +390,12 @@ public class AIOCapacity : MonoBehaviour
 
         foreach (AudioClip clip in clips)
         {
-            audioSource.clip = clip;
-            audioSource.Play();
-
-            yield return new WaitForSeconds(audioSource.clip.length);
+            audioSource.PlayOneShot(clip);
+            yield return new WaitForSeconds(clip.length);
         }
+
+        currentQuestionAudioCoroutine = null;
+
     }
 
 }

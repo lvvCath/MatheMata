@@ -40,6 +40,7 @@ public class AIOLength : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip LongObjAudio;
     private AudioClip ShortObjAudio;
+    private IEnumerator currentQuestionAudioCoroutine = null;
 
 
     public void callStart()
@@ -106,7 +107,6 @@ public class AIOLength : MonoBehaviour
             GameObj.SetActive(true);
             Instantiate(GameObj, OptionObjContainer.transform);
 
-            // Condition for multiple choice type of question
             if (GameObj.GetComponent<ObjectInfo>().ObjectName == L_LongObj[currentQuestionNo].GetComponent<ObjectInfo>().ObjectName) // checks if answer and button matches > matched button is set to True
             {
                 L_H_Options[i].GetComponent<AIOAnswerScript>().isCorrect = true;
@@ -118,9 +118,9 @@ public class AIOLength : MonoBehaviour
 
             StartCoroutine(DieGameObject(GameObj));
         }
+        StopQuestionAudio();
     }
 
-    // Length Easy and Average Difficulty
     public void L_EA_Question(string DIFFICULTY)
     {
         if (L_EA_ShortCont.transform.childCount > 0)
@@ -149,7 +149,7 @@ public class AIOLength : MonoBehaviour
         while (flag)
         {
             currShortObject = Random.Range(0, L_ShortObj.Length);
-            if (L_shortRecord.Contains(currShortObject) == false) // checks if short object was already used in question.
+            if (L_shortRecord.Contains(currShortObject) == false) 
             {
                 L_shortRecord.Add(currShortObject);
                 flag = false;
@@ -174,7 +174,6 @@ public class AIOLength : MonoBehaviour
             int noMissing = Random.Range(2, shortEstimate-1);
             L_EA_ShortCont.GetComponent<LetCGridLayout>().noMissing = noMissing; 
             Color c = new Color32(0, 0, 0, 255); 
-            // Creates cell prefab containing the short object GameObject -- cell prefabs is inserted in the columns
             GameObject missingShortObj;
             missingShortObj = GameObject.Instantiate(L_ShortObj[currShortObject]);
             missingShortObj.GetComponent<Image>().color = c;
@@ -183,7 +182,6 @@ public class AIOLength : MonoBehaviour
 
             quizTopUI.Question.text = "How many <color=#ffcb2b>missing</color> " + L_shortObjName + " required to equal the length of the " + L_LongObj[L_currentQuestionNo].name + "?"; 
 
-            // Destroy initialized missingShortObj after assigneing a copy to LetCGridLayout
             StartCoroutine(DieGameObject(missingShortObj));
         }
 
@@ -211,7 +209,7 @@ public class AIOLength : MonoBehaviour
         while (flag)
         {
             currShortObject = Random.Range(0, L_ShortObj.Length);
-            if (L_shortRecord.Contains(currShortObject) == false) // checks if short object was already used in question.
+            if (L_shortRecord.Contains(currShortObject) == false) 
             {
                 L_shortRecord.Add(currShortObject);
                 flag = false;
@@ -221,16 +219,13 @@ public class AIOLength : MonoBehaviour
         shortEstimate = L_LongObj[currentQuestionNo].GetComponent<LongObjectClass>().ShortEstimate[currShortObject];
         L_shortObjName = L_ShortObj[currShortObject].name;
 
-        // Creates grid columns based on the number of the short objects
         L_H_ShortObjCont.GetComponent<LetCGridLayout>().col = shortEstimate;
-        // Creates cell prefab containing the short object GameObject -- cell prefabs is inserted in the columns
         L_H_ShortObjCont.GetComponent<LetCGridLayout>().cellPrefab = L_ShortObj[currShortObject];
 
         L_H_ShortObjCont.GetComponent<LetCGridLayout>().SetCells();
 
         if (DIFFICULTY == "Hard") {
             quizTopUI.Question.text = "Question"; 
-            // Which of the following objects has the length of NO OBJECT NAME?
             quizTopUI.Question.text = "Which of the following objects has the length of <color=#ffcb2b>" + shortEstimate + " " + L_shortObjName + "</color>?"; 
         }
 
@@ -244,26 +239,48 @@ public class AIOLength : MonoBehaviour
      Object.Destroy(gameobject);
     }
 
+    public void ToggleQuestionAudio(string DIFFICULTY, int currentQuestionNo)
+    {
+        if (currentQuestionAudioCoroutine != null) {
+            audioSource.Stop();
+            StopCoroutine(currentQuestionAudioCoroutine);
+            currentQuestionAudioCoroutine = null;
+            return;
+        }
+
+        currentQuestionAudioCoroutine = QuestionAudio(DIFFICULTY, currentQuestionNo);
+        StartCoroutine(currentQuestionAudioCoroutine);
+    }
+
+    public void StopQuestionAudio()
+    {
+        if (currentQuestionAudioCoroutine != null) {
+            audioSource.Stop();
+            StopCoroutine(currentQuestionAudioCoroutine);
+            currentQuestionAudioCoroutine = null;
+            return;
+        }
+    }
+
     public IEnumerator QuestionAudio(string DIFFICULTY, int currentQuestionNo)
     {
         AudioClip[] clips;
 
         if (DIFFICULTY == "Easy") {
             clips = new AudioClip[] { QAudioClip[0], ShortObjAudio, QAudioClip[1], LongObjAudio };
-            
         } else if (DIFFICULTY == "Average") {
             clips = new AudioClip[] { QAudioClip[2], ShortObjAudio, QAudioClip[3], LongObjAudio };
-
         } else {
             clips = new AudioClip[] { QAudioClip[4], NoAudioClip[shortEstimate-1], ShortObjAudio };
         }
 
         foreach (AudioClip clip in clips)
         {
-            audioSource.clip = clip;
-            audioSource.Play();
-
-            yield return new WaitForSeconds(audioSource.clip.length);
+            audioSource.PlayOneShot(clip);
+            yield return new WaitForSeconds(clip.length);
         }
+
+        currentQuestionAudioCoroutine = null;
+
     }
 }

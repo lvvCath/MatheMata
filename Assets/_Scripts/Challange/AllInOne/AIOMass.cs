@@ -44,6 +44,7 @@ public class AIOMass : MonoBehaviour
     private AudioClip EasyAudio;
     private AudioClip Obj1Audio;
     private AudioClip Obj2Audio;
+    private IEnumerator currentQuestionAudioCoroutine = null;
 
     private string[] QuestionList = {"Which of the following is the <color=#ffcb2b>lightest</color>?", "Which of the following is the <color=#ffcb2b>heaviest</color>?"};
 
@@ -288,6 +289,29 @@ public class AIOMass : MonoBehaviour
         }
     }
 
+    public void ToggleQuestionAudio(string DIFFICULTY)
+    {
+        if (currentQuestionAudioCoroutine != null) {
+            audioSource.Stop();
+            StopCoroutine(currentQuestionAudioCoroutine);
+            currentQuestionAudioCoroutine = null;
+            return;
+        }
+
+        currentQuestionAudioCoroutine = QuestionAudio(DIFFICULTY);
+        StartCoroutine(currentQuestionAudioCoroutine);
+    }
+
+    public void StopQuestionAudio()
+    {
+        if (currentQuestionAudioCoroutine != null) {
+            audioSource.Stop();
+            StopCoroutine(currentQuestionAudioCoroutine);
+            currentQuestionAudioCoroutine = null;
+            return;
+        }
+    }
+
     public IEnumerator QuestionAudio(string DIFFICULTY)
     {
         AudioClip[] clips;
@@ -304,10 +328,11 @@ public class AIOMass : MonoBehaviour
 
         foreach (AudioClip clip in clips)
         {
-            audioSource.clip = clip;
-            audioSource.Play();
-
-            yield return new WaitForSeconds(audioSource.clip.length);
+            audioSource.PlayOneShot(clip);
+            yield return new WaitForSeconds(clip.length);
         }
+
+        currentQuestionAudioCoroutine = null;
+
     }
 }
