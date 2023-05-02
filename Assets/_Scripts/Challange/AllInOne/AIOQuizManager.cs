@@ -10,8 +10,8 @@ public class AIOQuizManager : MonoBehaviour
     [Header("Quiz Info")]
     public string CATEGORY;
     public string DIFFICULTY;
-    public int randCategory;
-    public int randDifficulty;
+    public int setCategory;
+    public int setDifficulty;
     [Header("Quiz Top Panel")]
     public QuizTopUI quizTopUI;
     [Header("Quiz Values")]
@@ -46,36 +46,21 @@ public class AIOQuizManager : MonoBehaviour
     private float timer;
     private bool stopTimer;
 
-     private void Start()
-    {
+    private void Start() {
         quizTopUI.Category.text = QuizData.CATEGORY;
         CATEGORY = QuizData.CATEGORY;
         DIFFICULTY = QuizData.DIFFICULTY;
 
-        ResultPanel.GetComponent<QuizResultAnim>().setQuiz("All In One", ""); 
-
-        if (CATEGORY == "Length") {
-            randCategory = 1;
-        } else if (CATEGORY == "Mass") {
-            randCategory = 2;
-        } else { // Capacity
-            randCategory = 3;
-        }
-
-        if (DIFFICULTY == "Easy") {
-            randDifficulty = 1;
-        } else if (DIFFICULTY == "Average") {
-            randDifficulty = 2;
-        } else { // Hard
-            randDifficulty = 3;
-        }
-
-        if (CATEGORY != "All In One") {
+        if (CATEGORY  != "All In One") {
+            string[] categories = {"Length", "Mass", "Capacity"};
+            string[] difficulties = {"Easy", "Average", "Hard"};
+            setCategory = System.Array.IndexOf(categories, CATEGORY) + 1;
+            setDifficulty = System.Array.IndexOf(difficulties, DIFFICULTY) + 1;
             ResultPanel.GetComponent<QuizResultAnim>().setQuiz(CATEGORY, DIFFICULTY);
             quizTopUI.Difiiculty.text = DIFFICULTY;
-        } else {
-            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("All In One", ""); 
-            timeLimit = 60;
+        }
+        else {
+            ResultPanel.GetComponent<QuizResultAnim>().setQuiz("All In One", "");
         }
 
         QUIZMANAGER.GetComponent<AIOLength>().callStart();
@@ -104,24 +89,22 @@ public class AIOQuizManager : MonoBehaviour
         
     }
 
-    private void GenerateQuestion() 
-    {
-        if (currentQuestionNo < total)
-        {
+    private void GenerateQuestion() {
+        if (currentQuestionNo < total) {
             HideContainers();
             quizTopUI.QuestionNo.text = "Question " + (currentQuestionNo+1).ToString();
 
             if (CATEGORY == "All In One") {
-                randCategory = Random.Range(1, 4); // (1) Length, (2) Mass, (3) Capacity
-                randDifficulty = Random.Range(1, 4);  // (1) Easy, (2) Average, (3) Hard
+                setCategory = Random.Range(1, 4); // (1) Length, (2) Mass, (3) Capacity
+                setDifficulty = Random.Range(1, 4);  // (1) Easy, (2) Average, (3) Hard
             } 
             
-            switch (randCategory) {
+            switch (setCategory) {
                 case 1:
                     if (CATEGORY == "All In One") {
                         quizTopUI.Difiiculty.text = "Length";
                     }
-                    switch (randDifficulty) {
+                    switch (setDifficulty) {
                         case 1:
                             DIFFICULTY = "Easy";
                             timeLimit = 90;
@@ -144,7 +127,7 @@ public class AIOQuizManager : MonoBehaviour
                             QUIZMANAGER.GetComponent<AIOLength>().L_H_SetAnswers(currentQuestionNo);
                             break;
                         default:
-                            Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                            Debug.LogError("Invalid difficulty level: " + setDifficulty);
                             break;
                     }
                     break;
@@ -152,7 +135,7 @@ public class AIOQuizManager : MonoBehaviour
                     if (CATEGORY == "All In One") {
                         quizTopUI.Difiiculty.text = "Mass";
                     }
-                    switch (randDifficulty) {
+                    switch (setDifficulty) {
                         case 1:
                             DIFFICULTY = "Easy";
                             timeLimit = 60;
@@ -174,7 +157,7 @@ public class AIOQuizManager : MonoBehaviour
                             QUIZMANAGER.GetComponent<AIOMass>().HardQuestion();
                             break;
                         default:
-                            Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                            Debug.LogError("Invalid difficulty level: " + setDifficulty);
                             break;
                     }
                     QUIZMANAGER.GetComponent<AIOMass>().SetAnswers(DIFFICULTY);
@@ -183,7 +166,7 @@ public class AIOQuizManager : MonoBehaviour
                     if (CATEGORY == "All In One") {
                         quizTopUI.Difiiculty.text = "Capacity";
                     }
-                    switch (randDifficulty) {
+                    switch (setDifficulty) {
                         case 1:
                             DIFFICULTY = "Easy";
                             timeLimit = 30;
@@ -203,13 +186,13 @@ public class AIOQuizManager : MonoBehaviour
                             QUIZMANAGER.GetComponent<AIOCapacity>().HardQuestion();
                             break;
                         default:
-                            Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                            Debug.LogError("Invalid difficulty level: " + setDifficulty);
                             break;
                     }
                     QUIZMANAGER.GetComponent<AIOCapacity>().SetAnswers(DIFFICULTY);
                     break;
                 default:
-                    Debug.LogError("Invalid category: " + randCategory);
+                    Debug.LogError("Invalid category: " + setCategory);
                     break;
             }
             stopTimer = false;
@@ -220,8 +203,7 @@ public class AIOQuizManager : MonoBehaviour
             
             currentQuestionNo += 1;
         }
-        else
-        {
+        else {
             // Timer
             stopTimer = true;
             quizTopUI.Timer.text = "00:00";
@@ -281,9 +263,9 @@ public class AIOQuizManager : MonoBehaviour
 
     public void PlayQuestion()
     {
-        switch (randCategory) {
+        switch (setCategory) {
             case 1:
-                switch (randDifficulty) {
+                switch (setDifficulty) {
                     case 1:
                         DIFFICULTY = "Easy";
                         QUIZMANAGER.GetComponent<AIOLength>().ToggleQuestionAudio(DIFFICULTY, currentQuestionNo);
@@ -297,12 +279,12 @@ public class AIOQuizManager : MonoBehaviour
                         QUIZMANAGER.GetComponent<AIOLength>().ToggleQuestionAudio(DIFFICULTY, currentQuestionNo);
                         break;
                     default:
-                        Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                        Debug.LogError("Invalid difficulty level: " + setDifficulty);
                         break;
                 }
                 break;
             case 2:
-                switch (randDifficulty) {
+                switch (setDifficulty) {
                     case 1:
                         DIFFICULTY = "Easy";
                         QUIZMANAGER.GetComponent<AIOMass>().ToggleQuestionAudio(DIFFICULTY);
@@ -316,12 +298,12 @@ public class AIOQuizManager : MonoBehaviour
                         QUIZMANAGER.GetComponent<AIOMass>().ToggleQuestionAudio(DIFFICULTY);
                         break;
                     default:
-                        Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                        Debug.LogError("Invalid difficulty level: " + setDifficulty);
                         break;
                 }
                 break;
             case 3:
-                switch (randDifficulty) {
+                switch (setDifficulty) {
                     case 1:
                         DIFFICULTY = "Easy";
                         QUIZMANAGER.GetComponent<AIOCapacity>().ToggleQuestionAudio(DIFFICULTY);
@@ -335,19 +317,19 @@ public class AIOQuizManager : MonoBehaviour
                         QUIZMANAGER.GetComponent<AIOCapacity>().ToggleQuestionAudio(DIFFICULTY);
                         break;
                     default:
-                        Debug.LogError("Invalid difficulty level: " + randDifficulty);
+                        Debug.LogError("Invalid difficulty level: " + setDifficulty);
                         break;
                 }
                 break;
             default:
-                Debug.LogError("Invalid category: " + randCategory);
+                Debug.LogError("Invalid category: " + setCategory);
                 break;
         }
     }
 
     private void StopQuestionAudio()
     {
-        switch (randCategory) {
+        switch (setCategory) {
             case 1:
                 QUIZMANAGER.GetComponent<AIOLength>().StopQuestionAudio();
                 break;
@@ -358,7 +340,7 @@ public class AIOQuizManager : MonoBehaviour
                 QUIZMANAGER.GetComponent<AIOCapacity>().StopQuestionAudio();
                 break;
             default:
-                Debug.LogError("Invalid category: " + randCategory);
+                Debug.LogError("Invalid category: " + setCategory);
                 break;
         }
     }

@@ -39,8 +39,7 @@ public class QuizResultAnim : MonoBehaviour
     Vector3 initpos_backPanel, initpos_ribbon;
     float delay = 0.7f;
 
-    private void Start()
-    {
+    private void Start() {
         overlay.SetActive(true);
         initpos_backPanel = backPanel.transform.position;
         initpos_ribbon = ribbon.transform.position;
@@ -53,27 +52,23 @@ public class QuizResultAnim : MonoBehaviour
         HeaderShadow.text = "Excellent!";
 
         // Good Job! - if score is less than the total darken 3rd star
-        if ( System.Convert.ToInt32(Score.text) < System.Convert.ToInt32(Total.text) )
-        {
+        if ( System.Convert.ToInt32(Score.text) < System.Convert.ToInt32(Total.text) ) {
             Header.text = "Good Job!";
             HeaderShadow.text = "Good Job!";
             star3.GetComponent<Image>().color = c;
         }
 
-        // Try Again! - if score is less than 60% of the total darken 2nd star
-        if ( System.Convert.ToInt32(Score.text) < ( (70 * System.Convert.ToInt32(Total.text)) / 100 ) )
-        {
+        // Try Again! - if score is less than 75% of the total darken 2nd star
+        if ( System.Convert.ToInt32(Score.text) < Mathf.FloorToInt(( (75 * System.Convert.ToInt32(Total.text)) / 100 )) ) {
             Header.text = "Try Again!";
             HeaderShadow.text = "Try Again!";
             star2.GetComponent<Image>().color = c;
         }
 
         // Try Again! - Score 0
-        if ( System.Convert.ToInt32(Score.text) == 0 )
-        {
+        if ( System.Convert.ToInt32(Score.text) == 0 ) {
             star1.GetComponent<Image>().color = c;
         }
-
     }
 
     public void setQuiz(string category, string difficulty)

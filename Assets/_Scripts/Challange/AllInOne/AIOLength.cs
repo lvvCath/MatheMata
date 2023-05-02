@@ -166,7 +166,7 @@ public class AIOLength : MonoBehaviour
         L_EA_ShortCont.GetComponent<LetCGridLayout>().cellPrefab = L_ShortObj[currShortObject];
 
         if (DIFFICULTY == "Easy") {
-            quizTopUI.Question.text = "How many <color=#ffcb2b>" + L_shortObjName + "</color> required to equal the length of the <color=#ffcb2b>" + L_LongObj[L_currentQuestionNo].name + "</color>?";
+            quizTopUI.Question.text = "How many <color=#ffcb2b>" + L_shortObjName + "</color> are required to equal the length of the <color=#ffcb2b>" + L_LongObj[L_currentQuestionNo].name + "</color>?";
             L_EA_ShortCont.GetComponent<LetCGridLayout>().noMissing = 0;  
         }
         // Average Level
@@ -180,7 +180,7 @@ public class AIOLength : MonoBehaviour
             L_EA_ShortCont.GetComponent<LetCGridLayout>().cellPrefab2 = missingShortObj; 
             correctAns = noMissing;
 
-            quizTopUI.Question.text = "How many <color=#ffcb2b>missing</color> " + L_shortObjName + " required to equal the length of the " + L_LongObj[L_currentQuestionNo].name + "?"; 
+            quizTopUI.Question.text = "How many <color=#ffcb2b>missing</color> " + L_shortObjName + " are required to equal the length of the " + L_LongObj[L_currentQuestionNo].name + "?"; 
 
             StartCoroutine(DieGameObject(missingShortObj));
         }
