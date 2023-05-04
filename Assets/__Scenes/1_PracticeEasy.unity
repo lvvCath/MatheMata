@@ -14796,9 +14796,9 @@ MonoBehaviour:
     AVE_CapacityAnswer: []
   - Question: 'The cabinet is ___ pillows long. '
     Answers:
-    - 4 pillows
-    - 3 pillows
-    - 2 pillows
+    - four
+    - three
+    - two
     CorrectAnswer: 3
     Category: Length
     Background:
@@ -14834,9 +14834,9 @@ MonoBehaviour:
     AVE_CapacityAnswer: []
   - Question: 'The couch is ___ picture frame long. '
     Answers:
-    - 2
-    - 3
-    - 4
+    - two
+    - three
+    - four
     CorrectAnswer: 3
     Category: Length
     Background:

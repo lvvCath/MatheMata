@@ -2263,7 +2263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Join our characters on their journey in learning the Non-Standard Units
+  m_text: Join Chacha and Kiko on their journey in learning the Non-Standard Units
     of Measurements
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b8d93b59da9e834bb4807dc3843a31a, type: 2}
