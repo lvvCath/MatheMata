@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5034901919535318124
+--- !u!1 &6798375237745308285
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5034901919535318125}
-  - component: {fileID: 5034901919535318120}
-  - component: {fileID: 5034901919535318127}
-  - component: {fileID: 5034901919535318126}
+  - component: {fileID: 6798375237745308284}
+  - component: {fileID: 6798375237745308281}
+  - component: {fileID: 6798375237745308286}
+  - component: {fileID: 6798375237745308287}
   m_Layer: 0
   m_Name: Bell Pepper
   m_TagString: Untagged
@@ -19,13 +19,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5034901919535318125
+--- !u!224 &6798375237745308284
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5034901919535318124}
+  m_GameObject: {fileID: 6798375237745308285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,24 +36,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 534, y: 246.69}
-  m_SizeDelta: {x: 71.64, y: 97.584}
+  m_AnchoredPosition: {x: 539.42, y: 247.14}
+  m_SizeDelta: {x: 72.47, y: 98.47}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5034901919535318120
+--- !u!222 &6798375237745308281
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5034901919535318124}
+  m_GameObject: {fileID: 6798375237745308285}
   m_CullTransparentMesh: 1
---- !u!114 &5034901919535318127
+--- !u!114 &6798375237745308286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5034901919535318124}
+  m_GameObject: {fileID: 6798375237745308285}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -77,13 +77,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5034901919535318126
+--- !u!114 &6798375237745308287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5034901919535318124}
+  m_GameObject: {fileID: 6798375237745308285}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f8403bcc3eadd04d8fcd4537c681022, type: 3}
