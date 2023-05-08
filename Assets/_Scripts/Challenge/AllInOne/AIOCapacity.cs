@@ -379,13 +379,13 @@ public class AIOCapacity : MonoBehaviour
         AudioClip[] clips;
 
         if (DIFFICULTY == "Easy") {
-            clips = new AudioClip[] { Obj1Audio, QAudioClip[0], Obj2Audio };
+            clips = new AudioClip[] { QAudioClip[0], Obj1Audio, QAudioClip[1], Obj2Audio };
             
         } else if (DIFFICULTY == "Average") {
-            clips = new AudioClip[] { QAudioClip[1] };
+            clips = new AudioClip[] { QAudioClip[2] };
 
         } else {
-            clips = new AudioClip[] { No1Audio, Obj2Audio, QAudioClip[2], NoAudioClip[0], Obj1Audio, QAudioClip[3], Obj2Audio, QAudioClip[2], No2Audio, Obj1Audio  };
+            clips = new AudioClip[] { No1Audio, Obj2Audio, QAudioClip[3], NoAudioClip[0], Obj1Audio, QAudioClip[4], Obj2Audio, QAudioClip[3], No2Audio, Obj1Audio  };
         }
 
         foreach (AudioClip clip in clips)
