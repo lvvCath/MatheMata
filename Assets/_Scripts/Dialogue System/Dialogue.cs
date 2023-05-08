@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
+    public TextMeshProUGUI speakerName;
     public Button nextButton;
     public string[] lines;
     public AudioClip[] linesAudio;
@@ -51,6 +52,7 @@ public class Dialogue : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
+        speakerName.text = "Kiko";
         StartCoroutine(TypeLine());
         audioSource.PlayOneShot(linesAudio[index]);
     }
@@ -73,34 +75,31 @@ public class Dialogue : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
             audioSource.PlayOneShot(linesAudio[index]);
-            if(index == 1)
-            {
-                xPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.x) - (-90.66f);
-                yPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.y) - (90.44f);
-                LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.5f).setEase(LeanTweenType.easeOutCirc);
-            }
-            if (index == 2)
-            {
-                xPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.x) + (-170f);
-                yPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.y) + (-294.9f);
-                /*Debug.Log("X POS: " + xPointPos + " || Y POS: " + yPointPos);
-                Debug.Log("POSITION: " + option1.transform.localPosition);*/
-                LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.2f).setEase(LeanTweenType.easeOutCirc);
-                LeanTween.moveLocal(pointer, new Vector3(xPointPos + 720f, yPointPos, 0f), 0.7f).setDelay(.9f).setEase(LeanTweenType.easeOutCirc);
-            }
-            if (index == 3)
-            {
-                xPointPos = (hintBTN.GetComponent<RectTransform>().localPosition.x) - (-101.66f);
-                yPointPos = (hintBTN.GetComponent<RectTransform>().localPosition.y) - (90.44f);
-                LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.5f).setEase(LeanTweenType.easeOutCirc);
-            }
-            if (index == 4)
-            {
-                xPointPos = (pauseBTN.GetComponent<RectTransform>().localPosition.x) - (-101.66f);
-                yPointPos = (pauseBTN.GetComponent<RectTransform>().localPosition.y) - (90.44f);
-                LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.5f).setEase(LeanTweenType.easeOutCirc);
-            }
 
+            switch(index) {
+                case 1:
+                    xPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.x) - (-90.66f);
+                    yPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.y) - (90.44f);
+                    LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.5f).setEase(LeanTweenType.easeOutCirc);
+                    break;
+                case 2:
+                    xPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.x) + (-170f);
+                    yPointPos = (questionPanel.GetComponent<RectTransform>().localPosition.y) + (-294.9f);
+                    LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.2f).setEase(LeanTweenType.easeOutCirc);
+                    LeanTween.moveLocal(pointer, new Vector3(xPointPos + 720f, yPointPos, 0f), 0.7f).setDelay(.9f).setEase(LeanTweenType.easeOutCirc);
+                    break;
+                case 3:
+                    speakerName.text = "Chacha";
+                    xPointPos = (hintBTN.GetComponent<RectTransform>().localPosition.x) - (-101.66f);
+                    yPointPos = (hintBTN.GetComponent<RectTransform>().localPosition.y) - (90.44f);
+                    LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.5f).setEase(LeanTweenType.easeOutCirc);
+                    break;
+                case 4:
+                    xPointPos = (pauseBTN.GetComponent<RectTransform>().localPosition.x) - (-101.66f);
+                    yPointPos = (pauseBTN.GetComponent<RectTransform>().localPosition.y) - (90.44f);
+                    LeanTween.moveLocal(pointer, new Vector3(xPointPos, yPointPos, 0f), 0.7f).setDelay(.5f).setEase(LeanTweenType.easeOutCirc);
+                    break;
+            }
         }
         else
         {
@@ -111,6 +110,16 @@ public class Dialogue : MonoBehaviour
             hintBTN.enabled = true;
             gameObject.SetActive(false);
         }
+    }
+
+    public void SkipTutorial() {
+        audioSource.Stop();
+        option1.enabled = true;
+        option2.enabled = true;
+        option3.enabled = true;
+        pauseBTN.enabled = true;
+        hintBTN.enabled = true;
+        gameObject.SetActive(false);
     }
 
 

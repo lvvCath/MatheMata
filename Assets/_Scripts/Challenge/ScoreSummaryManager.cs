@@ -75,7 +75,7 @@ public class ScoreSummaryManager : MonoBehaviour
             stars[2].GetComponent<Image>().color = c;
         }
 
-        // if score is less than 60% of the total darken 2nd star
+        // if score is less than 70% of the total darken 2nd star
         if (totalScore < (0.7f * totalItems))
         {
             stars[1].GetComponent<Image>().color = c;

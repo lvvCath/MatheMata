@@ -50,12 +50,14 @@ public class QuizResultAnim : MonoBehaviour
         // Excellent! - if perfect
         Header.text = "Excellent!";
         HeaderShadow.text = "Excellent!";
+        buttons[2].SetActive(true);
 
         // Good Job! - if score is less than the total darken 3rd star
         if ( System.Convert.ToInt32(Score.text) < System.Convert.ToInt32(Total.text) ) {
             Header.text = "Good Job!";
             HeaderShadow.text = "Good Job!";
             star3.GetComponent<Image>().color = c;
+            buttons[2].SetActive(true);
         }
 
         // Try Again! - if score is less than 75% of the total darken 2nd star
@@ -63,11 +65,13 @@ public class QuizResultAnim : MonoBehaviour
             Header.text = "Try Again!";
             HeaderShadow.text = "Try Again!";
             star2.GetComponent<Image>().color = c;
+            buttons[2].SetActive(false);
         }
 
         // Try Again! - Score 0
         if ( System.Convert.ToInt32(Score.text) == 0 ) {
             star1.GetComponent<Image>().color = c;
+            buttons[2].SetActive(false);
         }
     }
 

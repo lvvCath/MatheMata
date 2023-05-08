@@ -252,7 +252,7 @@ public class AIOCapacity : MonoBehaviour
         Instantiate(leftObject, firstContainer.transform);
         Instantiate(rightObject, secondContainer.transform);
 
-        quizTopUI.Question.text = "<color=#ffcb2b>" + firstObjName + "</color> holds __ __ __ __ than the <color=#ffcb2b>" + secondObjName + "</color>";
+        quizTopUI.Question.text = "Does the <color=#ffcb2b>" + firstObjName + "</color> hold more or less than the <color=#ffcb2b>" + secondObjName + "</color>?";
 
         Obj1Audio = CapacityObjects[currFirstObject].GetComponent<LabelScriptClass>().ObjAudioClip;
         Obj2Audio = CapacityObjects[currSecondObject].GetComponent<LabelScriptClass>().ObjAudioClip;
