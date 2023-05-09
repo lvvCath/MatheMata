@@ -2933,8 +2933,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -364, y: 25.407}
-  m_SizeDelta: {x: 186.36, y: 42.85}
+  m_AnchoredPosition: {x: -405.07, y: 25.407}
+  m_SizeDelta: {x: 224.86, y: 42.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346574900
 MonoBehaviour:
@@ -3510,8 +3510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.43, y: -44.2}
-  m_SizeDelta: {x: 933.31, y: 92}
+  m_AnchoredPosition: {x: 0, y: -43.38}
+  m_SizeDelta: {x: 1044.7, y: 86.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &436154669
 MonoBehaviour:
@@ -3561,19 +3561,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.85
+  m_fontSize: 52
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 30
-  m_fontSizeMax: 72
+  m_fontSizeMin: 52
+  m_fontSizeMax: 55
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -30
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -3597,7 +3597,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -3.6762698, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4815,8 +4815,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 343, y: 21.701}
-  m_SizeDelta: {x: 232.32, y: 43.433}
+  m_AnchoredPosition: {x: 398.12, y: 21.701}
+  m_SizeDelta: {x: 258.2, y: 43.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588053054
 MonoBehaviour:
@@ -5985,7 +5985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8.850014, y: -285.9}
+  m_AnchoredPosition: {x: 0, y: -304}
   m_SizeDelta: {x: 284.64, y: 163.51001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &664309995
@@ -7497,7 +7497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 26.71}
+  m_AnchoredPosition: {x: 0, y: 33}
   m_SizeDelta: {x: 272.05, y: 49.821}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &835411319
@@ -11049,7 +11049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 334, y: -285.9}
+  m_AnchoredPosition: {x: 323, y: -304}
   m_SizeDelta: {x: 284.64, y: 163.51001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323889145
@@ -13419,8 +13419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -111}
-  m_SizeDelta: {x: 1020, y: 242}
+  m_AnchoredPosition: {x: 0, y: -119.9}
+  m_SizeDelta: {x: 1151.71, y: 259.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1739895488
 MonoBehaviour:
@@ -15061,7 +15061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -313, y: -285.9}
+  m_AnchoredPosition: {x: -323, y: -304}
   m_SizeDelta: {x: 284.64, y: 163.51001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1898008046
@@ -15302,7 +15302,7 @@ MonoBehaviour:
     Hint: {fileID: 1939397035}
     AVE_CapacitySlots: []
     AVE_CapacityAnswer: []
-  - Question: 'The cabinet is ___ pillows long. '
+  - Question: 'The cabinet is ______ pillows long. '
     Answers:
     - four
     - three
@@ -15340,7 +15340,7 @@ MonoBehaviour:
     Hint: {fileID: 303401937}
     AVE_CapacitySlots: []
     AVE_CapacityAnswer: []
-  - Question: 'The couch is ___ picture frames long. '
+  - Question: 'The couch is ______ picture frames long. '
     Answers:
     - two
     - three
