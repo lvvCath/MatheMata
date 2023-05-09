@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2784775748223892700
+--- !u!1 &8630782351413398541
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2784775748223892703}
-  - component: {fileID: 2784775748223892696}
-  - component: {fileID: 2784775748223892697}
-  - component: {fileID: 2784775748223892702}
+  - component: {fileID: 8630782351413398542}
+  - component: {fileID: 8630782351413398537}
+  - component: {fileID: 8630782351413398536}
+  - component: {fileID: 8630782351413398543}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -19,13 +19,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &2784775748223892703
+--- !u!224 &8630782351413398542
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784775748223892700}
+  m_GameObject: {fileID: 8630782351413398541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,24 +36,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225.18, y: 288.92}
-  m_SizeDelta: {x: 59.09, y: 57.02}
+  m_AnchoredPosition: {x: 223.67, y: 286.87}
+  m_SizeDelta: {x: 52.653, y: 50.81}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &2784775748223892696
+--- !u!222 &8630782351413398537
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784775748223892700}
+  m_GameObject: {fileID: 8630782351413398541}
   m_CullTransparentMesh: 1
---- !u!114 &2784775748223892697
+--- !u!114 &8630782351413398536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784775748223892700}
+  m_GameObject: {fileID: 8630782351413398541}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -77,13 +77,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2784775748223892702
+--- !u!114 &8630782351413398543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2784775748223892700}
+  m_GameObject: {fileID: 8630782351413398541}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f8403bcc3eadd04d8fcd4537c681022, type: 3}
