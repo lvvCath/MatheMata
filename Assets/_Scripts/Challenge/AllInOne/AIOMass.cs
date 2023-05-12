@@ -205,10 +205,24 @@ public class AIOMass : MonoBehaviour
                     flag = false;
                 }
                 while (flag)
-                {
+                {   
                     currObject = Random.Range(0, AverageObjects.Length);
+                    if(counter == 1){
+                        Debug.Log("Hello!");
+                        int firstWeight =  AverageObjects[arrLight[0]].GetComponent<ItemWeight>().weight;
+                        int secondWeight = AverageObjects[currObject].GetComponent<ItemWeight>().weight;
+                        int difference = secondWeight - firstWeight;
+                        Debug.Log("Weight1: " + firstWeight);
+                        Debug.Log("Weight2: " + secondWeight);
+                        Debug.Log("Difference: " + difference);
+                        if(difference == 1 || difference == -1){
+                            currObject = Random.Range(0, AverageObjects.Length);
+                            continue;
+                        }
+                    }
                     if (arrRecord.Contains(currObject) == false)
                     {
+                        
                         arrRecord.Add(currObject);
                         arrLight.Add(currObject);
                         flag = false;
