@@ -12,8 +12,10 @@ public class AIOMass : MonoBehaviour
     public GameObject[] WeightedObjects;
 
     [Header("Average Game Objects")]
-    public GameObject[] AverageObjects;
+    public GameObject[] AverageLight;
+    public GameObject[] AverageHeavy;
     public GameObject[] ScaleArr;
+    public int currIndex;
 
     [Header("Hard Game Objects")]
     public GameObject[] HeavyObjects;
@@ -104,8 +106,8 @@ public class AIOMass : MonoBehaviour
                 Options[i].transform.GetChild(0).GetComponent<TMP_Text>().text = correctans[i];
 
             }
-            int firstWeight =  AverageObjects[arrLight[0]].GetComponent<ItemWeight>().weight;
-            int secondWeight = AverageObjects[arrLight[1]].GetComponent<ItemWeight>().weight;
+            int firstWeight =  AverageLight[arrLight[currIndex]].GetComponent<ItemWeight>().weight;
+            int secondWeight = AverageHeavy[arrRecord[currIndex]].GetComponent<ItemWeight>().weight;
             if (firstWeight > secondWeight)
             {
                 Options[0].GetComponent<AIOAnswerScript>().isCorrect = true;
@@ -118,8 +120,8 @@ public class AIOMass : MonoBehaviour
             {
                 Options[1].GetComponent<AIOAnswerScript>().isCorrect = true;
             }
-            Obj1Audio = AverageObjects[arrLight[0]].GetComponent<ItemWeight>().ObjAudioClip;
-            Obj2Audio = AverageObjects[arrLight[1]].GetComponent<ItemWeight>().ObjAudioClip;
+            Obj1Audio = AverageLight[arrLight[currIndex]].GetComponent<ItemWeight>().ObjAudioClip;
+            Obj2Audio = AverageHeavy[arrRecord[currIndex]].GetComponent<ItemWeight>().ObjAudioClip;
         }
 
         if (DIFFICULTY == "Hard"){
@@ -179,8 +181,11 @@ public class AIOMass : MonoBehaviour
         // Instantiate the two objects based on the Child Container (Object1 and Object2)
         
         GameObject container;
+        GameObject object1;
+        GameObject object2;
+        int currLight = Random.Range(0, AverageLight.Length);
+        int currHeavy = Random.Range(0, AverageHeavy.Length);
         int counter = 0;
-        int currObject = Random.Range(0, AverageObjects.Length);
         for (int i = 0; i < AverageContainer.Length; i++)
         {
             for (int j = 0; j < 2; j++)
@@ -192,41 +197,45 @@ public class AIOMass : MonoBehaviour
                     }
             }
         }
-
-        arrLight.Clear();
         for (int i = 0; i < AverageContainer.Length; i++)
         {
-            for (int j = 0; j < AverageContainer[i].transform.childCount-1; j++)
+            bool flag = true;
+            while (flag)
             {
-
-                bool flag = true;
-                if (counter >= 2) 
+                if(counter >= 2){
+                    break;
+                }
+                currHeavy = Random.Range(0, HeavyObjects.Length);
+                currLight = Random.Range(0, LightObjects.Length);
+                if (arrRecord.Contains(currHeavy) == false && arrLight.Contains(currLight) == false)
                 {
+                    arrRecord.Add(currHeavy);
+                    arrLight.Add(currLight);
                     flag = false;
+                    counter+=2;
                 }
-                while (flag)
-                {
-                    currObject = Random.Range(0, AverageObjects.Length);
-                    if (arrRecord.Contains(currObject) == false)
-                    {
-                        arrRecord.Add(currObject);
-                        arrLight.Add(currObject);
-                        flag = false;
-                    }
-                }
-                container = AverageContainer[i].transform.GetChild(j).gameObject;
-                GameObject newObj = Instantiate(AverageObjects[arrLight[j]], container.transform);
-
-                RectTransform newObjRect = newObj.GetComponent<RectTransform>();
-
-                newObjRect.anchorMin = new Vector2(0.5f, 0f);
-                newObjRect.anchorMax = new Vector2(0.5f, 0f);
-                newObjRect.pivot = new Vector2(0.5f, 0f);
-                newObjRect.anchoredPosition = new Vector2(0f, 0f);
-        counter++;
             }
+            Debug.Log("This is the Counter: " + counter);
+            currIndex = arrLight.IndexOf(currLight);
+            object1 = AverageContainer[i].transform.GetChild(0).gameObject;
+            object2 = AverageContainer[i].transform.GetChild(1).gameObject;
+            GameObject newObj1 = Instantiate(AverageLight[currLight], object1.transform);
+            GameObject newObj2 = Instantiate(AverageHeavy[currHeavy], object2.transform);
+
+            RectTransform obj1 = newObj1.GetComponent<RectTransform>();
+            RectTransform obj2 = newObj2.GetComponent<RectTransform>();
+
+            obj1.anchorMin = new Vector2(0.5f, 0f);
+            obj1.anchorMax = new Vector2(0.5f, 0f);
+            obj1.pivot = new Vector2(0.5f, 0f);
+            obj1.anchoredPosition = new Vector2(0f, 0f);
+
+            obj2.anchorMin = new Vector2(0.5f, 0f);
+            obj2.anchorMax = new Vector2(0.5f, 0f);
+            obj2.pivot = new Vector2(0.5f, 0f);
+            obj2.anchoredPosition = new Vector2(0f, 0f);
         }
-        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + AverageObjects[arrLight[0]].name + "</color> and <color=#ffcb2b>" + AverageObjects[arrLight[1]].name + "</color> is in the right balance";
+        quizTopUI.Question.text = "Pick the scale where<color=#ffcb2b> " + AverageLight[currLight].name + "</color> and <color=#ffcb2b>" + AverageHeavy[currHeavy].name + "</color> is in the right balance";
         
     }
 
