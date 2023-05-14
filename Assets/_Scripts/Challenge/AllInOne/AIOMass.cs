@@ -215,7 +215,7 @@ public class AIOMass : MonoBehaviour
                     counter+=2;
                 }
             }
-            Debug.Log("This is the Counter: " + counter);
+
             currIndex = arrLight.IndexOf(currLight);
             object1 = AverageContainer[i].transform.GetChild(0).gameObject;
             object2 = AverageContainer[i].transform.GetChild(1).gameObject;
